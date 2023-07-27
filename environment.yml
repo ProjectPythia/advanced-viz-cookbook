@@ -1,4 +1,4 @@
-name: cookbook-dev
+name: advanced-viz-cookbook
 channels:
   - conda-forge
 dependencies:

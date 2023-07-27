@@ -4,6 +4,10 @@ parts:
   - caption: Preamble
     chapters:
       - file: notebooks/how-to-cite
-  - caption: Introduction
+  - caption: Overview
     chapters:
-      - file: notebooks/notebook-template
+      - file: notebooks/overview
+  - caption: Example Workflows
+    chapters:
+      - file: notebooks/geocat-viz
+      - file: notebooks/MPAS_DATASHADER
