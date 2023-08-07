@@ -11,3 +11,6 @@ parts:
     chapters:
       - file: notebooks/geocat-viz
       - file: notebooks/MPAS_DATASHADER
+      - file: notebooks/contour
+      - file: notebooks/taylor-diagrams
+      - file: notebooks/animation
