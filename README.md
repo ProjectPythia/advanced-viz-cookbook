@@ -16,7 +16,7 @@ This Cookbook will house various visualization workflow examples that use differ
 
 ## Authors
 
-[Julia Kent](@jukent)
+[Julia Kent](@jukent), [John Clyne](@clyne)
 
 ### Contributors
 
@@ -26,15 +26,35 @@ This Cookbook will house various visualization workflow examples that use differ
 
 ## Structure
 
-This cookbook is broken up into two main sections - an "Overview" that compares different visualization packages and an "Example Workflows" section that houses a growing collection of advanced visualization applications.
+This cookbook is broken up into a few sections - a "Basics of Geoscience Visualization" intro that compares different visualization packages and plot elements, and then example workflows of advanced visualization applications that are further subdivided.
 
-### Overview
+### Basics of Geoscience Visualization
 
-The overview contains foundational content for Python visualization and a compare contrast chart of different visualization packages available to the Scientific Python programmer. 
+Here we introduce the basics of geoscience visualization, the elements of a plot, different types of plots, and some unique considerations when dealing with model and measured data. Here we also share a comparison of different visualization packages available to the Scientific Python programmer.
 
-### Example Workflows
+### Specialty Plots
 
-Example Worklfows demonstrate visualization applications that combine or use these packages in novel ways.
+There are some plot types that are unique to atmospheric science such as Taylor Diagrams or Skew-T plots. Here we will use `metpy` and `geocat-viz` to demonstrate these specialty plots.
+
+### Visualization of Structured Grids
+
+In this section we will demonstrate how to visualize data that is on a structured grid. Here we will have workflows that utilize packages such as `cartopy` and `geocat-viz`.
+
+### Visualization of Unstructured Grids
+
+There are lots of compelling reasons to use unstructured data. In this section we will go over these points and demonstrate how to visualizate unstructured grids using `uxarray`.
+
+### Interactive Visualization
+
+When on the cloud, some plots allow users to iteract with them by toggling certain constants or changing the viewing angle. Here we use `datashader` to iteract with some plots.
+
+### 3D Visualization
+
+A lot of geoscience data is 3-dimensional. Here we discuss tools such as `vapor` that are designed for 3d data visualization. 
+
+### Animation
+
+Animated plots are great tools for science communication and outreach. We will demonstrate how to make your plots come to life.
 
 ## Running the Notebooks
 

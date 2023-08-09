@@ -4,13 +4,28 @@ parts:
   - caption: Preamble
     chapters:
       - file: notebooks/how-to-cite
-  - caption: Overview
+  - caption: Basics of Geoscience Visualization
     chapters:
-      - file: notebooks/overview
-  - caption: Example Workflows
+    - file: notebooks/comparison
+    - file: notebooks/good-viz
+    - file: notebooks/plot-elements
+  - caption: Specialty Plots
     chapters:
-      - file: notebooks/geocat-viz
-      - file: notebooks/MPAS_DATASHADER
-      - file: notebooks/contour
       - file: notebooks/taylor-diagrams
+      - file: notebooks/skewt
+  - caption: Visualization of Structured Grids
+    chapters:
+      - file: notebooks/projections
+      - file: notebooks/contour
+  - caption: Visualization of Unstructured Grids
+    chapters:
+      - file: notebooks/uxarray
+  - caption: Interactive Visualization
+    chapters:
+      - file: notebooks/MPAS_DATASHADER
+  - caption: 3D Visualization
+    chapters:
+      - file: notebooks/vapor
+  - caption: Animation
+    chapters:
       - file: notebooks/animation

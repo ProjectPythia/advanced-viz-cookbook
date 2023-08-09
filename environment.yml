@@ -6,5 +6,16 @@ dependencies:
   - jupyterlab
   - jupyter_server
   - pip
+  - matplotlib
+  - cartopy
+  - metpy
+  - geocat-viz
+  - datashader
+  - colorcet
+  - holoviews
+  - plotly
+  - seaborn
+  - bokeh
+  - uxarray
   - pip:
       - sphinx-pythia-theme
