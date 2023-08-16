@@ -5,17 +5,17 @@ dependencies:
   - jupyter-book
   - jupyterlab
   - jupyter_server
-  - pip
+  - pandas
   - matplotlib
   - cartopy
   - metpy
   - geocat-viz
-  - datashader
   - colorcet
-  - holoviews
+  - hvplot
   - plotly
   - seaborn
   - bokeh
   - uxarray
+  - pip
   - pip:
       - sphinx-pythia-theme
