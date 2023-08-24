@@ -1,6 +1,11 @@
 thumbnail: thumbnail.png
 tags:
   domains:
-    - sampledomain
+    - visualization
   packages:
-    - samplepackage
+    - matplotlib
+    - cartopy
+    - metpy
+    - geocat-viz
+    - seaborn
+    - datashader

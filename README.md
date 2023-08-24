@@ -1,38 +1,60 @@
 <img src="thumbnail.png" alt="thumbnail" width="300"/>
 
-# (Replace_with_your_title) Cookbook
+# Advanced Visualization Cookbook
 
-[![nightly-build](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
-[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
-[![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
+[![nightly-build](https://github.com/ProjectPythia/advanced-viz-cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/advanced-viz-cookbook/actions/workflows/nightly-build.yaml)
+[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook/main?labpath=notebooks)
+[![DOI](https://zenodo.org/badge/671205314.svg)](https://zenodo.org/badge/latestdoi/671205314)
 
-This Project Pythia Cookbook covers ... (replace `...` with the main subject of your cookbook ... e.g., _working with radar data in Python_)
+This Project Pythia Cookbook covers advanced visualization techniques building upon and combining various Python packages.
 
 ## Motivation
 
-(Add a few sentences stating why this cookbook will be useful. What skills will you, "the chef", gain once you have reached the end of the cookbook?)
+The possibilities of data visualization in Python are almost endless. Already using `matplotlib` the workhorse behind many visualization packages, the user has a lot of customization options available to them. `cartopy`,  `metpy`, `seaborn`, `geocat-viz`, and `datashader` are all also great packages that can offer unique additions to you Python visualization toolbox.
+
+This Cookbook will house various visualization workflow examples that use different visualization packages, highlight the differences in functionality between the packages, any noteable syntax distinctions, and demonstrate combining tools to achieve a specific image. 
 
 ## Authors
 
-[First Author](@first-author), [Second Author](@second-author), etc. _Acknowledge primary content authors here_
+[Julia Kent](@jukent), [John Clyne](@clyne)
 
 ### Contributors
 
-<a href="https://github.com/ProjectPythia/cookbook-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ProjectPythia/cookbook-template" />
+<a href="https://github.com/ProjectPythia/advanced-viz-cookbook/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ProjectPythia/advanced-viz-cookbook" />
 </a>
 
 ## Structure
 
-(State one or more sections that will comprise the notebook. E.g., _This cookbook is broken up into two main sections - "Foundations" and "Example Workflows."_ Then, describe each section below.)
+This cookbook is broken up into a few sections - a "Basics of Geoscience Visualization" intro that compares different visualization packages and plot elements, and then example workflows of advanced visualization applications that are further subdivided.
 
-### Section 1 ( Replace with the title of this section, e.g. "Foundations" )
+### Basics of Geoscience Visualization
 
-(Add content for this section, e.g., "The foundational content includes ... ")
+Here we introduce the basics of geoscience visualization, the elements of a plot, different types of plots, and some unique considerations when dealing with model and measured data. Here we also share a comparison of different visualization packages available to the Scientific Python programmer.
 
-### Section 2 ( Replace with the title of this section, e.g. "Example workflows" )
+### Specialty Plots
 
-(Add content for this section, e.g., "Example workflows include ... ")
+There are some plot types that are unique to atmospheric science such as Taylor Diagrams or Skew-T plots. Here we will use `metpy` and `geocat-viz` to demonstrate these specialty plots.
+
+### Visualization of Structured Grids
+
+In this section we will demonstrate how to visualize data that is on a structured grid. Here we will have workflows that utilize packages such as `cartopy` and `geocat-viz`.
+
+### Visualization of Unstructured Grids
+
+There are lots of compelling reasons to use unstructured data. In this section we will go over these points and demonstrate how to visualizate unstructured grids using `uxarray`.
+
+### Interactive Visualization
+
+When on the cloud, some plots allow users to iteract with them by toggling certain constants or changing the viewing angle. Here we use `datashader` to iteract with some plots.
+
+### 3D Visualization
+
+A lot of geoscience data is 3-dimensional. Here we discuss tools such as `vapor` that are designed for 3d data visualization. 
+
+### Animation
+
+Animated plots are great tools for science communication and outreach. We will demonstrate how to make your plots come to life.
 
 ## Running the Notebooks
 
@@ -57,24 +79,22 @@ Jupyter](https://foundations.projectpythia.org/foundations/getting-started-jupyt
 
 ### Running on Your Own Machine
 
-If you are interested in running this material locally on your computer, you will need to follow this workflow:
+If you are interested in running this material locally on your com
 
-(Replace "cookbook-example" with the title of your cookbooks)
-
-1. Clone the `https://github.com/ProjectPythia/cookbook-example` repository:
+1. Clone the `https://github.com/ProjectPythia/advanced-viz-cookbook` repository:
 
    ```bash
-    git clone https://github.com/ProjectPythia/cookbook-example.git
+    git clone https://github.com/ProjectPythia/advanced-viz-cookbook.git
    ```
 
-1. Move into the `cookbook-example` directory
+1. Move into the `advanced-viz-cookbook` directory
    ```bash
-   cd cookbook-example
+   cd advanced-viz-cookbook
    ```
 1. Create and activate your conda environment from the `environment.yml` file
    ```bash
    conda env create -f environment.yml
-   conda activate cookbook-example
+   conda activate advanced-viz-cookbook
    ```
 1. Move into the `notebooks` directory and start up Jupyterlab
    ```bash

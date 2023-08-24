@@ -1,10 +1,21 @@
-name: cookbook-dev
+name: advanced-viz-cookbook
 channels:
   - conda-forge
 dependencies:
   - jupyter-book
   - jupyterlab
   - jupyter_server
+  - pandas
+  - matplotlib
+  - cartopy
+  - metpy
+  - geocat-viz
+  - colorcet
+  - hvplot
+  - plotly
+  - seaborn
+  - bokeh
+  - uxarray
   - pip
   - pip:
       - sphinx-pythia-theme

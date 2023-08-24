@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Project Pythia Cookbook Template
+title: Advanced Visualization Cookbook
 author: the <a href="https://projectpythia.org/">Project Pythia</a> Community
 logo: notebooks/images/logos/pythia_logo-white-rtext.svg
 copyright: "2023"
@@ -35,7 +35,7 @@ sphinx:
     html_permalinks_icon: '<i class="fas fa-link"></i>'
     html_theme_options:
       home_page_in_toc: true
-      repository_url: https://github.com/ProjectPythia/cookbook-template/ # Online location of your book
+      repository_url: https://github.com/ProjectPythia/advanced-viz-cookbook/ # Online location of your book
       repository_branch: main # Which branch of the repository should be used when creating links (optional)
       use_issues_button: true
       use_repository_button: true
