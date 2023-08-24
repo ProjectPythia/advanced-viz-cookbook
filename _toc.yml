@@ -17,6 +17,7 @@ parts:
     chapters:
       - file: notebooks/projections
       - file: notebooks/contour
+      - file: notebooks/spagetti
   - caption: Visualization of Unstructured Grids
     chapters:
       - file: notebooks/uxarray
