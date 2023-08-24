@@ -7,6 +7,11 @@ authors:
     orcid: https://orcid.org/0000-0002-5611-8986
     website: https://github.com/jukent
     affiliation: UCAR/NCAR
+- family-names: Clyne
+    given-names: John
+    orcid: https://orcid.org/0000-0003-2788-9017
+    website: https://github.com/clyne
+    affiliation: UCAR/NCAR
   - name: "Advanced Visualization Cookbook contributors" # use the 'name' field to acknowledge organizations
     website: "https://github.com/ProjectPythia/advanced-viz-cookbook/graphs/contributors"
 title: "Advanced Visualization Cookbook"
