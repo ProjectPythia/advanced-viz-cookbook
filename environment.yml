@@ -16,6 +16,7 @@ dependencies:
   - seaborn
   - bokeh
   - uxarray
+  - geocat-datafiles
   - pip
   - pip:
       - sphinx-pythia-theme
