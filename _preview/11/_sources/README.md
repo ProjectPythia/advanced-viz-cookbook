@@ -10,9 +10,9 @@ This Project Pythia Cookbook covers advanced visualization techniques building u
 
 ## Motivation
 
-The possibilities of data visualization in Python are almost endless. Already using `matplotlib` the workhorse behind many visualization packages, the user has a lot of customization options available to them. `cartopy`,  `metpy`, `seaborn`, `geocat-viz`, and `datashader` are all also great packages that can offer unique additions to you Python visualization toolbox.
+The possibilities of data visualization in Python are almost endless. Already using `matplotlib` the workhorse behind many visualization packages, the user has a lot of customization options available to them. `cartopy`,  `metpy`, `seaborn`, `geocat-viz`, and `datashader` are all also great packages that can offer unique additions to your Python visualization toolbox.
 
-This Cookbook will house various visualization workflow examples that use different visualization packages, highlight the differences in functionality between the packages, any noteable syntax distinctions, and demonstrate combining tools to achieve a specific image. 
+This Cookbook will house various visualization workflow examples that use different visualization packages, highlight the differences in functionality between the packages, any noteable syntax distinctions, and demonstrate combining tools to achieve a specific outcome. 
 
 ## Authors
 
@@ -34,27 +34,27 @@ Here we introduce the basics of geoscience visualization, the elements of a plot
 
 ### Specialty Plots
 
-There are some plot types that are unique to atmospheric science such as Taylor Diagrams or Skew-T plots. Here we will use `metpy` and `geocat-viz` to demonstrate these specialty plots.
+There are some plot types that are unique to atmospheric science such as Taylor Diagrams or Skew-T plots. Here we will use [`metpy`](https://unidata.github.io/MetPy/latest/index.html) and [`geocat-viz`](https://geocat-viz.readthedocs.io/en/latest/) to demonstrate these specialty plots.
 
 ### Visualization of Structured Grids
 
-In this section we will demonstrate how to visualize data that is on a structured grid. Here we will have workflows that utilize packages such as `cartopy` and `geocat-viz`.
+In this section we will demonstrate how to visualize data that is on a structured grid. Here we will have workflows that utilize packages such as [`cartopy`](https://scitools.org.uk/cartopy/docs/latest/) and [`geocat-viz`](https://geocat-viz.readthedocs.io/en/latest/).
 
 ### Visualization of Unstructured Grids
 
-There are lots of compelling reasons to use unstructured data. In this section we will go over these points and demonstrate how to visualizate unstructured grids using `uxarray`.
+There are lots of compelling reasons to use unstructured data. In this section we will go over these points and demonstrate how to visualizate unstructured grids using [`uxarray`](https://uxarray.readthedocs.io/en/latest/).
 
 ### Interactive Visualization
 
-When on the cloud, some plots allow users to iteract with them by toggling certain constants or changing the viewing angle. Here we use `datashader` to iteract with some plots.
+Some plots allow users to iteract with them by toggling certain constants or changing the viewing angle. Here we use [`datashader`](ttps://datashader.org/) to iteract with some plots.
 
 ### 3D Visualization
 
-A lot of geoscience data is 3-dimensional. Here we discuss tools such as `vapor` that are designed for 3d data visualization. 
+A lot of geoscience data is 3-dimensional. Here we discuss tools such as [`vapor`](https://www.vapor.ucar.edu/) that are designed for multidimensional data visualization. 
 
 ### Animation
 
-Animated plots are great tools for science communication and outreach. We will demonstrate how to make your plots come to life.
+Animated plots are great tools for science communication and outreach. We will demonstrate how to make your plots come to life. In this book, we use "animated plots" to refer to stable animations, such as the creation of gifs or videos.
 
 ## Running the Notebooks
 

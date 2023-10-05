@@ -424,8 +424,8 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <p>This Project Pythia Cookbook covers advanced visualization techniques building upon and combining various Python packages.</p>
 <div class="section" id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
-<p>The possibilities of data visualization in Python are almost endless. Already using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> the workhorse behind many visualization packages, the user has a lot of customization options available to them. <code class="docutils literal notranslate"><span class="pre">cartopy</span></code>,  <code class="docutils literal notranslate"><span class="pre">metpy</span></code>, <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, <code class="docutils literal notranslate"><span class="pre">geocat-viz</span></code>, and <code class="docutils literal notranslate"><span class="pre">datashader</span></code> are all also great packages that can offer unique additions to you Python visualization toolbox.</p>
-<p>This Cookbook will house various visualization workflow examples that use different visualization packages, highlight the differences in functionality between the packages, any noteable syntax distinctions, and demonstrate combining tools to achieve a specific image.</p>
+<p>The possibilities of data visualization in Python are almost endless. Already using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> the workhorse behind many visualization packages, the user has a lot of customization options available to them. <code class="docutils literal notranslate"><span class="pre">cartopy</span></code>,  <code class="docutils literal notranslate"><span class="pre">metpy</span></code>, <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, <code class="docutils literal notranslate"><span class="pre">geocat-viz</span></code>, and <code class="docutils literal notranslate"><span class="pre">datashader</span></code> are all also great packages that can offer unique additions to your Python visualization toolbox.</p>
+<p>This Cookbook will house various visualization workflow examples that use different visualization packages, highlight the differences in functionality between the packages, any noteable syntax distinctions, and demonstrate combining tools to achieve a specific outcome.</p>
 </div>
 <div class="section" id="authors">
 <h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
@@ -446,27 +446,27 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 <div class="section" id="specialty-plots">
 <h3>Specialty Plots<a class="headerlink" href="#specialty-plots" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
-<p>There are some plot types that are unique to atmospheric science such as Taylor Diagrams or Skew-T plots. Here we will use <code class="docutils literal notranslate"><span class="pre">metpy</span></code> and <code class="docutils literal notranslate"><span class="pre">geocat-viz</span></code> to demonstrate these specialty plots.</p>
+<p>There are some plot types that are unique to atmospheric science such as Taylor Diagrams or Skew-T plots. Here we will use <a class="reference external" href="https://unidata.github.io/MetPy/latest/index.html"><code class="docutils literal notranslate"><span class="pre">metpy</span></code></a> and <a class="reference external" href="https://geocat-viz.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">geocat-viz</span></code></a> to demonstrate these specialty plots.</p>
 </div>
 <div class="section" id="visualization-of-structured-grids">
 <h3>Visualization of Structured Grids<a class="headerlink" href="#visualization-of-structured-grids" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
-<p>In this section we will demonstrate how to visualize data that is on a structured grid. Here we will have workflows that utilize packages such as <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> and <code class="docutils literal notranslate"><span class="pre">geocat-viz</span></code>.</p>
+<p>In this section we will demonstrate how to visualize data that is on a structured grid. Here we will have workflows that utilize packages such as <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/"><code class="docutils literal notranslate"><span class="pre">cartopy</span></code></a> and <a class="reference external" href="https://geocat-viz.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">geocat-viz</span></code></a>.</p>
 </div>
 <div class="section" id="visualization-of-unstructured-grids">
 <h3>Visualization of Unstructured Grids<a class="headerlink" href="#visualization-of-unstructured-grids" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
-<p>There are lots of compelling reasons to use unstructured data. In this section we will go over these points and demonstrate how to visualizate unstructured grids using <code class="docutils literal notranslate"><span class="pre">uxarray</span></code>.</p>
+<p>There are lots of compelling reasons to use unstructured data. In this section we will go over these points and demonstrate how to visualizate unstructured grids using <a class="reference external" href="https://uxarray.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">uxarray</span></code></a>.</p>
 </div>
 <div class="section" id="interactive-visualization">
 <h3>Interactive Visualization<a class="headerlink" href="#interactive-visualization" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
-<p>When on the cloud, some plots allow users to iteract with them by toggling certain constants or changing the viewing angle. Here we use <code class="docutils literal notranslate"><span class="pre">datashader</span></code> to iteract with some plots.</p>
+<p>Some plots allow users to iteract with them by toggling certain constants or changing the viewing angle. Here we use <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">datashader</span></code></span> to iteract with some plots.</p>
 </div>
 <div class="section" id="d-visualization">
 <h3>3D Visualization<a class="headerlink" href="#d-visualization" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
-<p>A lot of geoscience data is 3-dimensional. Here we discuss tools such as <code class="docutils literal notranslate"><span class="pre">vapor</span></code> that are designed for 3d data visualization.</p>
+<p>A lot of geoscience data is 3-dimensional. Here we discuss tools such as <a class="reference external" href="https://www.vapor.ucar.edu/"><code class="docutils literal notranslate"><span class="pre">vapor</span></code></a> that are designed for multidimensional data visualization.</p>
 </div>
 <div class="section" id="animation">
 <h3>Animation<a class="headerlink" href="#animation" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
-<p>Animated plots are great tools for science communication and outreach. We will demonstrate how to make your plots come to life.</p>
+<p>Animated plots are great tools for science communication and outreach. We will demonstrate how to make your plots come to life. In this book, we use “animated plots” to refer to stable animations, such as the creation of gifs or videos.</p>
 </div>
 </div>
 <div class="section" id="running-the-notebooks">
@@ -603,7 +603,7 @@ jupyter<span class="w"> </span>lab
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 2 October 2023.
+          Last updated on 5 October 2023.
         </p>
       </div>
     </div>
