@@ -222,6 +222,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Specialty Plots
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="taylor-diagrams.html">
+   Taylor Diagrams
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Visualization of Structured Grids
  </span>
 </p>
@@ -480,7 +492,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6724d594b552083d5c7f74fc4a3c2bda1f8f4e20d5cfeb2cc18754310a2bbf3f.png" src="../_images/6724d594b552083d5c7f74fc4a3c2bda1f8f4e20d5cfeb2cc18754310a2bbf3f.png" />
+<img alt="../_images/9930a05a3506715ba300bdcf7df732bb6891782e06cfc09f1e6e5c4197b5076d.png" src="../_images/9930a05a3506715ba300bdcf7df732bb6891782e06cfc09f1e6e5c4197b5076d.png" />
 </div>
 </div>
 <p>Now let’s show some customization options:</p>
@@ -503,7 +515,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8c746c8de7d249f9160d6a4781ca320f60ffb1ea25bb0e8987a3a2c339944243.png" src="../_images/8c746c8de7d249f9160d6a4781ca320f60ffb1ea25bb0e8987a3a2c339944243.png" />
+<img alt="../_images/b24cf6b79ae95230cb7e0ada341b104d6de95e08179608495b64f218dea8d9aa.png" src="../_images/b24cf6b79ae95230cb7e0ada341b104d6de95e08179608495b64f218dea8d9aa.png" />
 </div>
 </div>
 <div class="section" id="matplotlib-global-parameters">
@@ -769,8 +781,10 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
           &#39;lines.scale_dashes&#39;: True,
           &#39;lines.solid_capstyle&#39;: &lt;CapStyle.projecting: &#39;projecting&#39;&gt;,
           &#39;lines.solid_joinstyle&#39;: &lt;JoinStyle.round: &#39;round&#39;&gt;,
+          &#39;macosx.window_mode&#39;: &#39;system&#39;,
           &#39;markers.fillstyle&#39;: &#39;full&#39;,
           &#39;mathtext.bf&#39;: &#39;sans:bold&#39;,
+          &#39;mathtext.bfit&#39;: &#39;sans:italic:bold&#39;,
           &#39;mathtext.cal&#39;: &#39;cursive&#39;,
           &#39;mathtext.default&#39;: &#39;it&#39;,
           &#39;mathtext.fallback&#39;: &#39;cm&#39;,
@@ -848,6 +862,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
           &#39;xtick.major.top&#39;: True,
           &#39;xtick.major.width&#39;: 0.8,
           &#39;xtick.minor.bottom&#39;: True,
+          &#39;xtick.minor.ndivs&#39;: &#39;auto&#39;,
           &#39;xtick.minor.pad&#39;: 3.4,
           &#39;xtick.minor.size&#39;: 2.0,
           &#39;xtick.minor.top&#39;: True,
@@ -869,6 +884,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
           &#39;ytick.major.size&#39;: 3.5,
           &#39;ytick.major.width&#39;: 0.8,
           &#39;ytick.minor.left&#39;: True,
+          &#39;ytick.minor.ndivs&#39;: &#39;auto&#39;,
           &#39;ytick.minor.pad&#39;: 3.4,
           &#39;ytick.minor.right&#39;: True,
           &#39;ytick.minor.size&#39;: 2.0,
@@ -880,6 +896,9 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <p>To change any given parameter you would use the following command (replacing your parameter and value, of course):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Arial&#39;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="using-geocat-viz">
 <h3>Using GeoCAT-Viz<a class="headerlink" href="#using-geocat-viz" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
@@ -905,7 +924,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6724d594b552083d5c7f74fc4a3c2bda1f8f4e20d5cfeb2cc18754310a2bbf3f.png" src="../_images/6724d594b552083d5c7f74fc4a3c2bda1f8f4e20d5cfeb2cc18754310a2bbf3f.png" />
+<img alt="../_images/9930a05a3506715ba300bdcf7df732bb6891782e06cfc09f1e6e5c4197b5076d.png" src="../_images/9930a05a3506715ba300bdcf7df732bb6891782e06cfc09f1e6e5c4197b5076d.png" />
 </div>
 </div>
 </div>
@@ -957,7 +976,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/940a3fbb9865a8806431658b6e83d338c060513310a38ddb01fc757b3d424b04.png" src="../_images/940a3fbb9865a8806431658b6e83d338c060513310a38ddb01fc757b3d424b04.png" />
+<img alt="../_images/f72fd9fdcd20c17e528658a71a33a5fe43cb13780841c31a307cd9697eb3c47a.png" src="../_images/f72fd9fdcd20c17e528658a71a33a5fe43cb13780841c31a307cd9697eb3c47a.png" />
 </div>
 </div>
 <p>Other examples of data visualization manipulation include improper scaling, cherry picking a small non-representative subset of the data to display, displaying pie charts at a slant (pie charts are hard to interpet accurately as is), and unusing unexpected colormaps.</p>
@@ -1070,7 +1089,7 @@ Identical Statistics through Simulated Annealing</a></p></li>
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 11 September 2023.
+          Last updated on 1 November 2023.
         </p>
       </div>
     </div>
