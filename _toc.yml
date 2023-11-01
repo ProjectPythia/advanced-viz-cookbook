@@ -9,6 +9,9 @@ parts:
     - file: notebooks/comparison
     - file: notebooks/good-viz
     - file: notebooks/plot-elements
+  - caption: Specialty Plots
+    chapters:
+      - file: notebooks/taylor-diagrams
   - caption: Visualization of Structured Grids
     chapters:
       - file: notebooks/spagetti
