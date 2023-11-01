@@ -16,9 +16,9 @@ parts:
   - caption: Visualization of Structured Grids
     chapters:
       - file: notebooks/spagetti
-    - caption: Interactive Visualization
+  - caption: Interactive Visualization
     chapters:
       - file: notebooks/mpas-datshader
-    - caption: Animation
+  - caption: Animation
     chapters:
       - file: notebooks/animatioin
