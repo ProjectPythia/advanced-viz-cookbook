@@ -1,0 +1,1111 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What Makes for Good Data Visualization? &#8212; Advanced Visualization Cookbook</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-pythia-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Plot Elements" href="plot-elements.html" />
+    <link rel="prev" title="Comparison of Visualization Packages" href="comparison.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-T52X8HNYE8');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="132">
+    <div class="container-fluid" id="shim"></div>
+    <div class="container-fluid" id="banner"></div>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="https://projectpythia.org">
+  <img src="../_static/pythia_logo-white-rtext.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class=" collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/ProjectPythia" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/project_pythia" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" rel="noopener" target="_blank" title="YouTube">
+            <span><i class="fab fa-youtube-square"></i></span>
+            <label class="sr-only">YouTube</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    <div class="container-xl">
+      <div class="row">
+        
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   Advanced Visualization Cookbook
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preamble
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="how-to-cite.html">
+   How to Cite This Cookbook
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basics of Geoscience Visualization
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparison.html">
+   Comparison of Visualization Packages
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   What Makes for Good Data Visualization?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot-elements.html">
+   Plot Elements
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Specialty Plots
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="taylor-diagrams.html">
+   Taylor Diagrams
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skewt.html">
+   Skew T Diagrams
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Visualization of Structured Grids
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="spagetti.html">
+   Spagetti Plots
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by <a href="https://projectpythia.org">Project Pythia</a>.<br><br>
+All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons BY 4.0 (CC BY 4.0)</a>.<br><br>
+
+</div>
+
+</div>
+
+        
+
+        <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main"><div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/good-viz.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ProjectPythia/advanced-viz-cookbook/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ProjectPythia/advanced-viz-cookbook//issues/new?title=Issue%20on%20page%20%2Fnotebooks/good-viz.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ProjectPythia/advanced-viz-cookbook/edit/main/notebooks/good-viz.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook/main?urlpath=lab/tree/notebooks/good-viz.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> On this page
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-importance-of-data-visualization">
+   The Importance of Data Visualization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#publication-ready-figures">
+   Publication Ready Figures
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matplotlib-global-parameters">
+     Matplotlib Global Parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-geocat-viz">
+     Using GeoCAT-Viz
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-problem-with-rainbow-colormaps">
+   The Problem with Rainbow Colormaps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#misleading-visualizations">
+   Misleading Visualizations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#whats-next">
+     What’s next?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resources-and-references">
+   Resources and references
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+          <div id="main-content" class="row">
+            <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+              
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="what-makes-for-good-data-visualization">
+<h1>What Makes for Good Data Visualization?<a class="headerlink" href="#what-makes-for-good-data-visualization" title="Permalink to this headline"><i class="fas fa-link"></i></a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>What Makes a Good Visualization? We want graphics to be eye catching and informative. In this chapter we’ll discuss different aspects that can affect the quality of your figures and specific considerations relevant to the geosciences.</p>
+<ol class="arabic simple">
+<li><p>The Importance of Data Visualization</p></li>
+<li><p>Publication Ready Figures</p></li>
+<li><p>The Problem with Rainbow Colormaps</p></li>
+<li><p>Misleading Visualizations</p></li>
+</ol>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concepts</p></th>
+<th class="head"><p>Importance</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib.html">Matplotlib</a></p></td>
+<td><p>Necessary</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/cartopy.html">Cartopy</a></p></td>
+<td><p>Necessary</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Time to learn</strong>: 3 hours</p></li>
+</ul>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">geocat.viz</span> <span class="k">as</span> <span class="nn">gv</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-importance-of-data-visualization">
+<h2>The Importance of Data Visualization<a class="headerlink" href="#the-importance-of-data-visualization" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>It is important to use pictures to show data because we can visually detect patterns that could be lost in statistical analysis. All scientific disciplines use data visualizations to communicate concepts.</p>
+<p>Here we have a figure from <a class="reference external" href="https://www.research.autodesk.com/publications/same-stats-different-graphs/">Autodesk</a> that shows a “Datasaurus” and 12 other datasets that share the same statistical information (mean, standard deviation, etc). We can see immediately that visually are telling very different stories: be it a dinosaur, a star, an oval, concentric ovals, or a series of lines (perhaps weather fronts).</p>
+<p><img alt="Same Stats" src="../_images/same_stats.png" /></img></p>
+</div>
+<div class="section" id="publication-ready-figures">
+<h2>Publication Ready Figures<a class="headerlink" href="#publication-ready-figures" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>For your figure to be publication rady, you probably want to change some of Matplotlib’s default plotting settings: selecting fontsizes for your titles and labels, changing figure sizes, or subplot/colormap layout.</p>
+<p>To demonstrate this, let’s look at an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fake data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+ 
+<span class="c1"># plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># annotate</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Title&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y Label&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3dcea94094cd46dc6fd6aba562206e565148ba2d7c27864ece25e4f9813d102e.png" src="../_images/3dcea94094cd46dc6fd6aba562206e565148ba2d7c27864ece25e4f9813d102e.png" />
+</div>
+</div>
+<p>Now let’s show some customization options:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fake data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+ 
+<span class="c1"># plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># annotate</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Title&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X Label&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y Label&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7b1cae6af3cd68d0816b1a659d6eb45d32a3995f98cbbb6a028739d540c4da54.png" src="../_images/7b1cae6af3cd68d0816b1a659d6eb45d32a3995f98cbbb6a028739d540c4da54.png" />
+</div>
+</div>
+<div class="section" id="matplotlib-global-parameters">
+<h3>Matplotlib Global Parameters<a class="headerlink" href="#matplotlib-global-parameters" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<p>Matplotlib has defaults for fontsizes and all sorts of attributes of a plot. Instead of setting your fontsize in every script, it is possible to set global parameters to change the default values of these attributes.</p>
+<p>You can veiw the globoal parameters options and their current settings with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">keys</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;bound method Mapping.keys of RcParams({&#39;_internal.classic_mode&#39;: False,
+          &#39;agg.path.chunksize&#39;: 0,
+          &#39;animation.bitrate&#39;: -1,
+          &#39;animation.codec&#39;: &#39;h264&#39;,
+          &#39;animation.convert_args&#39;: [&#39;-layers&#39;, &#39;OptimizePlus&#39;],
+          &#39;animation.convert_path&#39;: &#39;convert&#39;,
+          &#39;animation.embed_limit&#39;: 20.0,
+          &#39;animation.ffmpeg_args&#39;: [],
+          &#39;animation.ffmpeg_path&#39;: &#39;ffmpeg&#39;,
+          &#39;animation.frame_format&#39;: &#39;png&#39;,
+          &#39;animation.html&#39;: &#39;none&#39;,
+          &#39;animation.writer&#39;: &#39;ffmpeg&#39;,
+          &#39;axes.autolimit_mode&#39;: &#39;data&#39;,
+          &#39;axes.axisbelow&#39;: &#39;line&#39;,
+          &#39;axes.edgecolor&#39;: &#39;black&#39;,
+          &#39;axes.facecolor&#39;: &#39;white&#39;,
+          &#39;axes.formatter.limits&#39;: [-5, 6],
+          &#39;axes.formatter.min_exponent&#39;: 0,
+          &#39;axes.formatter.offset_threshold&#39;: 4,
+          &#39;axes.formatter.use_locale&#39;: False,
+          &#39;axes.formatter.use_mathtext&#39;: False,
+          &#39;axes.formatter.useoffset&#39;: True,
+          &#39;axes.grid&#39;: False,
+          &#39;axes.grid.axis&#39;: &#39;both&#39;,
+          &#39;axes.grid.which&#39;: &#39;major&#39;,
+          &#39;axes.labelcolor&#39;: &#39;black&#39;,
+          &#39;axes.labelpad&#39;: 4.0,
+          &#39;axes.labelsize&#39;: &#39;medium&#39;,
+          &#39;axes.labelweight&#39;: &#39;normal&#39;,
+          &#39;axes.linewidth&#39;: 0.8,
+          &#39;axes.prop_cycle&#39;: cycler(&#39;color&#39;, [&#39;#1f77b4&#39;, &#39;#ff7f0e&#39;, &#39;#2ca02c&#39;, &#39;#d62728&#39;, &#39;#9467bd&#39;, &#39;#8c564b&#39;, &#39;#e377c2&#39;, &#39;#7f7f7f&#39;, &#39;#bcbd22&#39;, &#39;#17becf&#39;]),
+          &#39;axes.spines.bottom&#39;: True,
+          &#39;axes.spines.left&#39;: True,
+          &#39;axes.spines.right&#39;: True,
+          &#39;axes.spines.top&#39;: True,
+          &#39;axes.titlecolor&#39;: &#39;auto&#39;,
+          &#39;axes.titlelocation&#39;: &#39;center&#39;,
+          &#39;axes.titlepad&#39;: 6.0,
+          &#39;axes.titlesize&#39;: &#39;large&#39;,
+          &#39;axes.titleweight&#39;: &#39;normal&#39;,
+          &#39;axes.titley&#39;: None,
+          &#39;axes.unicode_minus&#39;: True,
+          &#39;axes.xmargin&#39;: 0.05,
+          &#39;axes.ymargin&#39;: 0.05,
+          &#39;axes.zmargin&#39;: 0.05,
+          &#39;axes3d.grid&#39;: True,
+          &#39;axes3d.xaxis.panecolor&#39;: (0.95, 0.95, 0.95, 0.5),
+          &#39;axes3d.yaxis.panecolor&#39;: (0.9, 0.9, 0.9, 0.5),
+          &#39;axes3d.zaxis.panecolor&#39;: (0.925, 0.925, 0.925, 0.5),
+          &#39;backend&#39;: &#39;module://matplotlib_inline.backend_inline&#39;,
+          &#39;backend_fallback&#39;: True,
+          &#39;boxplot.bootstrap&#39;: None,
+          &#39;boxplot.boxprops.color&#39;: &#39;black&#39;,
+          &#39;boxplot.boxprops.linestyle&#39;: &#39;-&#39;,
+          &#39;boxplot.boxprops.linewidth&#39;: 1.0,
+          &#39;boxplot.capprops.color&#39;: &#39;black&#39;,
+          &#39;boxplot.capprops.linestyle&#39;: &#39;-&#39;,
+          &#39;boxplot.capprops.linewidth&#39;: 1.0,
+          &#39;boxplot.flierprops.color&#39;: &#39;black&#39;,
+          &#39;boxplot.flierprops.linestyle&#39;: &#39;none&#39;,
+          &#39;boxplot.flierprops.linewidth&#39;: 1.0,
+          &#39;boxplot.flierprops.marker&#39;: &#39;o&#39;,
+          &#39;boxplot.flierprops.markeredgecolor&#39;: &#39;black&#39;,
+          &#39;boxplot.flierprops.markeredgewidth&#39;: 1.0,
+          &#39;boxplot.flierprops.markerfacecolor&#39;: &#39;none&#39;,
+          &#39;boxplot.flierprops.markersize&#39;: 6.0,
+          &#39;boxplot.meanline&#39;: False,
+          &#39;boxplot.meanprops.color&#39;: &#39;C2&#39;,
+          &#39;boxplot.meanprops.linestyle&#39;: &#39;--&#39;,
+          &#39;boxplot.meanprops.linewidth&#39;: 1.0,
+          &#39;boxplot.meanprops.marker&#39;: &#39;^&#39;,
+          &#39;boxplot.meanprops.markeredgecolor&#39;: &#39;C2&#39;,
+          &#39;boxplot.meanprops.markerfacecolor&#39;: &#39;C2&#39;,
+          &#39;boxplot.meanprops.markersize&#39;: 6.0,
+          &#39;boxplot.medianprops.color&#39;: &#39;C1&#39;,
+          &#39;boxplot.medianprops.linestyle&#39;: &#39;-&#39;,
+          &#39;boxplot.medianprops.linewidth&#39;: 1.0,
+          &#39;boxplot.notch&#39;: False,
+          &#39;boxplot.patchartist&#39;: False,
+          &#39;boxplot.showbox&#39;: True,
+          &#39;boxplot.showcaps&#39;: True,
+          &#39;boxplot.showfliers&#39;: True,
+          &#39;boxplot.showmeans&#39;: False,
+          &#39;boxplot.vertical&#39;: True,
+          &#39;boxplot.whiskerprops.color&#39;: &#39;black&#39;,
+          &#39;boxplot.whiskerprops.linestyle&#39;: &#39;-&#39;,
+          &#39;boxplot.whiskerprops.linewidth&#39;: 1.0,
+          &#39;boxplot.whiskers&#39;: 1.5,
+          &#39;contour.algorithm&#39;: &#39;mpl2014&#39;,
+          &#39;contour.corner_mask&#39;: True,
+          &#39;contour.linewidth&#39;: None,
+          &#39;contour.negative_linestyle&#39;: &#39;dashed&#39;,
+          &#39;date.autoformatter.day&#39;: &#39;%Y-%m-%d&#39;,
+          &#39;date.autoformatter.hour&#39;: &#39;%m-%d %H&#39;,
+          &#39;date.autoformatter.microsecond&#39;: &#39;%M:%S.%f&#39;,
+          &#39;date.autoformatter.minute&#39;: &#39;%d %H:%M&#39;,
+          &#39;date.autoformatter.month&#39;: &#39;%Y-%m&#39;,
+          &#39;date.autoformatter.second&#39;: &#39;%H:%M:%S&#39;,
+          &#39;date.autoformatter.year&#39;: &#39;%Y&#39;,
+          &#39;date.converter&#39;: &#39;auto&#39;,
+          &#39;date.epoch&#39;: &#39;1970-01-01T00:00:00&#39;,
+          &#39;date.interval_multiples&#39;: True,
+          &#39;docstring.hardcopy&#39;: False,
+          &#39;errorbar.capsize&#39;: 0.0,
+          &#39;figure.autolayout&#39;: False,
+          &#39;figure.constrained_layout.h_pad&#39;: 0.04167,
+          &#39;figure.constrained_layout.hspace&#39;: 0.02,
+          &#39;figure.constrained_layout.use&#39;: False,
+          &#39;figure.constrained_layout.w_pad&#39;: 0.04167,
+          &#39;figure.constrained_layout.wspace&#39;: 0.02,
+          &#39;figure.dpi&#39;: 100.0,
+          &#39;figure.edgecolor&#39;: &#39;white&#39;,
+          &#39;figure.facecolor&#39;: &#39;white&#39;,
+          &#39;figure.figsize&#39;: [6.4, 4.8],
+          &#39;figure.frameon&#39;: True,
+          &#39;figure.hooks&#39;: [],
+          &#39;figure.labelsize&#39;: &#39;large&#39;,
+          &#39;figure.labelweight&#39;: &#39;normal&#39;,
+          &#39;figure.max_open_warning&#39;: 20,
+          &#39;figure.raise_window&#39;: True,
+          &#39;figure.subplot.bottom&#39;: 0.11,
+          &#39;figure.subplot.hspace&#39;: 0.2,
+          &#39;figure.subplot.left&#39;: 0.125,
+          &#39;figure.subplot.right&#39;: 0.9,
+          &#39;figure.subplot.top&#39;: 0.88,
+          &#39;figure.subplot.wspace&#39;: 0.2,
+          &#39;figure.titlesize&#39;: &#39;large&#39;,
+          &#39;figure.titleweight&#39;: &#39;normal&#39;,
+          &#39;font.cursive&#39;: [&#39;Apple Chancery&#39;,
+                           &#39;Textile&#39;,
+                           &#39;Zapf Chancery&#39;,
+                           &#39;Sand&#39;,
+                           &#39;Script MT&#39;,
+                           &#39;Felipa&#39;,
+                           &#39;Comic Neue&#39;,
+                           &#39;Comic Sans MS&#39;,
+                           &#39;cursive&#39;],
+          &#39;font.family&#39;: [&#39;sans-serif&#39;],
+          &#39;font.fantasy&#39;: [&#39;Chicago&#39;,
+                           &#39;Charcoal&#39;,
+                           &#39;Impact&#39;,
+                           &#39;Western&#39;,
+                           &#39;Humor Sans&#39;,
+                           &#39;xkcd&#39;,
+                           &#39;fantasy&#39;],
+          &#39;font.monospace&#39;: [&#39;DejaVu Sans Mono&#39;,
+                             &#39;Bitstream Vera Sans Mono&#39;,
+                             &#39;Computer Modern Typewriter&#39;,
+                             &#39;Andale Mono&#39;,
+                             &#39;Nimbus Mono L&#39;,
+                             &#39;Courier New&#39;,
+                             &#39;Courier&#39;,
+                             &#39;Fixed&#39;,
+                             &#39;Terminal&#39;,
+                             &#39;monospace&#39;],
+          &#39;font.sans-serif&#39;: [&#39;DejaVu Sans&#39;,
+                              &#39;Bitstream Vera Sans&#39;,
+                              &#39;Computer Modern Sans Serif&#39;,
+                              &#39;Lucida Grande&#39;,
+                              &#39;Verdana&#39;,
+                              &#39;Geneva&#39;,
+                              &#39;Lucid&#39;,
+                              &#39;Arial&#39;,
+                              &#39;Helvetica&#39;,
+                              &#39;Avant Garde&#39;,
+                              &#39;sans-serif&#39;],
+          &#39;font.serif&#39;: [&#39;DejaVu Serif&#39;,
+                         &#39;Bitstream Vera Serif&#39;,
+                         &#39;Computer Modern Roman&#39;,
+                         &#39;New Century Schoolbook&#39;,
+                         &#39;Century Schoolbook L&#39;,
+                         &#39;Utopia&#39;,
+                         &#39;ITC Bookman&#39;,
+                         &#39;Bookman&#39;,
+                         &#39;Nimbus Roman No9 L&#39;,
+                         &#39;Times New Roman&#39;,
+                         &#39;Times&#39;,
+                         &#39;Palatino&#39;,
+                         &#39;Charter&#39;,
+                         &#39;serif&#39;],
+          &#39;font.size&#39;: 10.0,
+          &#39;font.stretch&#39;: &#39;normal&#39;,
+          &#39;font.style&#39;: &#39;normal&#39;,
+          &#39;font.variant&#39;: &#39;normal&#39;,
+          &#39;font.weight&#39;: &#39;normal&#39;,
+          &#39;grid.alpha&#39;: 1.0,
+          &#39;grid.color&#39;: &#39;#b0b0b0&#39;,
+          &#39;grid.linestyle&#39;: &#39;-&#39;,
+          &#39;grid.linewidth&#39;: 0.8,
+          &#39;hatch.color&#39;: &#39;black&#39;,
+          &#39;hatch.linewidth&#39;: 1.0,
+          &#39;hist.bins&#39;: 10,
+          &#39;image.aspect&#39;: &#39;equal&#39;,
+          &#39;image.cmap&#39;: &#39;viridis&#39;,
+          &#39;image.composite_image&#39;: True,
+          &#39;image.interpolation&#39;: &#39;antialiased&#39;,
+          &#39;image.lut&#39;: 256,
+          &#39;image.origin&#39;: &#39;upper&#39;,
+          &#39;image.resample&#39;: True,
+          &#39;interactive&#39;: True,
+          &#39;keymap.back&#39;: [&#39;left&#39;, &#39;c&#39;, &#39;backspace&#39;, &#39;MouseButton.BACK&#39;],
+          &#39;keymap.copy&#39;: [&#39;ctrl+c&#39;, &#39;cmd+c&#39;],
+          &#39;keymap.forward&#39;: [&#39;right&#39;, &#39;v&#39;, &#39;MouseButton.FORWARD&#39;],
+          &#39;keymap.fullscreen&#39;: [&#39;f&#39;, &#39;ctrl+f&#39;],
+          &#39;keymap.grid&#39;: [&#39;g&#39;],
+          &#39;keymap.grid_minor&#39;: [&#39;G&#39;],
+          &#39;keymap.help&#39;: [&#39;f1&#39;],
+          &#39;keymap.home&#39;: [&#39;h&#39;, &#39;r&#39;, &#39;home&#39;],
+          &#39;keymap.pan&#39;: [&#39;p&#39;],
+          &#39;keymap.quit&#39;: [&#39;ctrl+w&#39;, &#39;cmd+w&#39;, &#39;q&#39;],
+          &#39;keymap.quit_all&#39;: [],
+          &#39;keymap.save&#39;: [&#39;s&#39;, &#39;ctrl+s&#39;],
+          &#39;keymap.xscale&#39;: [&#39;k&#39;, &#39;L&#39;],
+          &#39;keymap.yscale&#39;: [&#39;l&#39;],
+          &#39;keymap.zoom&#39;: [&#39;o&#39;],
+          &#39;legend.borderaxespad&#39;: 0.5,
+          &#39;legend.borderpad&#39;: 0.4,
+          &#39;legend.columnspacing&#39;: 2.0,
+          &#39;legend.edgecolor&#39;: &#39;0.8&#39;,
+          &#39;legend.facecolor&#39;: &#39;inherit&#39;,
+          &#39;legend.fancybox&#39;: True,
+          &#39;legend.fontsize&#39;: &#39;medium&#39;,
+          &#39;legend.framealpha&#39;: 0.8,
+          &#39;legend.frameon&#39;: True,
+          &#39;legend.handleheight&#39;: 0.7,
+          &#39;legend.handlelength&#39;: 2.0,
+          &#39;legend.handletextpad&#39;: 0.8,
+          &#39;legend.labelcolor&#39;: &#39;None&#39;,
+          &#39;legend.labelspacing&#39;: 0.5,
+          &#39;legend.loc&#39;: &#39;best&#39;,
+          &#39;legend.markerscale&#39;: 1.0,
+          &#39;legend.numpoints&#39;: 1,
+          &#39;legend.scatterpoints&#39;: 1,
+          &#39;legend.shadow&#39;: False,
+          &#39;legend.title_fontsize&#39;: None,
+          &#39;lines.antialiased&#39;: True,
+          &#39;lines.color&#39;: &#39;C0&#39;,
+          &#39;lines.dash_capstyle&#39;: &lt;CapStyle.butt: &#39;butt&#39;&gt;,
+          &#39;lines.dash_joinstyle&#39;: &lt;JoinStyle.round: &#39;round&#39;&gt;,
+          &#39;lines.dashdot_pattern&#39;: [6.4, 1.6, 1.0, 1.6],
+          &#39;lines.dashed_pattern&#39;: [3.7, 1.6],
+          &#39;lines.dotted_pattern&#39;: [1.0, 1.65],
+          &#39;lines.linestyle&#39;: &#39;-&#39;,
+          &#39;lines.linewidth&#39;: 1.5,
+          &#39;lines.marker&#39;: &#39;None&#39;,
+          &#39;lines.markeredgecolor&#39;: &#39;auto&#39;,
+          &#39;lines.markeredgewidth&#39;: 1.0,
+          &#39;lines.markerfacecolor&#39;: &#39;auto&#39;,
+          &#39;lines.markersize&#39;: 6.0,
+          &#39;lines.scale_dashes&#39;: True,
+          &#39;lines.solid_capstyle&#39;: &lt;CapStyle.projecting: &#39;projecting&#39;&gt;,
+          &#39;lines.solid_joinstyle&#39;: &lt;JoinStyle.round: &#39;round&#39;&gt;,
+          &#39;macosx.window_mode&#39;: &#39;system&#39;,
+          &#39;markers.fillstyle&#39;: &#39;full&#39;,
+          &#39;mathtext.bf&#39;: &#39;sans:bold&#39;,
+          &#39;mathtext.bfit&#39;: &#39;sans:italic:bold&#39;,
+          &#39;mathtext.cal&#39;: &#39;cursive&#39;,
+          &#39;mathtext.default&#39;: &#39;it&#39;,
+          &#39;mathtext.fallback&#39;: &#39;cm&#39;,
+          &#39;mathtext.fontset&#39;: &#39;dejavusans&#39;,
+          &#39;mathtext.it&#39;: &#39;sans:italic&#39;,
+          &#39;mathtext.rm&#39;: &#39;sans&#39;,
+          &#39;mathtext.sf&#39;: &#39;sans&#39;,
+          &#39;mathtext.tt&#39;: &#39;monospace&#39;,
+          &#39;patch.antialiased&#39;: True,
+          &#39;patch.edgecolor&#39;: &#39;black&#39;,
+          &#39;patch.facecolor&#39;: &#39;C0&#39;,
+          &#39;patch.force_edgecolor&#39;: False,
+          &#39;patch.linewidth&#39;: 1.0,
+          &#39;path.effects&#39;: [],
+          &#39;path.simplify&#39;: True,
+          &#39;path.simplify_threshold&#39;: 0.111111111111,
+          &#39;path.sketch&#39;: None,
+          &#39;path.snap&#39;: True,
+          &#39;pcolor.shading&#39;: &#39;auto&#39;,
+          &#39;pcolormesh.snap&#39;: True,
+          &#39;pdf.compression&#39;: 6,
+          &#39;pdf.fonttype&#39;: 3,
+          &#39;pdf.inheritcolor&#39;: False,
+          &#39;pdf.use14corefonts&#39;: False,
+          &#39;pgf.preamble&#39;: &#39;&#39;,
+          &#39;pgf.rcfonts&#39;: True,
+          &#39;pgf.texsystem&#39;: &#39;xelatex&#39;,
+          &#39;polaraxes.grid&#39;: True,
+          &#39;ps.distiller.res&#39;: 6000,
+          &#39;ps.fonttype&#39;: 3,
+          &#39;ps.papersize&#39;: &#39;letter&#39;,
+          &#39;ps.useafm&#39;: False,
+          &#39;ps.usedistiller&#39;: None,
+          &#39;savefig.bbox&#39;: None,
+          &#39;savefig.directory&#39;: &#39;~&#39;,
+          &#39;savefig.dpi&#39;: &#39;figure&#39;,
+          &#39;savefig.edgecolor&#39;: &#39;auto&#39;,
+          &#39;savefig.facecolor&#39;: &#39;auto&#39;,
+          &#39;savefig.format&#39;: &#39;png&#39;,
+          &#39;savefig.orientation&#39;: &#39;portrait&#39;,
+          &#39;savefig.pad_inches&#39;: 0.1,
+          &#39;savefig.transparent&#39;: False,
+          &#39;scatter.edgecolors&#39;: &#39;face&#39;,
+          &#39;scatter.marker&#39;: &#39;o&#39;,
+          &#39;svg.fonttype&#39;: &#39;path&#39;,
+          &#39;svg.hashsalt&#39;: None,
+          &#39;svg.image_inline&#39;: True,
+          &#39;text.antialiased&#39;: True,
+          &#39;text.color&#39;: &#39;black&#39;,
+          &#39;text.hinting&#39;: &#39;force_autohint&#39;,
+          &#39;text.hinting_factor&#39;: 8,
+          &#39;text.kerning_factor&#39;: 0,
+          &#39;text.latex.preamble&#39;: &#39;&#39;,
+          &#39;text.parse_math&#39;: True,
+          &#39;text.usetex&#39;: False,
+          &#39;timezone&#39;: &#39;UTC&#39;,
+          &#39;tk.window_focus&#39;: False,
+          &#39;toolbar&#39;: &#39;toolbar2&#39;,
+          &#39;webagg.address&#39;: &#39;127.0.0.1&#39;,
+          &#39;webagg.open_in_browser&#39;: True,
+          &#39;webagg.port&#39;: 8988,
+          &#39;webagg.port_retries&#39;: 50,
+          &#39;xaxis.labellocation&#39;: &#39;center&#39;,
+          &#39;xtick.alignment&#39;: &#39;center&#39;,
+          &#39;xtick.bottom&#39;: True,
+          &#39;xtick.color&#39;: &#39;black&#39;,
+          &#39;xtick.direction&#39;: &#39;out&#39;,
+          &#39;xtick.labelbottom&#39;: True,
+          &#39;xtick.labelcolor&#39;: &#39;inherit&#39;,
+          &#39;xtick.labelsize&#39;: &#39;medium&#39;,
+          &#39;xtick.labeltop&#39;: False,
+          &#39;xtick.major.bottom&#39;: True,
+          &#39;xtick.major.pad&#39;: 3.5,
+          &#39;xtick.major.size&#39;: 3.5,
+          &#39;xtick.major.top&#39;: True,
+          &#39;xtick.major.width&#39;: 0.8,
+          &#39;xtick.minor.bottom&#39;: True,
+          &#39;xtick.minor.ndivs&#39;: &#39;auto&#39;,
+          &#39;xtick.minor.pad&#39;: 3.4,
+          &#39;xtick.minor.size&#39;: 2.0,
+          &#39;xtick.minor.top&#39;: True,
+          &#39;xtick.minor.visible&#39;: False,
+          &#39;xtick.minor.width&#39;: 0.6,
+          &#39;xtick.top&#39;: False,
+          &#39;yaxis.labellocation&#39;: &#39;center&#39;,
+          &#39;ytick.alignment&#39;: &#39;center_baseline&#39;,
+          &#39;ytick.color&#39;: &#39;black&#39;,
+          &#39;ytick.direction&#39;: &#39;out&#39;,
+          &#39;ytick.labelcolor&#39;: &#39;inherit&#39;,
+          &#39;ytick.labelleft&#39;: True,
+          &#39;ytick.labelright&#39;: False,
+          &#39;ytick.labelsize&#39;: &#39;medium&#39;,
+          &#39;ytick.left&#39;: True,
+          &#39;ytick.major.left&#39;: True,
+          &#39;ytick.major.pad&#39;: 3.5,
+          &#39;ytick.major.right&#39;: True,
+          &#39;ytick.major.size&#39;: 3.5,
+          &#39;ytick.major.width&#39;: 0.8,
+          &#39;ytick.minor.left&#39;: True,
+          &#39;ytick.minor.ndivs&#39;: &#39;auto&#39;,
+          &#39;ytick.minor.pad&#39;: 3.4,
+          &#39;ytick.minor.right&#39;: True,
+          &#39;ytick.minor.size&#39;: 2.0,
+          &#39;ytick.minor.visible&#39;: False,
+          &#39;ytick.minor.width&#39;: 0.6,
+          &#39;ytick.right&#39;: False})&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>To change any given parameter you would use the following command (replacing your parameter and value, of course):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Arial&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-geocat-viz">
+<h3>Using GeoCAT-Viz<a class="headerlink" href="#using-geocat-viz" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<p>The GeoCAT-Viz package also has many utility functions for making your plots looks publication ready in fewer lines of code. The defaults of GeoCAT-viz keword-arguments are set to resemble the style of NCL.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fake data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+ 
+<span class="c1"># plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># annotate</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Title&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y Label&#39;</span><span class="p">)</span>
+
+<span class="n">gv</span><span class="o">.</span><span class="n">set_titles_and_labels</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3dcea94094cd46dc6fd6aba562206e565148ba2d7c27864ece25e4f9813d102e.png" src="../_images/3dcea94094cd46dc6fd6aba562206e565148ba2d7c27864ece25e4f9813d102e.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-problem-with-rainbow-colormaps">
+<h2>The Problem with Rainbow Colormaps<a class="headerlink" href="#the-problem-with-rainbow-colormaps" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>Rainbow colormaps are visually beautiful, but are falling out of favor because</p>
+<ol class="arabic simple">
+<li><p>They are not colorblind friendly and</p></li>
+<li><p>They do not print out in grayscale in a meaningful way.</p></li>
+</ol>
+<p>Both of these issues can be addressed by bing careful about you colormaps lightness-values.</p>
+<p>Some colormaps options are perceptually uniform (the same lightness value), sequentially ordered (goes from lighter to darker), or diverging (lightest or darkest at a set point and uniformly changes lightness going out). A rainbow colormap however is lighter or darker in arbitrary places and it affects how we interpret data (especially if it was printed out in grayscale).</p>
+<p>For example, from <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Matplotlib’s Choosing a Colormap documentation</a> here are some “good” colormaps:</p>
+<p><img alt="Matplotlib Logo" src="https://matplotlib.org/stable/_images/sphx_glr_colormaps_016_2_00x.png" /></img></p>
+<p>And here are miscellaneous colormaps:</p>
+<p><img alt="Matplotlib Logo" src="https://matplotlib.org/stable/_images/sphx_glr_colormaps_021_2_00x.png" /></img></p>
+<p>Looking at the colors in grayscale helps to understand why we might prefer a sequentially ordered colormap. Some grayscale values are duplicated and the reader will not know if it is a high or low value.</p>
+<p>Another consideration that can help those who are visually impaired is to make sure your figure comments are substantial. Use words to paint the picture of what is displayed, not just the conclusions you want the reader to get.</p>
+</div>
+<div class="section" id="misleading-visualizations">
+<h2>Misleading Visualizations<a class="headerlink" href="#misleading-visualizations" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>The scales or colors we choose to use for data visualization affect how people interpret figures. You should strive to make your visualizations as accurate and as informative as possible. Here are some examples that demonstrate just how different a figure can look based on these choices you make. Do not intentionally mislead your audience!</p>
+<p>Perhaps the most common data visualization manipulation is to change the Y-scale. If a plot does not begin at 0, small changes in magnitude can be exhaggerated. Similarly a logarithmic scale will amplify changes. This is not always disingenuous, sometimes these changes are what you want to highlight, the pattern you want to draw attention to. Just make sure it is appropriate for your use case and documented. Alternatively, extending the Y-axis too large has the opposite affect and smooths out the differences in data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1101</span><span class="p">,</span> <span class="mi">1011</span><span class="p">,</span> <span class="mi">1111</span><span class="p">,</span> <span class="mi">1070</span><span class="p">,</span> <span class="mi">1050</span><span class="p">]</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">ax4</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Default Y-Scale Starts at 0&quot;</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Y-Scale Starts at 1000&quot;</span><span class="p">)</span>
+
+<span class="n">ax3</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Y-Scale is Logarithmic&quot;</span><span class="p">);</span>
+
+<span class="n">ax4</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Y-Scale is Extended&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/162a8c111671b425d4e532b07fd2d9c527c11129a144a18ffe7d91aaf43b8ec3.png" src="../_images/162a8c111671b425d4e532b07fd2d9c527c11129a144a18ffe7d91aaf43b8ec3.png" />
+</div>
+</div>
+<p>Other examples of data visualization manipulation include improper scaling, cherry picking a small non-representative subset of the data to display, displaying pie charts at a slant (pie charts are hard to interpet accurately as is), and unusing unexpected colormaps.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>It is important to have accurate, engaging, and representative data visualization to accumpany your research, both for data exploration as part of the scientific process, for communication of results, and education/outreach efforts. Visually we pick up on patterns that statistics alone may not convey. However, an over reliance on data visualization can make science less accessible to those with vision disabilities. It is important to be cognicent of the patterns our minds pick up, be it based on color or y-axis scaling, so that we can avoid misleading our audience and more accurately convey the narrative inherent to the data.</p>
+<div class="section" id="whats-next">
+<h3>What’s next?<a class="headerlink" href="#whats-next" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<p><a class="reference internal" href="plot-elements.html"><span class="doc std std-doc">Plot Elements</span></a></p>
+</div>
+</div>
+<div class="section" id="resources-and-references">
+<h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.research.autodesk.com/publications/same-stats-different-graphs/">Autodesk</a></p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Matplotlib’s Choosing a Colormap documentation</a></p></li>
+<li><p><a class="reference external" href="https://geocat-examples.readthedocs.io/en/latest/">GeoCAT-examples Gallery</a></p></li>
+<li><p><a class="reference external" href="https://docs.google.com/document/d/1PxJBbYJsI5nmR9pDQmcRM0ZghRPSI_xlzGVhw3AEUms/edit">NWSC Script</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2207.13220.pdf">Beyond Visuals: Examining the Experiences of Geoscience
+Professionals With Vision Disabilities in Accessing Data Visualizations</a></p></li>
+<li><p><a class="reference external" href="https://www.research.autodesk.com/app/uploads/2023/03/same-stats-different-graphs.pdf_rec2hRjLLGgM7Cn2T.pdf">Same Stats Different Graphs: Generating Datasets with Varied Appearance and
+Identical Statistics through Simulated Annealing</a></p></li>
+<li><p>Alberto Cairo’s How Charts Lie: Getting Smarter about Visual Information</p></li>
+<li><p><a class="reference external" href="https://blog.coupler.io/misleading-data-visualization-examples/#:~:text=A%20very%20common%20misleading%20data,truncated%20graph%20might%20distort%20data.">Misleading Data Visualization – What to Avoid</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="comparison.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Comparison of Visualization Packages</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="plot-elements.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Plot Elements</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </div>
+          </div>
+        </main>
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+<footer class="footer">
+  <div class="container-fluid m-0 p-0">
+  
+    <div class="footer-item">
+    
+  <div class="container-fluid footer-logos">
+    <div class="container-xl">
+      <div class="row d-flex flex-wrap align-items-center">
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="NCAR" src="../_images/NCAR-contemp-logo-blue.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="Unidata" src="../_images/Unidata_logo_horizontal_1200x300.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="UAlbany" src="../_images/UAlbany-A2-logo-purple-gold.svg" style="width: 100%">
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+  
+    <div class="footer-item">
+    
+    </div>
+  
+    <div class="footer-item">
+      <div class="container-fluid footer-info">
+    <div class="container-xl">
+      <div class="d-flex justify-content-center">
+        <p class="py-1 m-0">
+            &copy;&nbsp;2023.
+        
+          By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
+        
+          Last updated on 2 November 2023.
+        </p>
+      </div>
+    </div>
+  </div>
+    </div>
+  
+    <div class="footer-item">
+    
+    </div>
+  
+  </div>
+</footer>
+  </body>
+</html>
