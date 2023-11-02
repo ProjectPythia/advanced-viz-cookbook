@@ -350,13 +350,13 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interactively-plotting-unstructured-grid-mpas-data-with-datashader-and-geoviews">
-   Interactively plotting unstructured grid MPAS data with Datashader and Geoviews
+  <a class="reference internal nav-link" href="#overview">
+   Overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-data">
-   The data
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -370,18 +370,35 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-1-using-mpass-cell-connectivity-array-to-plot-primal-mesh-data">
-   Example 1 - Using MPAS’s cell connectivity array to plot primal mesh data
+  <a class="reference internal nav-link" href="#using-mpass-cell-connectivity-array-to-plot-primal-mesh-data">
+   Using MPAS’s cell connectivity array to plot primal mesh data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-2-synthesizing-triangles-from-points-using-delaunay-triangulation">
-   Example 2 - Synthesizing triangles from points using Delaunay triangulation
+  <a class="reference internal nav-link" href="#synthesizing-triangles-from-points-using-delaunay-triangulation">
+   Synthesizing triangles from points using Delaunay triangulation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-3-using-mpass-cell-connectivity-array-to-plot-dual-mesh-data">
-   Example 3 - Using MPAS’s cell connectivity array to plot dual mesh data
+  <a class="reference internal nav-link" href="#using-mpass-cell-connectivity-array-to-plot-dual-mesh-data">
+   Using MPAS’s cell connectivity array to plot dual mesh data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#whats-next">
+     What’s next?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resources-and-references">
+   Resources and references
   </a>
  </li>
 </ul>
@@ -397,33 +414,38 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="mpas-with-datashader-and-geoviews">
 <h1>MPAS with Datashader and Geoviews<a class="headerlink" href="#mpas-with-datashader-and-geoviews" title="Permalink to this headline"><i class="fas fa-link"></i></a></h1>
-<div class="section" id="interactively-plotting-unstructured-grid-mpas-data-with-datashader-and-geoviews">
-<h2>Interactively plotting unstructured grid MPAS data with Datashader and Geoviews<a class="headerlink" href="#interactively-plotting-unstructured-grid-mpas-data-with-datashader-and-geoviews" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
-<p>This example demonstrates several key points:</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>This example of interactively plotting unstructured grid MPAS data with Datashader and Geoviews demonstrates making use of the MPAS file’s connectivity information to render data on the native grid, and also
+avoid costly Delaunay triangulation that is required if the MPAS connectivity information is not used, rendering data that is sampled on both the ‘primal’ and ‘dual’ MPAS mesh, using geoviews/holoviews for interactive plotting in a Jupyter Notebook. The plotting is interactive in the sense that you can pan and zoom the data. Doing so will reveal greater and greater data fidelity, and sing Datashader to perform background rendering in place of Matplotlib. Unlike Matplotlib, Datashaderwas designed for performance with large data sets.</p>
 <ol class="arabic simple">
-<li><p>Making use of the MPAS file’s connectivity information to render data on the native grid, and also
-avoid costly Delaunay triangulation that is required if the MPAS connectivity information is not used.</p></li>
-<li><p>Rendering data that is sampled on both the ‘primal’ and ‘dual’ MPAS mesh.</p></li>
-<li><p>Using geoviews/holoviews for interactive plotting in a Jupyter Notebook. The plotting is interactive
-in the sense that you can pan and zoom the data. Doing so will reveal greater and greater data fidelity.</p></li>
-<li><p>Using Datashader to perform background rendering in place of Matplotlib. Unlike Matplotlib, Datashader
-was designed for performance with large data sets.</p></li>
+<li><p>Utility Functions</p></li>
+<li><p>Loading Data</p></li>
+<li><p>Using MPAS’s cell connectivity array to plot primal mesh data</p></li>
+<li><p>Synthesizing triangles from points using Delaunay triangulation</p></li>
+<li><p>Using MPAS’s cell connectivity array to plot dual mesh data</p></li>
 </ol>
 </div>
-<div class="section" id="the-data">
-<h2>The data<a class="headerlink" href="#the-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
-<p>The global data sets used in this example are from the same experiment, but run at several resolutions from
-30km to 3.75km. Due to their size, the higher resolution data sets are only distributed with two variables
-in them:</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concepts</p></th>
+<th class="head"><p>Importance</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="xref myst"></span></p></td>
+<td><p>Necessary</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <ul class="simple">
-<li><p>relhum_200hPa: Relative humidity vertically interpolated to 200 hPa</p></li>
-<li><p>vorticity_200hPa: Relative vorticity vertically interpolated to 200 hPa</p></li>
+<li><p><strong>Time to learn</strong>: X minutes</p></li>
 </ul>
-<p>The relhum_200hPa is computed on the MPAS ‘primal’ mesh, while the vorticity_200hPa is computed on the MPAS
-‘dual’ mesh. Note that data may also be sampled on the edges of the primal mesh. This example does not
-include/cover edge-centered data.</p>
-<p>These data are courtesy of NCAR’s Falko Judt, and were produced as part of the DYAMOND initiative:
-http://dx.doi.org/10.1186/s40645-019-0304-z.</p>
+<hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
@@ -984,11 +1006,11 @@ if (window.Jupyter !== undefined) {
   background-color: transparent !important;
 }
 </style></div><div class="output text_html"><div id='p1002'>
-  <div id="b739dc42-f68b-4ce3-a22d-f7d037f89095" data-root-id="p1002" style="display: contents;"></div>
+  <div id="de9882d7-a29a-4b16-b11c-5904fafd224f" data-root-id="p1002" style="display: contents;"></div>
 </div>
 <script type="application/javascript">(function(root) {
-  var docs_json = {"a0e6f158-f274-4e1b-8436-edfcd7bb5a57":{"version":"3.3.0","title":"Bokeh Application","roots":[{"type":"object","name":"panel.models.browser.BrowserInfo","id":"p1002"},{"type":"object","name":"panel.models.comm_manager.CommManager","id":"p1003","attributes":{"plot_id":"p1002","comm_id":"a1e2d50d73f740828238870a79e06f74","client_comm_id":"cfd5bcdd6f484c24b3946f498c273bfd"}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"toggle_value1","properties":[{"name":"active_icons","kind":"Any","default":{"type":"map"}},{"name":"options","kind":"Any","default":{"type":"map","entries":[["favorite","heart"]]}},{"name":"value","kind":"Any","default":[]},{"name":"_reactions","kind":"Any","default":[]},{"name":"_base_url","kind":"Any","default":"https://tabler-icons.io/static/tabler-icons/icons/"}]},{"type":"model","name":"copy_to_clipboard1","properties":[{"name":"value","kind":"Any","default":null},{"name":"fill","kind":"Any","default":"none"}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]}]}};
-  var render_items = [{"docid":"a0e6f158-f274-4e1b-8436-edfcd7bb5a57","roots":{"p1002":"b739dc42-f68b-4ce3-a22d-f7d037f89095"},"root_ids":["p1002"]}];
+  var docs_json = {"8ad91e3b-a555-45b7-8765-d3c73900ae88":{"version":"3.3.0","title":"Bokeh Application","roots":[{"type":"object","name":"panel.models.browser.BrowserInfo","id":"p1002"},{"type":"object","name":"panel.models.comm_manager.CommManager","id":"p1003","attributes":{"plot_id":"p1002","comm_id":"485b076f03394ef78b937a6ae61693d8","client_comm_id":"a38743f1869f4d5eb6067e1743c9e9d4"}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"toggle_value1","properties":[{"name":"active_icons","kind":"Any","default":{"type":"map"}},{"name":"options","kind":"Any","default":{"type":"map","entries":[["favorite","heart"]]}},{"name":"value","kind":"Any","default":[]},{"name":"_reactions","kind":"Any","default":[]},{"name":"_base_url","kind":"Any","default":"https://tabler-icons.io/static/tabler-icons/icons/"}]},{"type":"model","name":"copy_to_clipboard1","properties":[{"name":"value","kind":"Any","default":null},{"name":"fill","kind":"Any","default":"none"}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]}]}};
+  var render_items = [{"docid":"8ad91e3b-a555-45b7-8765-d3c73900ae88","roots":{"p1002":"de9882d7-a29a-4b16-b11c-5904fafd224f"},"root_ids":["p1002"]}];
   var docs = Object.values(docs_json)
   if (!docs) {
     return
@@ -1291,20 +1313,32 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 </div>
 <div class="section" id="load-data-and-coordinates">
 <h2>Load data and coordinates<a class="headerlink" href="#load-data-and-coordinates" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>The global data sets used in this example are from the same experiment, but run at several resolutions from
+30km to 3.75km. Due to their size, the higher resolution data sets are only distributed with two variables
+in them:</p>
+<ul class="simple">
+<li><p>relhum_200hPa: Relative humidity vertically interpolated to 200 hPa</p></li>
+<li><p>vorticity_200hPa: Relative vorticity vertically interpolated to 200 hPa</p></li>
+</ul>
 <p>The dyamond_1 data set is available in several resolutions, ranging from 30 km to 3.75 km.</p>
 <p>Currently, the 30-km resolution dataset used in this example is available at geocat-datafiles.
 However, the other resolutions of these data are stored on Glade because of their size.</p>
+<p>The relhum_200hPa is computed on the MPAS ‘primal’ mesh, while the vorticity_200hPa is computed on the MPAS
+‘dual’ mesh. Note that data may also be sampled on the edges of the primal mesh. This example does not
+include/cover edge-centered data.</p>
+<p>These data are courtesy of NCAR’s Falko Judt, and were produced as part of the DYAMOND initiative:
+http://dx.doi.org/10.1186/s40645-019-0304-z.</p>
 </div>
-<div class="section" id="example-1-using-mpass-cell-connectivity-array-to-plot-primal-mesh-data">
-<h2>Example 1 - Using MPAS’s cell connectivity array to plot primal mesh data<a class="headerlink" href="#example-1-using-mpass-cell-connectivity-array-to-plot-primal-mesh-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="section" id="using-mpass-cell-connectivity-array-to-plot-primal-mesh-data">
+<h2>Using MPAS’s cell connectivity array to plot primal mesh data<a class="headerlink" href="#using-mpass-cell-connectivity-array-to-plot-primal-mesh-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
 <p>In this example we use the MPAS <code class="docutils literal notranslate"><span class="pre">cellsOnVertex</span></code> auxilliary variable, which defines mesh connectivity for the MPAS grid.
 Specifically, this variable tells us the cell IDs for each cell that contains each vertex.</p>
 <p>The benefits of this are twofold: 1. We’re using the actual mesh description from the MPAS output file; and 2.
 For large grid this is <em>much</em> faster than synthesizing the connectivity information as is done
 in the next example</p>
 </div>
-<div class="section" id="example-2-synthesizing-triangles-from-points-using-delaunay-triangulation">
-<h2>Example 2 - Synthesizing triangles from points using Delaunay triangulation<a class="headerlink" href="#example-2-synthesizing-triangles-from-points-using-delaunay-triangulation" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="section" id="synthesizing-triangles-from-points-using-delaunay-triangulation">
+<h2>Synthesizing triangles from points using Delaunay triangulation<a class="headerlink" href="#synthesizing-triangles-from-points-using-delaunay-triangulation" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
 <p>In this second example we do not use the triangle connectivity information stored in the MPAS file. Instead we
 use Delaunay triangulation to artifically create a triangle mesh. The benefit of this approach is that we do not
 need the MPAS cellsOnVertex variable if it is not available. Also, since the triangulation algorithm is run on the
@@ -1312,13 +1346,25 @@ coordinates after they are projected to meters we do not have to worry about wra
 high-resolution data Delaunay triangulation is prohibitively expensive. The highest resolution data set included
 in this notebook (3.75km) will not triangulate in a reasonable amount of time, if at all</p>
 </div>
-<div class="section" id="example-3-using-mpass-cell-connectivity-array-to-plot-dual-mesh-data">
-<h2>Example 3 - Using MPAS’s cell connectivity array to plot dual mesh data<a class="headerlink" href="#example-3-using-mpass-cell-connectivity-array-to-plot-dual-mesh-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="section" id="using-mpass-cell-connectivity-array-to-plot-dual-mesh-data">
+<h2>Using MPAS’s cell connectivity array to plot dual mesh data<a class="headerlink" href="#using-mpass-cell-connectivity-array-to-plot-dual-mesh-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
 <p>In this example we use the MPAS <code class="docutils literal notranslate"><span class="pre">verticesOnCell</span></code> and <code class="docutils literal notranslate"><span class="pre">nEdgesOnCell</span></code> auxilliary variables, which defines mesh connectivity for the
 MPAS dual grid.</p>
 <p>As with the first example using the MPAS primal grid, data on the dual grid could be plotted by first
 triangulating them with, for example, Delaunay triangulation. But using grid’s native connectivity information
 is faster.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="section" id="whats-next">
+<h3>What’s next?<a class="headerlink" href="#whats-next" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+</div>
+</div>
+<div class="section" id="resources-and-references">
+<h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<ul class="simple">
+<li><p><span class="xref myst"></span></p></li>
+</ul>
 </div>
 </div>
 
@@ -1390,7 +1436,7 @@ is faster.</p>
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 1 November 2023.
+          Last updated on 2 November 2023.
         </p>
       </div>
     </div>
