@@ -362,6 +362,21 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-simple-taylor-diagram">
+   Creating a Simple Taylor Diagram
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#displaying-distinct-datasets">
+   Displaying Distinct Datasets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finishing-touches">
+   Finishing touches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -393,9 +408,11 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <h1>Taylor Diagrams<a class="headerlink" href="#taylor-diagrams" title="Permalink to this headline"><i class="fas fa-link"></i></a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
-<p>Summary text here</p>
+<p>Taylor diagrams are a “concise statistical summary of how well patterns match each other in terms of their correlation, their root-mean-square difference and the ratio of their variances”. Taylor diagrams plot the weighted centered pattern correlations, the ratios of the normalized root-mean-squared differences between the test and reference data sets, and optionally a bias statistic. This notebook explores how to create and customize Taylor diagrams using <code class="docutils literal notranslate"><span class="pre">geocat-viz</span></code>.</p>
 <ol class="arabic simple">
-<li></li>
+<li><p>Creating a Simple Taylor Diagram</p></li>
+<li><p>Displaying Distinct Datasets</p></li>
+<li><p>Finishing Touches</p></li>
 </ol>
 </div>
 <div class="section" id="prerequisites">
@@ -428,40 +445,72 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 </div>
-<p>Taylor diagrams are a “concise statistical summary of how well patterns match each other in terms of their correlation, their root-mean-square difference and the ratio of their variances”. Taylor diagrams plot the weighted centered pattern correlations, the ratios of the normalized root-mean-squared differences between the test and reference data sets, and optionally a bias statistic.</p>
+<p>“Generally, the plotted values are derived from climatological monthly, seasonal or annual means. Because the different variables (eg: precipitation, temperature) may have widely varying numerical values, the results are normalized by the reference variables. The ratio of the normalized variances indicates the relative amplitude of the model and observed variations.” - from NCL</p>
+</div>
+<div class="section" id="creating-a-simple-taylor-diagram">
+<h2>Creating a Simple Taylor Diagram<a class="headerlink" href="#creating-a-simple-taylor-diagram" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># p dataset</span>
-<span class="n">pstddev</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.15</span><span class="p">]</span>  <span class="c1"># standard deviation</span>
-<span class="n">pcorrcoef</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.24</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.93</span><span class="p">,</span> <span class="mf">0.37</span><span class="p">]</span>  <span class="c1"># correlation coefficient</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create figure and Taylor Diagram instance</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">taylor</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">TaylorDiagram</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;REF&#39;</span><span class="p">)</span>
 
-<span class="c1"># t dataset</span>
-<span class="n">tstddev</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.64</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">1.15</span><span class="p">]</span>
-<span class="n">tcorrcoef</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.24</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.88</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">]</span>
+<span class="c1"># Draw diagonal dashed lines from origin to correlation values</span>
+<span class="c1"># Also enforces proper X-Y ratio</span>
+<span class="n">taylor</span><span class="o">.</span><span class="n">add_xgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]))</span>
+
+<span class="c1"># Add a model dataset of one point</span>
+<span class="n">taylor</span><span class="o">.</span><span class="n">add_model_set</span><span class="p">(</span><span class="n">stddev</span><span class="o">=</span><span class="p">[</span><span class="mf">.6</span><span class="p">],</span> <span class="n">corrcoef</span><span class="o">=</span><span class="p">[</span><span class="mf">.24</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e701dde1407c4b31583d6a52140225a33034e22692822f43cedba72d44350841.png" src="../_images/e701dde1407c4b31583d6a52140225a33034e22692822f43cedba72d44350841.png" />
+</div>
+</div>
+</div>
+<div class="section" id="displaying-distinct-datasets">
+<h2>Displaying Distinct Datasets<a class="headerlink" href="#displaying-distinct-datasets" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>When working with data, you’ll want to make two datasets distinct by providing different kwargs for how to draw them.</p>
+<p>First let’s creat two sets of dummy data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case A</span>
+<span class="n">a_std</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.230</span><span class="p">,</span> <span class="mf">0.988</span><span class="p">,</span> <span class="mf">1.092</span><span class="p">,</span> <span class="mf">1.172</span><span class="p">,</span> <span class="mf">1.064</span><span class="p">,</span> <span class="mf">0.966</span><span class="p">,</span> <span class="mf">1.079</span><span class="p">,</span> <span class="mf">0.781</span><span class="p">]</span>  <span class="c1"># standard deviation</span>
+<span class="n">a_cc</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.958</span><span class="p">,</span> <span class="mf">0.973</span><span class="p">,</span> <span class="mf">0.740</span><span class="p">,</span> <span class="mf">0.743</span><span class="p">,</span> <span class="mf">0.922</span><span class="p">,</span> <span class="mf">0.982</span><span class="p">,</span> <span class="mf">0.952</span><span class="p">,</span> <span class="mf">0.433</span><span class="p">]</span>  <span class="c1"># correlation coefficient</span>
+
+<span class="c1"># Case B</span>
+<span class="n">b_std</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.129</span><span class="p">,</span> <span class="mf">0.996</span><span class="p">,</span> <span class="mf">1.016</span><span class="p">,</span> <span class="mf">1.134</span><span class="p">,</span> <span class="mf">1.023</span><span class="p">,</span> <span class="mf">0.962</span><span class="p">,</span> <span class="mf">1.048</span><span class="p">,</span> <span class="mf">0.852</span><span class="p">]</span>  <span class="c1"># standard deviation</span>
+<span class="n">b_cc</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.963</span><span class="p">,</span> <span class="mf">0.975</span><span class="p">,</span> <span class="mf">0.801</span><span class="p">,</span> <span class="mf">0.814</span><span class="p">,</span> <span class="mf">0.946</span><span class="p">,</span> <span class="mf">0.984</span><span class="p">,</span> <span class="mf">0.968</span><span class="p">,</span> <span class="mf">0.647</span><span class="p">]</span>  <span class="c1"># correlation coefficient</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>And let’s plot it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create figure and Taylor Diagram instance</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-<span class="n">dia</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">TaylorDiagram</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;REF&#39;</span><span class="p">)</span>
+<span class="n">taylor</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">TaylorDiagram</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;REF&#39;</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 
+<span class="c1"># Draw diagonal dashed lines from origin to correlation values</span>
+<span class="c1"># Also enforces proper X-Y ratio</span>
+<span class="n">taylor</span><span class="o">.</span><span class="n">add_xgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]))</span>
+
 <span class="c1"># Add model sets for p and t datasets</span>
-<span class="n">dia</span><span class="o">.</span><span class="n">add_model_set</span><span class="p">(</span>
-    <span class="n">pstddev</span><span class="p">,</span>
-    <span class="n">pcorrcoef</span><span class="p">,</span>
+<span class="n">taylor</span><span class="o">.</span><span class="n">add_model_set</span><span class="p">(</span>
+    <span class="n">a_std</span><span class="p">,</span>
+    <span class="n">a_cc</span><span class="p">,</span>
     <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
     <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>  <span class="c1"># marker label location, in pixels</span>
     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
     <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
     <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
     <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># marker size</span>
-<span class="n">dia</span><span class="o">.</span><span class="n">add_model_set</span><span class="p">(</span>
-    <span class="n">tstddev</span><span class="p">,</span>
-    <span class="n">tcorrcoef</span><span class="p">,</span>
+<span class="n">taylor</span><span class="o">.</span><span class="n">add_model_set</span><span class="p">(</span>
+    <span class="n">b_std</span><span class="p">,</span>
+    <span class="n">b_cc</span><span class="p">,</span>
     <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
     <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>  <span class="c1"># marker label location, in pixels</span>
     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
@@ -469,27 +518,73 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
     <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
     <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 
-<span class="c1"># Add RMS contours, and label them</span>
-<span class="n">dia</span><span class="o">.</span><span class="n">add_contours</span><span class="p">(</span><span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span>
-                 <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">,</span>
-                 <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="c1"># Add y axis grid</span>
-<span class="n">dia</span><span class="o">.</span><span class="n">add_ygrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
-
-<span class="c1"># Add x axis grid</span>
-<span class="n">dia</span><span class="o">.</span><span class="n">add_xgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]))</span>
-
 <span class="c1"># Add figure title</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Example&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
-
-<span class="c1"># Show the plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Example&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">45</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6619909df90fb917ce5948fbb1e087f2fea43fac90bac068a719b837f5c0c68e.png" src="../_images/6619909df90fb917ce5948fbb1e087f2fea43fac90bac068a719b837f5c0c68e.png" />
+<img alt="../_images/6331867d97894c31e4634623482926aa77245a747f4ebdb79591461cf338c299.png" src="../_images/6331867d97894c31e4634623482926aa77245a747f4ebdb79591461cf338c299.png" />
+</div>
+</div>
+</div>
+<div class="section" id="finishing-touches">
+<h2>Finishing touches<a class="headerlink" href="#finishing-touches" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create figure and Taylor Diagram instance</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">taylor</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">TaylorDiagram</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;REF&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="c1"># Draw diagonal dashed lines from origin to correlation values</span>
+<span class="c1"># Also enforces proper X-Y ratio</span>
+<span class="n">taylor</span><span class="o">.</span><span class="n">add_xgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]))</span>
+
+<span class="c1"># Add model sets for p and t datasets</span>
+<span class="n">taylor</span><span class="o">.</span><span class="n">add_model_set</span><span class="p">(</span>
+    <span class="n">a_std</span><span class="p">,</span>
+    <span class="n">a_cc</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>  <span class="c1"># marker label location, in pixels</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+    <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Case A&#39;</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># marker size</span>
+<span class="n">taylor</span><span class="o">.</span><span class="n">add_model_set</span><span class="p">(</span>
+    <span class="n">b_std</span><span class="p">,</span>
+    <span class="n">b_cc</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>  <span class="c1"># marker label location, in pixels</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span>
+    <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Case B&#39;</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Add Add constant centered RMS difference contours.</span>
+<span class="n">taylor</span><span class="o">.</span><span class="n">add_contours</span><span class="p">(</span><span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span>
+                 <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">,</span>
+                 <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Add more standard deviation grid lines</span>
+<span class="n">taylor</span><span class="o">.</span><span class="n">add_ygrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add figure title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Example&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">45</span><span class="p">);</span>
+
+<span class="c1"># Add model name</span>
+<span class="n">namearr</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SLP&#39;</span><span class="p">,</span> <span class="s1">&#39;Tsfc&#39;</span><span class="p">,</span> <span class="s1">&#39;Prc&#39;</span><span class="p">,</span> <span class="s1">&#39;Prc 30S-30N&#39;</span><span class="p">,</span> <span class="s1">&#39;LW&#39;</span><span class="p">,</span> <span class="s1">&#39;SW&#39;</span><span class="p">,</span> <span class="s1">&#39;U300&#39;</span><span class="p">,</span> <span class="s1">&#39;Guess&#39;</span><span class="p">]</span>
+<span class="n">taylor</span><span class="o">.</span><span class="n">add_model_name</span><span class="p">(</span><span class="n">namearr</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># Add figure legend</span>
+<span class="n">taylor</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/48df8fac7a748a4c08e1de7c69718f5c3ff694e0c183865c84ee655b24afa18c.png" src="../_images/48df8fac7a748a4c08e1de7c69718f5c3ff694e0c183865c84ee655b24afa18c.png" />
 </div>
 </div>
 </div>
@@ -505,6 +600,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <ul class="simple">
 <li><p><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2000JD900719">Karl E. Taylor - “Summarizing multiple aspects of model performance in a single diagram”, AGU 2001</a></p></li>
 <li><p><a class="reference external" href="https://github.com/anissa111/plotting-with-geocat-tutorial/blob/main/notebooks/02-geocat-viz.ipyn">Plotting with GeoCAT Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://www.ncl.ucar.edu/Applications/taylor.shtml">NCL Graphics: Taylor Diagrams</a></p></li>
 </ul>
 </div>
 </div>
@@ -591,7 +687,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 2 November 2023.
+          Last updated on 16 November 2023.
         </p>
       </div>
     </div>
