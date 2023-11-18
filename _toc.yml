@@ -21,4 +21,4 @@ parts:
       - file: notebooks/mpas-datshader
   - caption: Animation
     chapters:
-      - file: notebooks/animatioin
+      - file: notebooks/animation
