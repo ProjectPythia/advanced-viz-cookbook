@@ -777,66 +777,25 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7fc2c5685b40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7f0692c95b40&gt;
 </pre></div>
 </div>
 <img alt="../_images/0ccb04ef518fc4756b7d46ffaa1a95ec3b849e9a686f4a56079d46e719a803f2.png" src="../_images/0ccb04ef518fc4756b7d46ffaa1a95ec3b849e9a686f4a56079d46e719a803f2.png" />
 </div>
 </div>
-<p>Then, we’re going to plot the air temperature and dew point and add the wind barbs.</p>
 <p>Let’s talk break that down a bit.</p>
-<p>First, we’ll make a new figure and use that figure to make a new skew-T plot. If you don’t provide a figure to <code class="docutils literal notranslate"><span class="pre">SkewT</span></code>, one will be created for you, but it’s useful to make the default figure size a bit larger for this tutorial.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># make figure and `SkewT` object</span>
+<span class="hll"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+</span><span class="hll"><span class="n">skewt</span> <span class="o">=</span> <span class="n">SkewT</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+</span>
+<span class="c1"># plot sounding data</span>
+<span class="n">skewt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># air temperature</span>
+<span class="n">skewt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Td</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span> <span class="c1"># dew point</span>
+<span class="n">skewt</span><span class="o">.</span><span class="n">plot_barbs</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="c1"># wind barbs</span>
+</pre></div>
+</div>
+<p>First, we made a new figure and used it to make a new skew-T plot. If you don’t provide a figure to <code class="docutils literal notranslate"><span class="pre">SkewT</span></code>, one will be created for you, but it’s useful to make the default figure size a bit larger for this tutorial.</p>
 <p>First, we’re</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">skewt</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;,
- &#39;__delattr__&#39;,
- &#39;__dict__&#39;,
- &#39;__dir__&#39;,
- &#39;__doc__&#39;,
- &#39;__eq__&#39;,
- &#39;__format__&#39;,
- &#39;__ge__&#39;,
- &#39;__getattribute__&#39;,
- &#39;__gt__&#39;,
- &#39;__hash__&#39;,
- &#39;__init__&#39;,
- &#39;__init_subclass__&#39;,
- &#39;__le__&#39;,
- &#39;__lt__&#39;,
- &#39;__module__&#39;,
- &#39;__ne__&#39;,
- &#39;__new__&#39;,
- &#39;__reduce__&#39;,
- &#39;__reduce_ex__&#39;,
- &#39;__repr__&#39;,
- &#39;__setattr__&#39;,
- &#39;__sizeof__&#39;,
- &#39;__str__&#39;,
- &#39;__subclasshook__&#39;,
- &#39;__weakref__&#39;,
- &#39;_fig&#39;,
- &#39;ax&#39;,
- &#39;dry_adiabats&#39;,
- &#39;mixing_lines&#39;,
- &#39;moist_adiabats&#39;,
- &#39;plot&#39;,
- &#39;plot_barbs&#39;,
- &#39;plot_dry_adiabats&#39;,
- &#39;plot_mixing_lines&#39;,
- &#39;plot_moist_adiabats&#39;,
- &#39;shade_area&#39;,
- &#39;shade_cape&#39;,
- &#39;shade_cin&#39;]
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="summary">
@@ -938,7 +897,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 22 November 2023.
+          Last updated on 27 November 2023.
         </p>
       </div>
     </div>
