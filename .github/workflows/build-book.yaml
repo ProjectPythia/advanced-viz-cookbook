@@ -28,10 +28,6 @@ on:
         required: false
         default: 'book-zip'
         type: string
-      build_command:
-        description: 'The linux command to build the book or site.'
-        required: false
-        default: 'jupyter-book build .'
         type: string
       output_path:
         description: 'Path to the built html content relative to `path_to_notebooks`'
@@ -136,11 +132,6 @@ jobs:
           activate-environment: ${{ inputs.environment_name }}
           use-mamba: true
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install jupyter-book
-          
       - name: Set cache date
         if: inputs.use_cached_environment == 'true'
         run: echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
@@ -155,65 +146,13 @@ jobs:
         id: cache
       
       - name: Create book build environment
-        if: |
-          (inputs.use_cached_environment != 'true'
-          || steps.cache.outputs.cache-hit != 'true')
-          && steps.parse_config.outputs.execute_notebooks == 'binder'
         run: |
           mamba install -c conda-forge jupyter-book pip
           pip install sphinx-pythia-theme
           pip install git+https://github.com/pangeo-gallery/binderbot.git
 
       - name: Update execution environment
-        if: |
-          (inputs.use_cached_environment != 'true'
-          || steps.cache.outputs.cache-hit != 'true'
-          || steps.env_change.outputs.any_changed == 'true')
-          && steps.parse_config.outputs.execute_notebooks != 'binder'
         run: mamba env update -n ${{ inputs.environment_name }} -f ${{ inputs.environment_file }}
-
-      - name: Get paths to notebook files
-        if: |
-          steps.parse_config.outputs.execute_notebooks == 'binder'
-        # This will find ALL *.ipynb files in the repo
-        #  It would be better to cross-check this against the _toc.yml file
-        #  to avoid unneccesary execution of notebooks that aren't included in the book
-        shell: python
-        run: |
-          import glob
-          notebooks = glob.glob('**/*.ipynb', recursive=True)
-          outfile = open("notebook_paths", "w")
-          for path in notebooks:
-              outfile.write(path + ' ')
-          outfile.close() # Writing these out to a file because I can't figure out how to set an environment variable from a python script 
-
-      - name: Execute notebooks via binderbot using existing image
-        if: |
-          ( steps.parse_config.outputs.execute_notebooks == 'binder'
-          && steps.env_change.outputs.any_changed != 'true' )
-        env:
-          ARM_USERNAME: ${{ secrets.ARM_USERNAME }}
-          ARM_PASSWORD: ${{ secrets.ARM_PASSWORD }}
-        run: |
-          NOTEBOOKS=$(cat notebook_paths)
-          echo 'Retrieved binder_url: ${{ steps.parse_config.outputs.binderhub_url }}'
-          echo "We will now execute these notebooks: $NOTEBOOKS"
-          echo "using the existing binder image from the main branch"
-          python -m binderbot.cli --binder-url ${{ steps.parse_config.outputs.binderhub_url }} --repo ${{ github.repository }} --ref main --nb-timeout ${{ steps.parse_config.outputs.timeout }} $NOTEBOOKS --pass-env-var ARM_USERNAME --pass-env-var ARM_PASSWORD
-
-      - name: Execute notebooks via binderbot using new image with latest environment
-        if: |
-            ( steps.parse_config.outputs.execute_notebooks == 'binder'
-            && steps.env_change.outputs.any_changed == 'true' )
-        env:
-          ARM_USERNAME: ${{ secrets.ARM_USERNAME }}
-          ARM_PASSWORD: ${{ secrets.ARM_PASSWORD }}
-        run: |
-          NOTEBOOKS=$(cat notebook_paths)
-          echo 'Retrieved binder_url: ${{ steps.parse_config.outputs.binderhub_url }}'
-          echo "We will now execute these notebooks: $NOTEBOOKS"
-          echo "using the updated environment file in this branch to build a new image"
-          python -m binderbot.cli --binder-url ${{ steps.parse_config.outputs.binderhub_url }} --repo ${{ github.actor }}/$CI_REPOSITORY_NAME --ref $CI_ACTION_REF_NAME --nb-timeout ${{ steps.parse_config.outputs.timeout }} $NOTEBOOKS --pass-env-var ARM_USERNAME --pass-env-var ARM_PASSWORD
 
       - name: Disable notebook execution during jupyterbook build
         if: |
@@ -234,8 +173,7 @@ jobs:
           ARM_PASSWORD: ${{ secrets.ARM_PASSWORD }}
           SECRETS_VARS: ${{ toJson(secrets) }}
         run: |
-          cd ${{ inputs.path_to_notebooks }}
-          ${{ inputs.build_command }}
+          jupyter-book build ../../notebooks
 
       - name: Zip the book
         run: |
