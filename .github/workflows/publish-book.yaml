@@ -10,6 +10,8 @@ on:
 jobs:
   build:
     uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
+    with:
+      environment_name: advanced-viz-cookbook
 
   deploy:
     needs: build
