@@ -11,7 +11,8 @@ jobs:
   build:
     uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
     with:
-      environment_name: cookbook-dev
+      use_cached_environment: false
+      environment_name: advanced-viz-cookbook
 
   deploy:
     needs: build
