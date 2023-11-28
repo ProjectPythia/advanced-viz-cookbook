@@ -2,7 +2,6 @@
 
 # Advanced Visualization Cookbook
 
-[![nightly-build](https://github.com/ProjectPythia/advanced-viz-cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/advanced-viz-cookbook/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/671205314.svg)](https://zenodo.org/badge/latestdoi/671205314)
 
