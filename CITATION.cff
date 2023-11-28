@@ -1,17 +1,16 @@
 cff-version: 1.2.0
 message: "If you use this cookbook, please cite it as below."
 authors:
-  # add additional entries for each author -- see https://github.com/citation-file-format/citation-file-format/blob/main/schema-guide.md
-- family-names: Kent
-  given-names: Julia
-  orcid: https://orcid.org/0000-0002-5611-8986
-  website: https://github.com/jukent
-  affiliation: UCAR/NCAR
-- family-names: Clyne
-  given-names: John
-  orcid: https://orcid.org/0000-0003-2788-9017
-  website: https://github.com/clyne
-  affiliation: UCAR/NCAR
+  - family-names: Kent
+    given-names: Julia
+    orcid: https://orcid.org/0000-0002-5611-8986
+    website: https://github.com/jukent
+    affiliation: UCAR/NCAR
+  - family-names: Zacharias
+    given-names: Anissa
+    orcid: https://orcid.org/0000-0002-2666-8493
+    website: https://github.com/anissa111
+    affiliation: UCAR/NCAR
   - name: "Advanced Visualization Cookbook contributors" # use the 'name' field to acknowledge organizations
     website: "https://github.com/ProjectPythia/advanced-viz-cookbook/graphs/contributors"
 title: "Advanced Visualization Cookbook"
