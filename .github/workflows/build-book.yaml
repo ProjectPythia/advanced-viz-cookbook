@@ -132,24 +132,13 @@ jobs:
           activate-environment: ${{ inputs.environment_name }}
           use-mamba: true
 
-      - name: Set cache date
-        if: inputs.use_cached_environment == 'true'
-        run: echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
-
-      - uses: actions/cache@v3
-        if: inputs.use_cached_environment == 'true'
-        with:
-          path: /usr/share/miniconda3/envs/${{ inputs.environment_name }}
-          # This should create a key that looks like 'linux-64-conda-environment.yml-[HASH]-_config.yml-[HASH]-DATE'
-          # Logic inspired by https://dev.to/epassaro/caching-anaconda-environments-on-github-actions-2d08
-          key: ${{ format('linux-64-conda-{0}-{1}-{2}-{3}-{4}', inputs.environment_file, hashFiles(format('{0}', inputs.environment_file)), '_config.yml', hashFiles(format('{0}', '_config.yml')), env.DATE )}}
-        id: cache
-      
       - name: Create book build environment
         run: |
+          echo "Debug: Checking conditions for creating book build environment..."
+          echo "Debug: use_cached_environment = ${{ inputs.use_cached_environment }}"
           mamba install -c conda-forge jupyter-book pip
-          pip install sphinx-pythia-theme
-          pip install git+https://github.com/pangeo-gallery/binderbot.git
+          echo "Debug: Environment created successfully."
+          # Add any other debugging information as needed
 
       - name: Update execution environment
         run: mamba env update -n ${{ inputs.environment_name }} -f ${{ inputs.environment_file }}
