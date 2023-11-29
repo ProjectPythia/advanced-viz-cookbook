@@ -37,19 +37,7 @@ There are some plot types that are unique to atmospheric science such as Taylor 
 
 ### Visualization of Structured Grids
 
-In this section we will demonstrate how to visualize data that is on a structured grid. Here we will have workflows that utilize packages such as [`cartopy`](https://scitools.org.uk/cartopy/docs/latest/) and [`geocat-viz`](https://geocat-viz.readthedocs.io/en/latest/).
-
-### Visualization of Unstructured Grids
-
-There are lots of compelling reasons to use unstructured data. In this section we will go over these points and demonstrate how to visualizate unstructured grids using [`uxarray`](https://uxarray.readthedocs.io/en/latest/).
-
-### Interactive Visualization
-
-Some plots allow users to iteract with them by toggling certain constants or changing the viewing angle. Here we use [`datashader`](ttps://datashader.org/) to iteract with some plots.
-
-### 3D Visualization
-
-A lot of geoscience data is 3-dimensional. Here we discuss tools such as [`vapor`](https://www.vapor.ucar.edu/) that are designed for multidimensional data visualization. 
+In this section we will demonstrate how to visualize data that is on a structured grid. Namely, we will look at Spagetti Hurricane plots. Here we will have workflows that utilize packages such as [`cartopy`](https://scitools.org.uk/cartopy/docs/latest/) and [`geocat-viz`](https://geocat-viz.readthedocs.io/en/latest/).
 
 ### Animation
 
