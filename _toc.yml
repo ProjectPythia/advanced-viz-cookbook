@@ -18,7 +18,7 @@ parts:
       - file: notebooks/spagetti
   - caption: Interactive Visualization
     chapters:
-      - file: notebooks/mpas-datshader
+      - file: notebooks/mpas-datashader
   - caption: Animation
     chapters:
       - file: notebooks/animation
