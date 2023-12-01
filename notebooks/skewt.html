@@ -374,13 +374,13 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-a-skew-t-plot">
-   What is a Skew-T plot?
+  <a class="reference internal nav-link" href="#elements-of-a-skew-t-plot">
+   Elements of a Skew-T Plot
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#elements-of-a-skew-t-plot">
-   Elements of a Skew-T Plot
+  <a class="reference internal nav-link" href="#acquiring-sounding-data">
+   Acquiring Sounding Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -437,9 +437,12 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <h1>Skew T Diagrams<a class="headerlink" href="#skew-t-diagrams" title="Permalink to this headline"><i class="fas fa-link"></i></a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
-<p>Summary text here</p>
+<p>Skew-T plots are effective thermodynamic diagrams used in meteorology. They display data collected from radiosonde balloons collecting atmospheric data including pressure level, temperature, relative humidity, and wind speed and direction.</p>
+<p>In this notebook, we’ll learn about the structural and data components of Skew-T diagrams and how to plot them in Python using the <a class="reference external" href="https://unidata.github.io/MetPy/latest/index.html"><code class="docutils literal notranslate"><span class="pre">MetPy</span></code></a> package.</p>
 <ol class="arabic simple">
-<li></li>
+<li><p>Elements of a Skew-T Diagram</p></li>
+<li><p>Acquiring Sounding Data</p></li>
+<li><p>Making a Skew-T plot in Python (with MetPy!)</p></li>
 </ol>
 </div>
 <div class="section" id="prerequisites">
@@ -452,23 +455,40 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="xref myst"></span></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib.html">Matplotlib</a></p></td>
 <td><p>Necessary</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://unidata.github.io/MetPy/latest/index.html">Metpy</a></p></td>
+<td><p>Useful</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 <ul class="simple">
-<li><p><strong>Time to learn</strong>: X minutes</p></li>
+<li><p><strong>Time to learn</strong>: 30 minutes</p></li>
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="what-is-a-skew-t-plot">
-<h2>What is a Skew-T plot?<a class="headerlink" href="#what-is-a-skew-t-plot" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="section" id="elements-of-a-skew-t-plot">
+<h2>Elements of a Skew-T Plot<a class="headerlink" href="#elements-of-a-skew-t-plot" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>Let’s start out by talking about the structural elements of a Skew-T plot.</p>
+<ol class="arabic simple">
+<li><p><strong>Temperature Lines</strong> are drawn at an angle up from the x-axis and are where the name “Skew-T” comes from.</p></li>
+<li><p><strong>Pressure Lines</strong> are horizontal from the y-axis, where pressure is plotted at a logarithmic scale.</p></li>
+<li><p><strong>Dry Adiabats</strong>: are lines of constant potential temperature.</p></li>
+<li><p><strong>Moist Adiabats</strong>: are lines of constant equivalent potential temperature.</p></li>
+<li><p><strong>Mixing Ratio Lines</strong>: represent lines of constant mixing ratio.</p></li>
+</ol>
+<p>On all those structural elements, Skew-T plots have two lines plotted on them, <strong>air temperature</strong> and <strong>dew point</strong>. In this notebook, we’ll be plotting the air temperature in red and the dew point in blue.</p>
+<p>Additionally, Skew-T plots have <strong>wind barbs</strong>. These describe the wind speed and direction at different pressure levels and are plotted on the right side of the diagram.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For a more detailed description and a cool interactive diagram, visit <a class="reference external" href="https://www.noaa.gov/jetstream/upperair/skew-t-log-p-diagrams">NOAA’s Skew-T page</a>.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">from</span> <span class="nn">metpy.plots</span> <span class="kn">import</span> <span class="n">SkewT</span>
@@ -477,6 +497,9 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="acquiring-sounding-data">
+<h2>Acquiring Sounding Data<a class="headerlink" href="#acquiring-sounding-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
 <p>If you want to get your own sounding data, run the following code in a new cell using the date and station of your choice:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">siphon.simplewebservice.wyoming</span> <span class="kn">import</span> <span class="n">WyomingUpperAir</span>
@@ -746,23 +769,6 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 </div>
-<div class="section" id="elements-of-a-skew-t-plot">
-<h2>Elements of a Skew-T Plot<a class="headerlink" href="#elements-of-a-skew-t-plot" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
-<p>Let’s start out by talking about the structural elements of a Skew-T plot.</p>
-<ol class="arabic simple">
-<li><p><strong>Temperature Lines</strong> are drawn at an angle up from the x-axis and are where the name “Skew-T” comes from.</p></li>
-<li><p><strong>Pressure Lines</strong> are horizontal from the y-axis, where pressure is plotted at a logarithmic scale.</p></li>
-<li><p><strong>Dry Adiabats</strong>: are lines of constant potential temperature.</p></li>
-<li><p><strong>Moist Adiabats</strong>: are lines of constant equivalent potential temperature.</p></li>
-<li><p><strong>Mixing Ratio Lines</strong>: represent lines of constant mixing ratio.</p></li>
-</ol>
-<p>On all those structural elements, Skew-T plots have two lines plotted on them, <strong>air temperature</strong> and <strong>dew point</strong>. In this notebook, we’ll be plotting the air temperature in red and the dew point in blue.</p>
-<p>Additionally, Skew-T plots have <strong>wind barbs</strong>. These describe the wind speed and direction at different pressure levels and are plotted on the right side of the diagram.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>For a more detailed description and a cool interactive diagram, visit <a class="reference external" href="https://www.noaa.gov/jetstream/upperair/skew-t-log-p-diagrams">NOAA’s Skew-T page</a>.</p>
-</div>
-</div>
 <div class="section" id="making-a-skew-t-plot-in-python-with-metpy">
 <h2>Making a Skew-T plot in Python (with MetPy!)<a class="headerlink" href="#making-a-skew-t-plot-in-python-with-metpy" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
 <p>So, all of that might seem a little abstract without a visual. We’re going to use MetPy’s SkewT module to make an actual Skew-T plot with the sounding data we downloaded earlier.</p>
@@ -787,7 +793,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7f2503e06320&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7f4059e8ddb0&gt;
 </pre></div>
 </div>
 <img alt="../_images/bc560ea12d56e0c15ca7e650513440ed72235cc49c197dac5d546afdc57266ed.png" src="../_images/bc560ea12d56e0c15ca7e650513440ed72235cc49c197dac5d546afdc57266ed.png" />
@@ -800,7 +806,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </pre></div>
 </div>
 <p>First, we made a new figure and used it to make a new skew-T plot. If you don’t provide a figure to <code class="docutils literal notranslate"><span class="pre">SkewT</span></code>, one will be created for you, but it’s useful to make the default figure size a bit larger for this tutorial.</p>
-<p>Additionally, we’ve also set the <code class="docutils literal notranslate"><span class="pre">rotation</span></code> kwarg to be 45 degrees. This is the angle that the temperature lines will be drawn at. Metpy’s default is 30 degrees, but we’re going to use a more traditional 45 degrees for this tutorial.</p>
+<p>Additionally, we’ve also set the <code class="docutils literal notranslate"><span class="pre">rotation</span></code> kwarg to be 45 degrees. This is the angle that the temperature lines will be drawn at. <code class="docutils literal notranslate"><span class="pre">MetPy</span></code>’s default is 30 degrees, but we’re going to use a more traditional 45 degrees for this tutorial.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 ```python
 # plot sounding data
@@ -837,7 +843,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f255a4ffa90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f40519717e0&gt;
 </pre></div>
 </div>
 <img alt="../_images/86c3a5f65e42549211a4de1e65558fa5c226666783b2ade1e29573a6a2ac3107.png" src="../_images/86c3a5f65e42549211a4de1e65558fa5c226666783b2ade1e29573a6a2ac3107.png" />
@@ -900,9 +906,10 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
-<p>Skew-T plots are effective thermodynamic diagrams used in meteorology. MetPy’s <code class="docutils literal notranslate"><span class="pre">SkewT</span></code> module provides a convenient way to make Skew-T plots in Python.</p>
+<p>Skew-T plots are a useful tool for visualizing and understanding sounding data. Creating Skew-T plots in python might seem challenging given their unique structural characteristics, but <code class="docutils literal notranslate"><span class="pre">MetPy</span></code>’s <code class="docutils literal notranslate"><span class="pre">SkewT</span></code> module greatly simplifies the process.</p>
 <div class="section" id="whats-next">
 <h3>What’s next?<a class="headerlink" href="#whats-next" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<p>Next up let’s discuss <a class="reference internal" href="spagetti.html"><span class="doc std std-doc">spagetti plots</span></a>.</p>
 </div>
 </div>
 <div class="section" id="resources-and-references">
@@ -911,7 +918,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 <li><p><a class="reference external" href="https://weather.uwyo.edu/upperair/">Wyoming Upper Air</a></p></li>
 <li><p><a class="reference external" href="https://unidata.github.io/siphon/latest/examples/upperair/Wyoming_Request.html">Siphon</a></p></li>
 <li><p><a class="reference external" href="https://unidata.github.io/MetPy/latest/api/generated/metpy.plots.SkewT.html">MetPy’s SkewT documentation</a></p></li>
-<li><p><a class="reference external" href="https://www.noaa.gov/jetstream">NOAA’s JetStream</a> <a class="reference external" href="https://www.noaa.gov/jetstream/upperair/skew-t-plots">Skew-T Plot</a> Section</p></li>
+<li><p><a class="reference external" href="https://www.noaa.gov/jetstream">NOAA’s JetStream</a>’s <a class="reference external" href="https://www.noaa.gov/jetstream/upperair/skew-t-plots">Skew-T Plot</a> page</p></li>
 </ul>
 </div>
 </div>
@@ -998,7 +1005,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 30 November 2023.
+          Last updated on 1 December 2023.
         </p>
       </div>
     </div>
