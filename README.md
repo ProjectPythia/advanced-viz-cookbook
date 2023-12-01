@@ -37,7 +37,7 @@ There are some plot types that are unique to atmospheric science such as Taylor 
 
 ### Visualization of Structured Grids
 
-In this section we will demonstrate how to visualize data that is on a structured grid. Namely, we will look at Spagetti Hurricane plots. Here we will have workflows that utilize packages such as [`cartopy`](https://scitools.org.uk/cartopy/docs/latest/) and [`geocat-viz`](https://geocat-viz.readthedocs.io/en/latest/).
+In this section we will demonstrate how to visualize data that is on a structured grid. Namely, we will look at Spaghetti Hurricane plots. Here we will have workflows that utilize packages such as [`cartopy`](https://scitools.org.uk/cartopy/docs/latest/) and [`geocat-viz`](https://geocat-viz.readthedocs.io/en/latest/).
 
 ### Animation
 

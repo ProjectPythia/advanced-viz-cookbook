@@ -15,7 +15,7 @@ parts:
       - file: notebooks/skewt
   - caption: Visualization of Structured Grids
     chapters:
-      - file: notebooks/spagetti
+      - file: notebooks/spaghetti
   - caption: Interactive Visualization
     chapters:
       - file: notebooks/mpas-datshader
