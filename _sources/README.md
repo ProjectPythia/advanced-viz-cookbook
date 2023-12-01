@@ -15,7 +15,7 @@ This Cookbook will house various visualization workflow examples that use differ
 
 ## Authors
 
-[Julia Kent](@jukent), [John Clyne](@clyne)
+[Julia Kent](@jukent), [Anissa Zacharias](@anissa111)
 
 ### Contributors
 
