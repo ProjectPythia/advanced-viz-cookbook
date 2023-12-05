@@ -9,13 +9,13 @@ This Project Pythia Cookbook covers advanced visualization techniques building u
 
 ## Motivation
 
-The possibilities of data visualization in Python are almost endless. Already using `matplotlib` the workhorse behind many visualization packages, the user has a lot of customization options available to them. `cartopy`,  `metpy`, `seaborn`, `geocat-viz`, and `datashader` are all also great packages that can offer unique additions to your Python visualization toolbox.
+The possibilities of data visualization in Python are almost endless. Already using `matplotlib` the workhorse behind many visualization packages, the user has a lot of customization options available to them. `cartopy`, `metpy`, `seaborn`, `geocat-viz`, and `datashader` are all also great packages that can offer unique additions to your Python visualization toolbox.
 
-This Cookbook will house various visualization workflow examples that use different visualization packages, highlight the differences in functionality between the packages, any noteable syntax distinctions, and demonstrate combining tools to achieve a specific outcome. 
+This Cookbook will house various visualization workflow examples that use different visualization packages, highlight the differences in functionality between the packages, any noteable syntax distinctions, and demonstrate combining tools to achieve a specific outcome.
 
 ## Authors
 
-[Julia Kent](@jukent), [Anissa Zacharias](@anissa111)
+[Julia Kent](@jukent), [Anissa Zacharias](@anissa111), [Orhan Eroglu](@erogluorhan), [Philip Chmielowiec](@philipc2), [John Clyne](@clyne)
 
 ### Contributors
 
@@ -42,6 +42,10 @@ In this section we will demonstrate how to visualize data that is on a structure
 ### Animation
 
 Animated plots are great tools for science communication and outreach. We will demonstrate how to make your plots come to life. In this book, we use "animated plots" to refer to stable animations, such as the creation of gifs or videos.
+
+### Interactivity
+
+Dynamically rendering, animating, panning & zooming over a plot can be great to increase data fidelity. We will showcase how to use Holoviz technologies with Bokeh backend to create interactive plots, utilizing an unstructured grid data in the Model for Prediction Across Scales (MPAS) format.
 
 ## Running the Notebooks
 
