@@ -43,7 +43,7 @@ In this section we will demonstrate how to visualize data that is on a structure
 
 Animated plots are great tools for science communication and outreach. We will demonstrate how to make your plots come to life. In this book, we use "animated plots" to refer to stable animations, such as the creation of gifs or videos.
 
-### Interactive Visualization
+### Interactivity
 
 Dynamically rendering, animating, panning & zooming over a plot can be great to increase data fidelity. We will showcase how to use Holoviz technologies with Bokeh backend to create interactive plots, utilizing an unstructured grid data in the Model for Prediction Across Scales (MPAS) format.
 

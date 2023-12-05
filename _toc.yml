@@ -19,6 +19,6 @@ parts:
   - caption: Animation
     chapters:
       - file: notebooks/animation
-  - caption: Interactive Visualization
+  - caption: Interactivity
     chapters:
       - file: notebooks/interactive-holoviz-mpas
