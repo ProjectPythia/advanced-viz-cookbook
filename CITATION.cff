@@ -11,6 +11,21 @@ authors:
     orcid: https://orcid.org/0000-0002-2666-8493
     website: https://github.com/anissa111
     affiliation: UCAR/NCAR
+  - family-names: Eroglu
+    given-names: Orhan
+    orcid: https://orcid.org/0000-0003-3099-8775
+    website: https://github.com/erogluorhan
+    affiliation: UCAR/NCAR
+  - family-names: Chmielowiec
+    given-names: Philip
+    orcid: 
+    website: https://github.com/philipc2
+    affiliation: UCAR/NCAR
+  - family-names: Clyne
+    given-names: John
+    orcid: https://orcid.org/0000-0003-2788-9017
+    website: https://github.com/clyne
+    affiliation: UCAR/NCAR
   - name: "Advanced Visualization Cookbook contributors" # use the 'name' field to acknowledge organizations
     website: "https://github.com/ProjectPythia/advanced-viz-cookbook/graphs/contributors"
 title: "Advanced Visualization Cookbook"

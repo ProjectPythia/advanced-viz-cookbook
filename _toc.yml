@@ -6,9 +6,9 @@ parts:
       - file: notebooks/how-to-cite
   - caption: Basics of Geoscience Visualization
     chapters:
-    - file: notebooks/comparison
-    - file: notebooks/good-viz
-    - file: notebooks/plot-elements
+      - file: notebooks/comparison
+      - file: notebooks/good-viz
+      - file: notebooks/plot-elements
   - caption: Specialty Plots
     chapters:
       - file: notebooks/taylor-diagrams
@@ -16,9 +16,9 @@ parts:
   - caption: Visualization of Structured Grids
     chapters:
       - file: notebooks/spaghetti
-  - caption: Interactive Visualization
-    chapters:
-      - file: notebooks/mpas-datshader
   - caption: Animation
     chapters:
       - file: notebooks/animation
+  - caption: Interactivity
+    chapters:
+      - file: notebooks/interactive-holoviz-mpas
