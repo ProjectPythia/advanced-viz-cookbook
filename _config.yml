@@ -2,6 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Advanced Visualization Cookbook
+description: Advanced visualization techniques building upon and combining various Python packages.
 author: the <a href="https://projectpythia.org/">Project Pythia</a> Community
 logo: notebooks/images/logos/pythia_logo-white-rtext.svg
 copyright: "2023"
