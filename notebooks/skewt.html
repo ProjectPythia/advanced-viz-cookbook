@@ -418,6 +418,11 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#additional-skew-t-options">
+   Additional Skew-T Options
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -501,10 +506,12 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">metpy.plots</span> <span class="kn">import</span> <span class="n">SkewT</span>
+<span class="kn">from</span> <span class="nn">metpy.plots</span> <span class="kn">import</span> <span class="n">SkewT</span><span class="p">,</span> <span class="n">Hodograph</span>
 <span class="kn">import</span> <span class="nn">metpy.calc</span> <span class="k">as</span> <span class="nn">mpcalc</span>
+<span class="kn">from</span> <span class="nn">metpy.units</span> <span class="kn">import</span> <span class="n">units</span>
 </pre></div>
 </div>
 </div>
@@ -516,15 +523,15 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">siphon.simplewebservice.wyoming</span> <span class="kn">import</span> <span class="n">WyomingUpperAir</span>
 
-<span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-<span class="n">station</span> <span class="o">=</span> <span class="s1">&#39;GJT&#39;</span>
+<span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">station</span> <span class="o">=</span> <span class="s1">&#39;JAX&#39;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">WyomingUpperAir</span><span class="o">.</span><span class="n">request_data</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">station</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We’ve already done this for you and saved the data in a file, <code class="docutils literal notranslate"><span class="pre">notebooks/data/gjt_sounding.csv</span></code> for you to use. We’ll use that file’s data for the rest of the notebook</p>
+<p>We’ve already done this for you and saved the data in a file, <code class="docutils literal notranslate"><span class="pre">notebooks/data/jax_sounding.csv</span></code> for you to use. We’ll use that file’s data for the rest of the notebook</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/gjt_sounding.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/jax_sounding.csv&#39;</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -568,93 +575,93 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
   <tbody>
     <tr>
       <th>0</th>
-      <td>853.0</td>
-      <td>1475</td>
-      <td>5.2</td>
-      <td>2.0</td>
-      <td>305.0</td>
-      <td>3.0</td>
-      <td>2.457456</td>
-      <td>-1.720729</td>
-      <td>GJT</td>
-      <td>72476</td>
-      <td>2023-11-20 12:00:00</td>
-      <td>39.11</td>
-      <td>-108.53</td>
-      <td>1475.0</td>
-      <td>9.12</td>
+      <td>1012.0</td>
+      <td>9.0</td>
+      <td>24.8</td>
+      <td>23.6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>JAX</td>
+      <td>72206</td>
+      <td>2023-07-07</td>
+      <td>30.5</td>
+      <td>-81.7</td>
+      <td>9.0</td>
+      <td>58.42</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>850.0</td>
-      <td>1508</td>
-      <td>7.2</td>
-      <td>1.2</td>
-      <td>280.0</td>
-      <td>13.0</td>
-      <td>12.802501</td>
-      <td>-2.257426</td>
-      <td>GJT</td>
-      <td>72476</td>
-      <td>2023-11-20 12:00:00</td>
-      <td>39.11</td>
-      <td>-108.53</td>
-      <td>1475.0</td>
-      <td>9.12</td>
+      <td>1003.0</td>
+      <td>88.0</td>
+      <td>26.3</td>
+      <td>22.6</td>
+      <td>210</td>
+      <td>14</td>
+      <td>7.000000</td>
+      <td>12.124356</td>
+      <td>JAX</td>
+      <td>72206</td>
+      <td>2023-07-07</td>
+      <td>30.5</td>
+      <td>-81.7</td>
+      <td>9.0</td>
+      <td>58.42</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>848.0</td>
-      <td>1527</td>
-      <td>7.4</td>
-      <td>1.4</td>
-      <td>287.0</td>
-      <td>13.0</td>
-      <td>12.431962</td>
-      <td>-3.800832</td>
-      <td>GJT</td>
-      <td>72476</td>
-      <td>2023-11-20 12:00:00</td>
-      <td>39.11</td>
-      <td>-108.53</td>
-      <td>1475.0</td>
-      <td>9.12</td>
+      <td>1000.0</td>
+      <td>115.0</td>
+      <td>26.8</td>
+      <td>22.2</td>
+      <td>210</td>
+      <td>14</td>
+      <td>7.000000</td>
+      <td>12.124356</td>
+      <td>JAX</td>
+      <td>72206</td>
+      <td>2023-07-07</td>
+      <td>30.5</td>
+      <td>-81.7</td>
+      <td>9.0</td>
+      <td>58.42</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>831.0</td>
-      <td>1693</td>
-      <td>6.4</td>
-      <td>-2.6</td>
-      <td>350.0</td>
-      <td>15.0</td>
-      <td>2.604723</td>
-      <td>-14.772116</td>
-      <td>GJT</td>
-      <td>72476</td>
-      <td>2023-11-20 12:00:00</td>
-      <td>39.11</td>
-      <td>-108.53</td>
-      <td>1475.0</td>
-      <td>9.12</td>
+      <td>993.0</td>
+      <td>177.0</td>
+      <td>26.8</td>
+      <td>21.8</td>
+      <td>200</td>
+      <td>14</td>
+      <td>4.788282</td>
+      <td>13.155697</td>
+      <td>JAX</td>
+      <td>72206</td>
+      <td>2023-07-07</td>
+      <td>30.5</td>
+      <td>-81.7</td>
+      <td>9.0</td>
+      <td>58.42</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>820.0</td>
-      <td>1802</td>
-      <td>5.4</td>
-      <td>-2.8</td>
-      <td>10.0</td>
-      <td>13.0</td>
-      <td>-2.257426</td>
-      <td>-12.802501</td>
-      <td>GJT</td>
-      <td>72476</td>
-      <td>2023-11-20 12:00:00</td>
-      <td>39.11</td>
-      <td>-108.53</td>
-      <td>1475.0</td>
-      <td>9.12</td>
+      <td>986.0</td>
+      <td>240.0</td>
+      <td>26.6</td>
+      <td>20.8</td>
+      <td>190</td>
+      <td>14</td>
+      <td>2.431074</td>
+      <td>13.787309</td>
+      <td>JAX</td>
+      <td>72206</td>
+      <td>2023-07-07</td>
+      <td>30.5</td>
+      <td>-81.7</td>
+      <td>9.0</td>
+      <td>58.42</td>
     </tr>
     <tr>
       <th>...</th>
@@ -675,103 +682,104 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
       <td>...</td>
     </tr>
     <tr>
-      <th>147</th>
-      <td>13.4</td>
-      <td>28951</td>
-      <td>-55.7</td>
-      <td>-85.7</td>
-      <td>53.0</td>
-      <td>17.0</td>
-      <td>-13.576804</td>
-      <td>-10.230855</td>
-      <td>GJT</td>
-      <td>72476</td>
-      <td>2023-11-20 12:00:00</td>
-      <td>39.11</td>
-      <td>-108.53</td>
-      <td>1475.0</td>
-      <td>9.12</td>
+      <th>130</th>
+      <td>11.0</td>
+      <td>30681.0</td>
+      <td>-45.0</td>
+      <td>-79.0</td>
+      <td>70</td>
+      <td>29</td>
+      <td>-27.251086</td>
+      <td>-9.918584</td>
+      <td>JAX</td>
+      <td>72206</td>
+      <td>2023-07-07</td>
+      <td>30.5</td>
+      <td>-81.7</td>
+      <td>9.0</td>
+      <td>58.42</td>
     </tr>
     <tr>
-      <th>148</th>
-      <td>13.0</td>
-      <td>29144</td>
-      <td>-55.5</td>
-      <td>-85.5</td>
-      <td>75.0</td>
-      <td>20.0</td>
-      <td>-19.318517</td>
-      <td>-5.176381</td>
-      <td>GJT</td>
-      <td>72476</td>
-      <td>2023-11-20 12:00:00</td>
-      <td>39.11</td>
-      <td>-108.53</td>
-      <td>1475.0</td>
-      <td>9.12</td>
+      <th>131</th>
+      <td>10.4</td>
+      <td>31057.0</td>
+      <td>-44.3</td>
+      <td>-78.3</td>
+      <td>79</td>
+      <td>33</td>
+      <td>-32.393697</td>
+      <td>-6.296697</td>
+      <td>JAX</td>
+      <td>72206</td>
+      <td>2023-07-07</td>
+      <td>30.5</td>
+      <td>-81.7</td>
+      <td>9.0</td>
+      <td>58.42</td>
     </tr>
     <tr>
-      <th>149</th>
-      <td>12.7</td>
-      <td>29293</td>
-      <td>-55.3</td>
-      <td>-85.3</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>GJT</td>
-      <td>72476</td>
-      <td>2023-11-20 12:00:00</td>
-      <td>39.11</td>
-      <td>-108.53</td>
-      <td>1475.0</td>
-      <td>9.12</td>
+      <th>132</th>
+      <td>10.0</td>
+      <td>31320.0</td>
+      <td>-44.7</td>
+      <td>-78.7</td>
+      <td>85</td>
+      <td>36</td>
+      <td>-35.863009</td>
+      <td>-3.137607</td>
+      <td>JAX</td>
+      <td>72206</td>
+      <td>2023-07-07</td>
+      <td>30.5</td>
+      <td>-81.7</td>
+      <td>9.0</td>
+      <td>58.42</td>
     </tr>
     <tr>
-      <th>150</th>
-      <td>12.1</td>
-      <td>29601</td>
-      <td>-55.5</td>
-      <td>-85.5</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>GJT</td>
-      <td>72476</td>
-      <td>2023-11-20 12:00:00</td>
-      <td>39.11</td>
-      <td>-108.53</td>
-      <td>1475.0</td>
-      <td>9.12</td>
+      <th>133</th>
+      <td>9.4</td>
+      <td>31735.0</td>
+      <td>-43.7</td>
+      <td>-77.7</td>
+      <td>85</td>
+      <td>37</td>
+      <td>-36.859204</td>
+      <td>-3.224762</td>
+      <td>JAX</td>
+      <td>72206</td>
+      <td>2023-07-07</td>
+      <td>30.5</td>
+      <td>-81.7</td>
+      <td>9.0</td>
+      <td>58.42</td>
     </tr>
     <tr>
-      <th>151</th>
-      <td>12.0</td>
-      <td>29654</td>
-      <td>-55.7</td>
-      <td>-85.7</td>
+      <th>134</th>
+      <td>9.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>GJT</td>
-      <td>72476</td>
-      <td>2023-11-20 12:00:00</td>
-      <td>39.11</td>
-      <td>-108.53</td>
-      <td>1475.0</td>
-      <td>9.12</td>
+      <td>85</td>
+      <td>37</td>
+      <td>-36.859204</td>
+      <td>-3.224762</td>
+      <td>JAX</td>
+      <td>72206</td>
+      <td>2023-07-07</td>
+      <td>30.5</td>
+      <td>-81.7</td>
+      <td>9.0</td>
+      <td>58.42</td>
     </tr>
   </tbody>
 </table>
-<p>152 rows × 15 columns</p>
+<p>135 rows × 15 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">Td</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;dewpoint&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">u</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;u_wind&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -798,17 +806,17 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <span class="n">skewt</span> <span class="o">=</span> <span class="n">SkewT</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 
 <span class="c1"># plot sounding data</span>
-<span class="n">skewt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># air temperature</span>
-<span class="n">skewt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Td</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span> <span class="c1"># dew point</span>
-<span class="n">skewt</span><span class="o">.</span><span class="n">plot_barbs</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="c1"># wind barbs</span>
+<span class="n">skewt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>  <span class="c1"># air temperature</span>
+<span class="n">skewt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Td</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>  <span class="c1"># dew point</span>
+<span class="n">skewt</span><span class="o">.</span><span class="n">plot_barbs</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">])</span>  <span class="c1"># wind barbs</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7fa0db889960&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7fef199efe50&gt;
 </pre></div>
 </div>
-<img alt="../_images/bc560ea12d56e0c15ca7e650513440ed72235cc49c197dac5d546afdc57266ed.png" src="../_images/bc560ea12d56e0c15ca7e650513440ed72235cc49c197dac5d546afdc57266ed.png" />
+<img alt="../_images/4fa7013a610502c2a115cf152e78a8ae22ba52688bb77d09db2291662c1e6be6.png" src="../_images/4fa7013a610502c2a115cf152e78a8ae22ba52688bb77d09db2291662c1e6be6.png" />
 </div>
 </div>
 <p>Let’s talk break that down a bit.</p>
@@ -827,10 +835,10 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 </pre></div>
 </div>
 <p>For air temperature and dew point, we can use the standard <code class="docutils literal notranslate"><span class="pre">plot</span></code> method. The <code class="docutils literal notranslate"><span class="pre">SkewT</span></code> object provides a wrapper around matplotlib’s <code class="docutils literal notranslate"><span class="pre">plot</span></code> method, and can be used in the same way. Note that even though pressure is on the y-axis, we still provide it as the first argument to <code class="docutils literal notranslate"><span class="pre">plot</span></code> because it is the independent variable.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">skewt</span><span class="o">.</span><span class="n">plot_barbs</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="c1"># wind barbs</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">skewt</span><span class="o">.</span><span class="n">plot_barbs</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">])</span> <span class="c1"># wind barbs</span>
 </pre></div>
 </div>
-<p>Finally, we use <code class="docutils literal notranslate"><span class="pre">SkewT</span></code>’s <a class="reference external" href="https://unidata.github.io/MetPy/latest/api/generated/metpy.plots.SkewT.html#metpy.plots.SkewT.plot_barbs"><code class="docutils literal notranslate"><span class="pre">plot_barbs</span></code></a> method to add the wind barbs to the right side of the plot. This is a wrapper around matplotlib’s <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.barbs.html#matplotlib.pyplot.barbs"><code class="docutils literal notranslate"><span class="pre">barbs</span></code></a> method that applies the appropriate transformation and positions the barbs as expected for a Skew-T plot.</p>
+<p>Finally, we use <code class="docutils literal notranslate"><span class="pre">SkewT</span></code>’s <a class="reference external" href="https://unidata.github.io/MetPy/latest/api/generated/metpy.plots.SkewT.html#metpy.plots.SkewT.plot_barbs"><code class="docutils literal notranslate"><span class="pre">plot_barbs</span></code></a> method to add the wind barbs to the right side of the plot. This is a wrapper around matplotlib’s <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.barbs.html#matplotlib.pyplot.barbs"><code class="docutils literal notranslate"><span class="pre">barbs</span></code></a> method that applies the appropriate transformation and positions the barbs as expected for a Skew-T plot. Note that we only plot the wind barbs for pressure levels greater than 100 hPa. This is just to keep the wind barbs from extending off the plot.</p>
 <p>In addition to the elements we have added specifically, you can see that the <code class="docutils literal notranslate"><span class="pre">SkewT</span></code> object also added some of the structural elements we discussed previously. By default, <code class="docutils literal notranslate"><span class="pre">SkewT</span></code> adds the horizontal pressure and skewed temperature lines.</p>
 </div>
 <div class="section" id="adding-more-structural-elements">
@@ -845,7 +853,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 <span class="c1"># plot sounding data</span>
 <span class="n">skewt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># air temperature</span>
 <span class="n">skewt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Td</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span> <span class="c1"># dew point</span>
-<span class="n">skewt</span><span class="o">.</span><span class="n">plot_barbs</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="c1"># wind barbs</span>
+<span class="n">skewt</span><span class="o">.</span><span class="n">plot_barbs</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">])</span>  <span class="c1"># wind barbs</span>
 
 <span class="c1"># add dry adiabats, moist adiabats, and mixing ratio lines</span>
 <span class="n">skewt</span><span class="o">.</span><span class="n">plot_dry_adiabats</span><span class="p">()</span>
@@ -855,10 +863,10 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7fa0d336d360&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7fef1147ee30&gt;
 </pre></div>
 </div>
-<img alt="../_images/86c3a5f65e42549211a4de1e65558fa5c226666783b2ade1e29573a6a2ac3107.png" src="../_images/86c3a5f65e42549211a4de1e65558fa5c226666783b2ade1e29573a6a2ac3107.png" />
+<img alt="../_images/243f8c158e9e5fd92b50c00b4c9d2fda8dc6218fb39ddfc0a45c07babd3f0230.png" src="../_images/243f8c158e9e5fd92b50c00b4c9d2fda8dc6218fb39ddfc0a45c07babd3f0230.png" />
 </div>
 </div>
 <p>Similarly to the <code class="docutils literal notranslate"><span class="pre">plot_barbs</span></code> command, the <code class="docutils literal notranslate"><span class="pre">SkewT</span></code> object provides convenient methods for adding the remaining structural elements to the plot.</p>
@@ -891,7 +899,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 <span class="n">skewt</span><span class="o">.</span><span class="n">plot_mixing_lines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="c1"># add axis and figure titles</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;station&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;station&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;temperature (degC)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;pressure (hPa)&#39;</span><span class="p">)</span>
 </pre></div>
@@ -901,7 +909,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;pressure (hPa)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/aa441aeeac93c776fb392a3a328fbf8eaeb562aa2efa5ea7ecb81ab2ed5ea5f6.png" src="../_images/aa441aeeac93c776fb392a3a328fbf8eaeb562aa2efa5ea7ecb81ab2ed5ea5f6.png" />
+<img alt="../_images/7e5984d7505483da819870bcfa11799f1dd8a255ec3258d267c6dc10957bbc8f.png" src="../_images/7e5984d7505483da819870bcfa11799f1dd8a255ec3258d267c6dc10957bbc8f.png" />
 </div>
 </div>
 <p>Here, we’ve made the following changes:</p>
@@ -909,11 +917,72 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 <li><p>changed the figsize to <code class="docutils literal notranslate"><span class="pre">figsize=(8,12)</span></code></p></li>
 <li><p>removed the <code class="docutils literal notranslate"><span class="pre">rotation</span></code> kwarg from the <code class="docutils literal notranslate"><span class="pre">SkewT</span></code> object to allow the upper air temp and dew point lines to be seen without being cut off or expanding the x-axis limits</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">skewt.ax.set_ylim(1000,</span> <span class="pre">10)</span></code>: sets the y-axis limits to 1000 hPa at the bottom and 10 hPa at the top to include the entire sounding</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">skewt.plot_barbs(p[::5],</span> <span class="pre">u[::5],</span> <span class="pre">v[::5])</span></code>: plots every fifth wind barb to reduce clutter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skewt.plot_barbs(p[::5],</span> <span class="pre">u[::5],</span> <span class="pre">v[::5])</span></code>: plots every fifth wind barb to reduce clutter, also removes limiting the wind barbs to pressure levels greater than 100 hPa</p></li>
 <li><p>reduced the linewidth of the dry adiabats, moist adiabats, and mixing ratio lines to 0.5</p></li>
 <li><p>added axes labels</p></li>
 <li><p>added a title including the station name and date of the sounding pulled from the data</p></li>
 </ul>
+</div>
+</div>
+<div class="section" id="additional-skew-t-options">
+<h2>Additional Skew-T Options<a class="headerlink" href="#additional-skew-t-options" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>There are a few additional options that can be used to customize the appearance of the Skew-T plot that we haven’t covered here. For more information, check out the <a class="reference external" href="https://unidata.github.io/MetPy/latest/api/generated/metpy.plots.SkewT.html">MetPy documentation</a>.</p>
+<p>Here’s a few quick examples of some of those additional options:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># set up some subplots</span>
+<span class="n">skewt_plots</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">skewt_plots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SkewT</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">subplot</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">))</span>
+    <span class="n">skewt_plots</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># air temperature</span>
+    <span class="n">skewt_plots</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Td</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span> <span class="c1"># dew point</span>
+    <span class="n">skewt_plots</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot_barbs</span><span class="p">(</span><span class="n">p</span><span class="p">[::</span><span class="mi">5</span><span class="p">],</span> <span class="n">u</span><span class="p">[::</span><span class="mi">5</span><span class="p">],</span> <span class="n">v</span><span class="p">[::</span><span class="mi">5</span><span class="p">],</span> <span class="n">length</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">skewt_plots</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot_dry_adiabats</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">skewt_plots</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot_moist_adiabats</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">skewt_plots</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot_mixing_lines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">skewt_plots</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">skewt_plots</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># calculate LCL and parcel profile</span>
+<span class="n">lcl_p</span><span class="p">,</span> <span class="n">lcl_t</span> <span class="o">=</span> <span class="n">mpcalc</span><span class="o">.</span><span class="n">lcl</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">hPa</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">,</span> <span class="n">Td</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">)</span>
+<span class="n">lcl_prof</span> <span class="o">=</span> <span class="n">mpcalc</span><span class="o">.</span><span class="n">parcel_profile</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">hPa</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">,</span> <span class="n">Td</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;degC&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># LCL and parcel profile skew-T</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LCL and Parcel Profile&#39;</span><span class="p">)</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lcl_prof</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lcl_p</span><span class="p">,</span> <span class="n">lcl_t</span><span class="p">,</span> <span class="s1">&#39;ko&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># add constant temperature line at t=0</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Constant T Line at 0$^\circ$C&#39;</span><span class="p">)</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># shade CAPE and CIN</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Shade CAPE and CIN&#39;</span><span class="p">)</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lcl_prof</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">shade_cin</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">hPa</span><span class="p">,</span> <span class="n">T</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">,</span> <span class="n">lcl_prof</span><span class="p">,</span> <span class="n">Td</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">)</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">shade_cape</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">hPa</span><span class="p">,</span> <span class="n">T</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">,</span> <span class="n">lcl_prof</span><span class="p">)</span>
+
+
+<span class="c1"># Hodograph</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Hodograph&#39;</span><span class="p">)</span>
+<span class="n">ax_hod</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="n">skewt_plots</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="s1">&#39;30%&#39;</span><span class="p">,</span> <span class="s1">&#39;30%&#39;</span><span class="p">)</span>
+<span class="n">hod</span> <span class="o">=</span> <span class="n">Hodograph</span><span class="p">(</span><span class="n">ax_hod</span><span class="p">,</span> <span class="n">component_range</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">hod</span><span class="o">.</span><span class="n">add_grid</span><span class="p">(</span><span class="n">increment</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">hod</span><span class="o">.</span><span class="n">plot_colormapped</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7fef103a9ab0&gt;
+</pre></div>
+</div>
+<img alt="../_images/82bc076970a1ae005ed93240fe887797ef94519ea6bb58fbc4a5f1a16912bfdf.png" src="../_images/82bc076970a1ae005ed93240fe887797ef94519ea6bb58fbc4a5f1a16912bfdf.png" />
+</div>
 </div>
 </div>
 <div class="section" id="summary">
@@ -1017,7 +1086,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 5 December 2023.
+          Last updated on 6 December 2023.
         </p>
       </div>
     </div>
