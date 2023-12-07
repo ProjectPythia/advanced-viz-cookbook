@@ -10,7 +10,7 @@ dependencies:
   - matplotlib
   - cartopy
   - metpy
-  - geocat-viz=2023.10.0
+  - geocat-viz>=2023.10.0
   - colorcet
   - hvplot
   - plotly
