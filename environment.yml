@@ -2,6 +2,7 @@ name: advanced-viz-cookbook
 channels:
   - conda-forge
 dependencies:
+  - python>=3.9,<3.12
   - jupyter-book
   - jupyterlab
   - jupyter_server
