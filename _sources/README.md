@@ -2,7 +2,7 @@
 
 # Advanced Visualization Cookbook
 
-[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook/main?labpath=notebooks)
+[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook.git/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/671205314.svg)](https://zenodo.org/badge/latestdoi/671205314)
 
 This Project Pythia Cookbook covers advanced visualization techniques building upon and combining various Python packages.
