@@ -15,7 +15,6 @@ dependencies:
   - hvplot
   - plotly
   - seaborn
-  - bokeh
   - uxarray
   - datashader
   - geocat-datafiles
