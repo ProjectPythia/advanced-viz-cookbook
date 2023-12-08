@@ -14,4 +14,4 @@ jobs:
 
   link-check:
     if: ${{ github.repository_owner == 'ProjectPythia' }}
-    uses: ProjectPythia/cookbook-actions/.github/workflows/link-checker.yaml@main
+    uses: link-checker.yaml@main
