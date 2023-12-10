@@ -493,9 +493,9 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <ol class="arabic simple">
 <li><p><strong>Temperature Lines</strong> are drawn at an angle up from the x-axis and are where the name “Skew-T” comes from.</p></li>
 <li><p><strong>Pressure Lines</strong> are horizontal from the y-axis, where pressure is plotted at a logarithmic scale.</p></li>
-<li><p><strong>Dry Adiabats</strong>: are lines of constant potential temperature.</p></li>
-<li><p><strong>Moist Adiabats</strong>: are lines of constant equivalent potential temperature.</p></li>
-<li><p><strong>Mixing Ratio Lines</strong>: represent lines of constant mixing ratio.</p></li>
+<li><p><strong>Dry Adiabats</strong>: are lines of constant potential temperature as hypotethical air with no moisture content rises isentropically (with constant entropy).</p></li>
+<li><p><strong>Moist Adiabats</strong>: are lines of constant equivalent potential temperature - the change in temperature of fully saturated air as it rises, undergoing cooling due to adiabatic expansion.</p></li>
+<li><p><strong>Mixing Ratio Lines</strong>: represent lines of constant mixing ratio, the mass of water vapor relative to the mass of dry air.</p></li>
 </ol>
 <p>On all those structural elements, Skew-T plots have two lines plotted on them, <strong>air temperature</strong> and <strong>dew point</strong>. In this notebook, we’ll be plotting the air temperature in red and the dew point in blue.</p>
 <p>Additionally, Skew-T plots have <strong>wind barbs</strong>. These describe the wind speed and direction at different pressure levels and are plotted on the right side of the diagram.</p>
@@ -813,7 +813,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7f0328ea2f10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7f57648a6590&gt;
 </pre></div>
 </div>
 <img alt="../_images/9f9ac4715094b098607f815e88f54353ff70c674665f9629e360cf9121dac391.png" src="../_images/9f9ac4715094b098607f815e88f54353ff70c674665f9629e360cf9121dac391.png" />
@@ -844,12 +844,6 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 <div class="section" id="adding-more-structural-elements">
 <h3>Adding more structural elements<a class="headerlink" href="#adding-more-structural-elements" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
 <p>Next, let’s add the rest of the structural elements to the plot.</p>
-<p>We’ll add:</p>
-<ul class="simple">
-<li><p><strong>Dry Adiabats</strong> which depict constant potential temperature as hypotethical air with no moisture content rises isentropically (with constant entropy).</p></li>
-<li><p><strong>Mosit Adiabats</strong> which depict the change in temperature of fully saturated air as it rises, undergoing cooling due to adiabatic expansion.</p></li>
-<li><p><strong>Mixing Ratios</strong> which depict the mass of water vapor relative to the mass of dry air (where it crosses with the dew point temperature line)</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make figure and `SkewT` object</span>
@@ -869,7 +863,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f0320aceb90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f5766282210&gt;
 </pre></div>
 </div>
 <img alt="../_images/e2bf3dda858cf58e88dacf442a15ae3519c6dcfecb7afb0485f80eaf1347dc64.png" src="../_images/e2bf3dda858cf58e88dacf442a15ae3519c6dcfecb7afb0485f80eaf1347dc64.png" />
@@ -984,7 +978,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f0320d8d390&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f575c44ec90&gt;
 </pre></div>
 </div>
 <img alt="../_images/689e19e6e0e54e549667bcd9456645dfe011911c5ea53e8661ff05ac56f27cf3.png" src="../_images/689e19e6e0e54e549667bcd9456645dfe011911c5ea53e8661ff05ac56f27cf3.png" />
