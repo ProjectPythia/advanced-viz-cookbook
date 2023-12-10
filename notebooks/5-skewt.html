@@ -813,7 +813,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7f57648a6590&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7f950b2bd8d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/9f9ac4715094b098607f815e88f54353ff70c674665f9629e360cf9121dac391.png" src="../_images/9f9ac4715094b098607f815e88f54353ff70c674665f9629e360cf9121dac391.png" />
@@ -863,7 +863,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f5766282210&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f9502e1db90&gt;
 </pre></div>
 </div>
 <img alt="../_images/e2bf3dda858cf58e88dacf442a15ae3519c6dcfecb7afb0485f80eaf1347dc64.png" src="../_images/e2bf3dda858cf58e88dacf442a15ae3519c6dcfecb7afb0485f80eaf1347dc64.png" />
@@ -951,9 +951,10 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 
 
 <span class="c1"># LCL and parcel profile skew-T</span>
+<span class="c1"># At what point an air parcel lifted as a dry parcel becomes saturated</span>
 <span class="n">skewt_plots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LCL and Parcel Profile&#39;</span><span class="p">)</span>
 <span class="n">skewt_plots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lcl_prof</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lcl_p</span><span class="p">,</span> <span class="n">lcl_t</span><span class="p">,</span> <span class="s1">&#39;ko&#39;</span><span class="p">)</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lcl_p</span><span class="p">,</span> <span class="n">lcl_t</span><span class="p">,</span> <span class="s1">&#39;ko&#39;</span><span class="p">)</span> <span class="c1"># Lifted Condensation Level </span>
 
 
 <span class="c1"># add constant temperature line at t=0</span>
@@ -962,13 +963,17 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 
 
 <span class="c1"># shade CAPE and CIN</span>
+<span class="c1"># Area above and below the Level of Free Convection  (LFC) - where the temeprature line crosses the moist adiabat</span>
+<span class="c1"># Updraft energy for thunderstorms (CAPE) and energy needed for the storm to start (CIN)</span>
 <span class="n">skewt_plots</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Shade CAPE and CIN&#39;</span><span class="p">)</span>
 <span class="n">skewt_plots</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lcl_prof</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">shade_cin</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">hPa</span><span class="p">,</span> <span class="n">T</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">,</span> <span class="n">lcl_prof</span><span class="p">,</span> <span class="n">Td</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">)</span>
-<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">shade_cape</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">hPa</span><span class="p">,</span> <span class="n">T</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">,</span> <span class="n">lcl_prof</span><span class="p">)</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">shade_cin</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">hPa</span><span class="p">,</span> <span class="n">T</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">,</span> <span class="n">lcl_prof</span><span class="p">,</span> <span class="n">Td</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">)</span>  <span class="c1"># Convective INhibition</span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">shade_cape</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">hPa</span><span class="p">,</span> <span class="n">T</span><span class="o">*</span><span class="n">units</span><span class="o">.</span><span class="n">degC</span><span class="p">,</span> <span class="n">lcl_prof</span><span class="p">)</span> <span class="c1"># Convective Available Potential Energy</span>
 
 
 <span class="c1"># Hodograph</span>
+<span class="c1">#  A line that connects the tips of wind vectors between two atmospheric heights</span>
+<span class="c1"># # Used for understanding wind sheer</span>
 <span class="n">skewt_plots</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Hodograph&#39;</span><span class="p">)</span>
 <span class="n">ax_hod</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="n">skewt_plots</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="s1">&#39;30%&#39;</span><span class="p">,</span> <span class="s1">&#39;30%&#39;</span><span class="p">)</span>
 <span class="n">hod</span> <span class="o">=</span> <span class="n">Hodograph</span><span class="p">(</span><span class="n">ax_hod</span><span class="p">,</span> <span class="n">component_range</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
@@ -978,7 +983,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f575c44ec90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f9502f2cc90&gt;
 </pre></div>
 </div>
 <img alt="../_images/689e19e6e0e54e549667bcd9456645dfe011911c5ea53e8661ff05ac56f27cf3.png" src="../_images/689e19e6e0e54e549667bcd9456645dfe011911c5ea53e8661ff05ac56f27cf3.png" />
