@@ -813,7 +813,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7fa6b68a7fd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7f148c0b85d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/9f9ac4715094b098607f815e88f54353ff70c674665f9629e360cf9121dac391.png" src="../_images/9f9ac4715094b098607f815e88f54353ff70c674665f9629e360cf9121dac391.png" />
@@ -827,11 +827,9 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 <p>First, we made a new figure and used it to make a new skew-T plot. If you don’t provide a figure to <code class="docutils literal notranslate"><span class="pre">SkewT</span></code>, one will be created for you, but it’s useful to make the default figure size a bit larger for this tutorial.</p>
 <p>Additionally, we’ve also set the <code class="docutils literal notranslate"><span class="pre">rotation</span></code> kwarg to be 45 degrees. This is the angle that the temperature lines will be drawn at. <code class="docutils literal notranslate"><span class="pre">MetPy</span></code>’s default is 30 degrees, but we’re going to use a more traditional 45 degrees for this tutorial.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-```python
-# plot sounding data
-skewt.plot(p, T, &#39;r&#39;) # air temperature
-skewt.plot(p, Td, &#39;b&#39;) # dew point
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot sounding data</span>
+<span class="n">skewt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># air temperature</span>
+<span class="n">skewt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Td</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span> <span class="c1"># dew point</span>
 </pre></div>
 </div>
 <p>For air temperature and dew point, we can use the standard <code class="docutils literal notranslate"><span class="pre">plot</span></code> method. The <code class="docutils literal notranslate"><span class="pre">SkewT</span></code> object provides a wrapper around matplotlib’s <code class="docutils literal notranslate"><span class="pre">plot</span></code> method, and can be used in the same way. Note that even though pressure is on the y-axis, we still provide it as the first argument to <code class="docutils literal notranslate"><span class="pre">plot</span></code> because it is the independent variable.</p>
@@ -863,7 +861,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7fa6b68d1dd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f1483c70450&gt;
 </pre></div>
 </div>
 <img alt="../_images/e2bf3dda858cf58e88dacf442a15ae3519c6dcfecb7afb0485f80eaf1347dc64.png" src="../_images/e2bf3dda858cf58e88dacf442a15ae3519c6dcfecb7afb0485f80eaf1347dc64.png" />
@@ -954,7 +952,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 <span class="c1"># At what point an air parcel lifted as a dry parcel becomes saturated</span>
 <span class="n">skewt_plots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LCL and Parcel Profile&#39;</span><span class="p">)</span>
 <span class="n">skewt_plots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lcl_prof</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lcl_p</span><span class="p">,</span> <span class="n">lcl_t</span><span class="p">,</span> <span class="s1">&#39;ko&#39;</span><span class="p">)</span> <span class="c1"># Lifted Condensation Level </span>
+<span class="n">skewt_plots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lcl_p</span><span class="p">,</span> <span class="n">lcl_t</span><span class="p">,</span> <span class="s1">&#39;ko&#39;</span><span class="p">)</span> <span class="c1"># Lifted Condensation Level</span>
 
 
 <span class="c1"># add constant temperature line at t=0</span>
@@ -983,7 +981,7 @@ skewt.plot(p, Td, &#39;b&#39;) # dew point
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7fa6ae0b03d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f1483e0d550&gt;
 </pre></div>
 </div>
 <img alt="../_images/689e19e6e0e54e549667bcd9456645dfe011911c5ea53e8661ff05ac56f27cf3.png" src="../_images/689e19e6e0e54e549667bcd9456645dfe011911c5ea53e8661ff05ac56f27cf3.png" />
