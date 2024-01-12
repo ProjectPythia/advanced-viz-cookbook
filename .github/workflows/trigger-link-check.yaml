@@ -4,4 +4,6 @@ on:
 
 jobs:
   link-check:
-    uses: /.github/workflows/link-checker.yaml@main
+    uses: ProjectPythia/cookbook-actions/.github/workflows/link-checker.yaml@main
+    with:
+      build_command: "jupyter-book build --builder linkcheck SPHINXOPTS=linkcheck_ignore=['https://weather.uwyo.edu/upperair/', 'https://www.noaa.gov/jetstream'] ."
