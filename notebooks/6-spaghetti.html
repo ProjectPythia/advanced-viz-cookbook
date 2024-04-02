@@ -1,103 +1,133 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Spaghetti Plots &#8212; Advanced Visualization Cookbook</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-pythia-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-pythia-theme.min.css?v=e502140d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=c54c090a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/6-spaghetti';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Animation" href="7-animation.html" />
     <link rel="prev" title="Skew T Diagrams" href="5-skewt.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-T52X8HNYE8');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="2 April 2024"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="132">
-    <div class="container-fluid" id="shim"></div>
-    <div class="container-fluid" id="banner"></div>
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main"><div class="container-xl">
-
-  <div id="navbar-start">
-    
-    
-
-<a class="navbar-brand" href="https://projectpythia.org">
-  <img src="../_static/pythia_logo-white-rtext.svg" class="logo" alt="logo">
-</a>
-
-
-    
-  </div>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
-  <div id="navbar-collapsible" class=" collapse navbar-collapse">
-    <div id="navbar-center" class="mr-auto">
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <div class="pst-scroll-pixel-helper"></div>
+    <header class="bd-header navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand logo" href="https://projectpythia.org">
+  
+  
+  
+  
+  
+    
+    
       
-      <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
+    
+    
+    <img src="../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Advanced Visualization Cookbook - Home"/>
+    <script>document.write(`<img src="../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Advanced Visualization Cookbook - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
   
   <li class="nav-item">
     
@@ -135,356 +165,268 @@ const thebe_selector_output = ".output, .cell_output"
   </li>
   
   
-</ul>
-      </div>
+</ul></div>
       
     </div>
-
-    <div id="navbar-end">
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/ProjectPythia" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://twitter.com/project_pythia" rel="noopener" target="_blank" title="Twitter">
-            <span><i class="fab fa-twitter-square"></i></span>
-            <label class="sr-only">Twitter</label>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" rel="noopener" target="_blank" title="YouTube">
-            <span><i class="fab fa-youtube-square"></i></span>
-            <label class="sr-only">YouTube</label>
-          </a>
-        </li>
-      </ul>
-      </div>
-      
-    </div>
-  </div>
-</div>
-    </nav>
-    <div class="container-xl">
-      <div class="row">
-        
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
-        <form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../README.html">
-   Advanced Visualization Cookbook
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preamble
- </span>
-</p>
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+        
+        
+        
+        <div class="bd-sidebar-primary bd-sidebar">
+          
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Advanced Visualization Cookbook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="how-to-cite.html">
-   How to Cite This Cookbook
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite This Cookbook</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Basics of Geoscience Visualization
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics of Geoscience Visualization</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="1-comparison.html">
-   Comparison of Visualization Packages
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-good-viz.html">
-   What Makes for Good Data Visualization?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3-plot-elements.html">
-   Plot Elements
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="1-comparison.html">Comparison of Visualization Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-good-viz.html">What Makes for Good Data Visualization?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-plot-elements.html">Plot Elements</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Specialty Plots
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Specialty Plots</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="4-taylor-diagrams.html">
-   Taylor Diagrams
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5-skewt.html">
-   Skew T Diagrams
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="4-taylor-diagrams.html">Taylor Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-skewt.html">Skew T Diagrams</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Visualization of Structured Grids
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization of Structured Grids</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Spaghetti Plots
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spaghetti Plots</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Animation
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Animation</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="7-animation.html">
-   Animation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="7-animation.html">Animation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Interactivity
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interactivity</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="8-interactive-holoviz-mpas.html">
-   HoloViz Visualization
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="8-interactive-holoviz-mpas.html">HoloViz Visualization</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by <a href="https://projectpythia.org">Project Pythia</a>.<br><br>
-All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons BY 4.0 (CC BY 4.0)</a>.<br><br>
-
-</div>
-
-</div>
-
-        
-
-        <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main"><div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/6-spaghetti.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/ProjectPythia/advanced-viz-cookbook/"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/ProjectPythia/advanced-viz-cookbook//issues/new?title=Issue%20on%20page%20%2Fnotebooks/6-spaghetti.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/ProjectPythia/advanced-viz-cookbook/edit/main/notebooks/6-spaghetti.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook/main?urlpath=lab/tree/notebooks/6-spaghetti.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
 
         </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> On this page
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisites">
-   Prerequisites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#spaghetti-hurricane-plot">
-   Spaghetti Hurricane Plot
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#read-in-data">
-     Read in Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spaghetti-plot-of-one-esemble-member">
-     Spaghetti Plot of One Esemble Member
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spaghetti-plot-of-one-esemble-member-with-temporal-colormapping">
-     Spaghetti Plot of One Esemble Member with Temporal Colormapping
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spaghetti-plot-of-all-esemble-members-at-one-point-in-time">
-     Spaghetti Plot of All Esemble Members at One Point in Time
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#spaghetti-contour-plot">
-   Spaghetti Contour Plot
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Read in data:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#initial-spaghetti-plot-on-north-polar-stereographic-projection">
-     Initial Spaghetti Plot on North Polar Stereographic Projection
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adding-directional-labels-to-polar-stereographic-projection">
-     Adding Directional Labels to Polar Stereographic Projection
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#contour-spaghetti-plot-temporal-colorbar-manipulation">
-     Contour Spaghetti Plot Temporal Colorbar Manipulation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#contour-spaghetti-plot-with-hand-picked-colors">
-     Contour Spaghetti Plot with Hand-Picked Colors
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#whats-next">
-     What’s next?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resources-and-references">
-   Resources and references
-  </a>
- </li>
-</ul>
+        
+        <main id="main-content" class="bd-main" role="main">
+          
 
-            </nav>
-        </div>
-    </div>
-</div>
-          <div id="main-content" class="row">
-            <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-              
-              <div>
+            <div class="bd-content">
+
+              <div class="bd-article-container">
+
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="spaghetti-plots">
-<h1>Spaghetti Plots<a class="headerlink" href="#spaghetti-plots" title="Permalink to this headline"><i class="fas fa-link"></i></a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+                  
+                  
+<div id="searchbox"></div>
+                  <article class="bd-article">
+                    
+  <section class="tex2jax_ignore mathjax_ignore" id="spaghetti-plots">
+<h1>Spaghetti Plots<a class="headerlink" href="#spaghetti-plots" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>Spaghetti Plots are a tool typically used to visualize movement. Essentially they are many line plots displayed on the same axes. By drawing the same path at different times or from different forecasts, we can see the patterns and chaos associated with the plotted variable.</p>
 <ol class="arabic simple">
 <li><p>Spaghetti Hurricane Plot</p></li>
 <li><p>Spaghetti Contour Plot</p></li>
 </ol>
-</div>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
-<table class="colwidths-auto table">
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Concepts</p></th>
 <th class="head"><p>Importance</p></th>
@@ -531,14 +473,14 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="spaghetti-hurricane-plot">
-<h2>Spaghetti Hurricane Plot<a class="headerlink" href="#spaghetti-hurricane-plot" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+</section>
+<section id="spaghetti-hurricane-plot">
+<h2>Spaghetti Hurricane Plot<a class="headerlink" href="#spaghetti-hurricane-plot" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>Visualizing the predicted path of an incoming hurricane is both complicated and important. There are many plots that meteorologists are trained to read, but when shared with the public can be confusing or alarming. There are strengths and weaknesses to each hurricane visualization approach. The cone of uncertainty, for example, is often misinterpreted to suggest the hurricane growth in time rather than widening of path possibilities. Spaghetti plots on the other hand, clearly show hurricane paths but show them as equal to each other.</p>
 <p>In this example we will plot some forecasted paths from the 2012 North-Atlantic storm Hurricane Sandy. Each forecast is from the Global Ensemble Forecast System (GEFS) provided by the National Centers for Environmental Prediction at NOAA.</p>
-<p>We’ll use the package <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">tropycal</span></code></span> to easily access HURDAT2 and IBTrACS reanalysis data and operational National Hurricane Center (NHC) Best Track data. <code class="docutils literal notranslate"><span class="pre">tropycal</span></code> has a lot of great features for real time hurricane visualization, but since this Cookbook is comparatively static we’re using a past hurricane and only using this package to access the data. Our plotting will be done with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">cartopy</span></code>.</p>
-<div class="section" id="read-in-data">
-<h3>Read in Data<a class="headerlink" href="#read-in-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<p>We’ll use the package <a class="reference internal" href="#tropycal.github.io/tropycal/"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">tropycal</span></code></span></a> to easily access HURDAT2 and IBTrACS reanalysis data and operational National Hurricane Center (NHC) Best Track data. <code class="docutils literal notranslate"><span class="pre">tropycal</span></code> has a lot of great features for real time hurricane visualization, but since this Cookbook is comparatively static we’re using a past hurricane and only using this package to access the data. Our plotting will be done with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">cartopy</span></code>.</p>
+<section id="read-in-data">
+<h3>Read in Data<a class="headerlink" href="#read-in-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>First, to grab our hurricane data from tropycal we need to specify a basin:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -550,7 +492,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--&gt; Starting to read in HURDAT2 data
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--&gt; Completed reading in HURDAT2 data (1.51 seconds)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--&gt; Completed reading in HURDAT2 data (1.38 seconds)
 </pre></div>
 </div>
 </div>
@@ -929,19 +871,19 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 5kB
 Dimensions:    (time: 45)
 Coordinates:
-  * time       (time) datetime64[ns] 2012-10-21T18:00:00 ... 2012-10-31T12:00:00
+  * time       (time) datetime64[ns] 360B 2012-10-21T18:00:00 ... 2012-10-31T...
 Data variables:
-    extra_obs  (time) int64 0 0 0 0 0 0 0 0 0 0 0 0 ... 0 0 0 1 1 0 0 0 0 0 0 0
-    special    (time) &lt;U1 &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; ... &#x27;L&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27;
-    type       (time) &lt;U2 &#x27;LO&#x27; &#x27;LO&#x27; &#x27;LO&#x27; &#x27;TD&#x27; &#x27;TS&#x27; ... &#x27;EX&#x27; &#x27;EX&#x27; &#x27;EX&#x27; &#x27;EX&#x27; &#x27;EX&#x27;
-    lat        (time) float64 14.3 13.9 13.5 13.1 12.7 ... 40.4 40.7 41.1 41.5
-    lon        (time) float64 -77.4 -77.8 -78.2 -78.6 ... -79.8 -80.3 -80.7
-    vmax       (time) int64 25 25 25 30 35 40 40 40 ... 70 70 55 50 40 35 35 30
-    mslp       (time) int64 1006 1005 1003 1002 1000 998 ... 978 986 992 993 995
-    wmo_basin  (time) &lt;U14 &#x27;north_atlantic&#x27; ... &#x27;north_atlantic&#x27;
+    extra_obs  (time) int64 360B 0 0 0 0 0 0 0 0 0 0 0 ... 0 0 1 1 0 0 0 0 0 0 0
+    special    (time) &lt;U1 180B &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; ... &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27;
+    type       (time) &lt;U2 360B &#x27;LO&#x27; &#x27;LO&#x27; &#x27;LO&#x27; &#x27;TD&#x27; &#x27;TS&#x27; ... &#x27;EX&#x27; &#x27;EX&#x27; &#x27;EX&#x27; &#x27;EX&#x27;
+    lat        (time) float64 360B 14.3 13.9 13.5 13.1 ... 40.4 40.7 41.1 41.5
+    lon        (time) float64 360B -77.4 -77.8 -78.2 -78.6 ... -79.8 -80.3 -80.7
+    vmax       (time) int64 360B 25 25 25 30 35 40 40 ... 70 55 50 40 35 35 30
+    mslp       (time) int64 360B 1006 1005 1003 1002 1000 ... 986 992 993 995
+    wmo_basin  (time) &lt;U14 3kB &#x27;north_atlantic&#x27; ... &#x27;north_atlantic&#x27;
 Attributes:
     id:              AL182012
     operational_id:  AL182012
@@ -951,7 +893,7 @@ Attributes:
     basin:           north_atlantic
     source_info:     NHC Hurricane Database
     source:          hurdat
-    ace:             13.6675</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-869f0066-2fe6-4a04-a68d-d57f4de8be0f' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-869f0066-2fe6-4a04-a68d-d57f4de8be0f' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 45</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-f256ed37-899e-4b27-9268-446067001b00' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f256ed37-899e-4b27-9268-446067001b00' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2012-10-21T18:00:00 ... 2012-10-...</div><input id='attrs-5fa136bb-7d4e-4acf-85a8-7b184d0a033c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-5fa136bb-7d4e-4acf-85a8-7b184d0a033c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-08a27866-b205-4988-abbb-35e0a71b3c77' class='xr-var-data-in' type='checkbox'><label for='data-08a27866-b205-4988-abbb-35e0a71b3c77' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2012-10-21T18:00:00.000000000&#x27;, &#x27;2012-10-22T00:00:00.000000000&#x27;,
+    ace:             13.6675</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-e17b1b25-8d0a-40a0-a932-4ab6ca9fdf3c' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-e17b1b25-8d0a-40a0-a932-4ab6ca9fdf3c' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 45</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-8438bdce-0e17-47a2-a17e-a7e29d5692b9' class='xr-section-summary-in' type='checkbox'  checked><label for='section-8438bdce-0e17-47a2-a17e-a7e29d5692b9' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2012-10-21T18:00:00 ... 2012-10-...</div><input id='attrs-abe540fe-c80a-4735-b089-2bc7f343f135' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-abe540fe-c80a-4735-b089-2bc7f343f135' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-514a3267-cb81-4413-a206-536187516eb1' class='xr-var-data-in' type='checkbox'><label for='data-514a3267-cb81-4413-a206-536187516eb1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2012-10-21T18:00:00.000000000&#x27;, &#x27;2012-10-22T00:00:00.000000000&#x27;,
        &#x27;2012-10-22T06:00:00.000000000&#x27;, &#x27;2012-10-22T12:00:00.000000000&#x27;,
        &#x27;2012-10-22T18:00:00.000000000&#x27;, &#x27;2012-10-23T00:00:00.000000000&#x27;,
        &#x27;2012-10-23T06:00:00.000000000&#x27;, &#x27;2012-10-23T12:00:00.000000000&#x27;,
@@ -973,30 +915,30 @@ Attributes:
        &#x27;2012-10-30T00:00:00.000000000&#x27;, &#x27;2012-10-30T06:00:00.000000000&#x27;,
        &#x27;2012-10-30T12:00:00.000000000&#x27;, &#x27;2012-10-30T18:00:00.000000000&#x27;,
        &#x27;2012-10-31T00:00:00.000000000&#x27;, &#x27;2012-10-31T06:00:00.000000000&#x27;,
-       &#x27;2012-10-31T12:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-2441a904-55cb-4c0f-865c-7fd8b9c498d6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2441a904-55cb-4c0f-865c-7fd8b9c498d6' class='xr-section-summary' >Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>extra_obs</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 0 0 0 0 0 0 0 ... 1 0 0 0 0 0 0 0</div><input id='attrs-4927f98a-53e9-467e-8cf1-4442ef72b5d0' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4927f98a-53e9-467e-8cf1-4442ef72b5d0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0366992b-0fa8-4688-9242-8abfdab80a57' class='xr-var-data-in' type='checkbox'><label for='data-0366992b-0fa8-4688-9242-8abfdab80a57' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0,
+       &#x27;2012-10-31T12:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c3ccc68e-cf2e-4740-ade8-f025104b15dc' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c3ccc68e-cf2e-4740-ade8-f025104b15dc' class='xr-section-summary' >Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>extra_obs</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 0 0 0 0 0 0 0 ... 1 0 0 0 0 0 0 0</div><input id='attrs-a199a150-2a24-441f-a31e-dfd164d577c2' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-a199a150-2a24-441f-a31e-dfd164d577c2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8c108be0-425f-4eac-9ec1-5c79ec635229' class='xr-var-data-in' type='checkbox'><label for='data-8c108be0-425f-4eac-9ec1-5c79ec635229' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0,
        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0,
-       0])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>special</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U1</div><div class='xr-var-preview xr-preview'>&#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; ... &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27;</div><input id='attrs-95ba18c7-ab79-47db-ab04-8cb2b2f419f4' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-95ba18c7-ab79-47db-ab04-8cb2b2f419f4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-861415ce-1a8e-4cc3-bd76-3da17e600c0b' class='xr-var-data-in' type='checkbox'><label for='data-861415ce-1a8e-4cc3-bd76-3da17e600c0b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;L&#x27;, &#x27;&#x27;, &#x27;L&#x27;,
+       0])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>special</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U1</div><div class='xr-var-preview xr-preview'>&#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; ... &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27;</div><input id='attrs-023bd6c0-8b4e-45ae-95d6-800ac4b15bbe' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-023bd6c0-8b4e-45ae-95d6-800ac4b15bbe' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2cf2c058-9fcb-44c9-80e1-63fe51cacde0' class='xr-var-data-in' type='checkbox'><label for='data-2cf2c058-9fcb-44c9-80e1-63fe51cacde0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;L&#x27;, &#x27;&#x27;, &#x27;L&#x27;,
        &#x27;&#x27;, &#x27;T&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;,
-       &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;S&#x27;, &#x27;L&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;], dtype=&#x27;&lt;U1&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>type</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U2</div><div class='xr-var-preview xr-preview'>&#x27;LO&#x27; &#x27;LO&#x27; &#x27;LO&#x27; ... &#x27;EX&#x27; &#x27;EX&#x27; &#x27;EX&#x27;</div><input id='attrs-e15a3b04-b0f0-4721-a69c-db6915922c6f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e15a3b04-b0f0-4721-a69c-db6915922c6f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ea65a6b4-a92e-42c2-9cc5-f67ed7c45a05' class='xr-var-data-in' type='checkbox'><label for='data-ea65a6b4-a92e-42c2-9cc5-f67ed7c45a05' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;LO&#x27;, &#x27;LO&#x27;, &#x27;LO&#x27;, &#x27;TD&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;,
+       &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;S&#x27;, &#x27;L&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;], dtype=&#x27;&lt;U1&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>type</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U2</div><div class='xr-var-preview xr-preview'>&#x27;LO&#x27; &#x27;LO&#x27; &#x27;LO&#x27; ... &#x27;EX&#x27; &#x27;EX&#x27; &#x27;EX&#x27;</div><input id='attrs-9f5b8281-7a7f-4d6e-b66d-c5c18a43e47c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-9f5b8281-7a7f-4d6e-b66d-c5c18a43e47c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6a950257-6f46-4575-ba62-b1faee505993' class='xr-var-data-in' type='checkbox'><label for='data-6a950257-6f46-4575-ba62-b1faee505993' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;LO&#x27;, &#x27;LO&#x27;, &#x27;LO&#x27;, &#x27;TD&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;,
        &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;,
        &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;,
        &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;,
-       &#x27;EX&#x27;], dtype=&#x27;&lt;U2&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>14.3 13.9 13.5 ... 40.7 41.1 41.5</div><input id='attrs-e95d86bd-4b6b-418e-a704-4262c01297cb' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e95d86bd-4b6b-418e-a704-4262c01297cb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2b055c85-77d9-4f17-9edd-1fb12809214e' class='xr-var-data-in' type='checkbox'><label for='data-2b055c85-77d9-4f17-9edd-1fb12809214e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([14.3, 13.9, 13.5, 13.1, 12.7, 12.6, 12.9, 13.4, 14. , 14.7, 15.6,
+       &#x27;EX&#x27;], dtype=&#x27;&lt;U2&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>14.3 13.9 13.5 ... 40.7 41.1 41.5</div><input id='attrs-392f9cb1-abb4-4e8d-8d33-0b8c51b5f4d4' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-392f9cb1-abb4-4e8d-8d33-0b8c51b5f4d4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f055fc2e-e482-4dde-8d13-b97b7fd796e9' class='xr-var-data-in' type='checkbox'><label for='data-f055fc2e-e482-4dde-8d13-b97b7fd796e9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([14.3, 13.9, 13.5, 13.1, 12.7, 12.6, 12.9, 13.4, 14. , 14.7, 15.6,
        16.6, 17.7, 17.9, 18.9, 20. , 20.1, 20.9, 21.7, 23.3, 24.8, 25.7,
        26.4, 27. , 27.5, 28.1, 28.8, 29.7, 30.5, 31.3, 32. , 32.8, 33.9,
        35.3, 36.9, 38.3, 38.8, 39.4, 39.5, 39.9, 40.1, 40.4, 40.7, 41.1,
-       41.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-77.4 -77.8 -78.2 ... -80.3 -80.7</div><input id='attrs-b42e0b9d-8ff2-49c8-8d36-4f1708c6eb58' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b42e0b9d-8ff2-49c8-8d36-4f1708c6eb58' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-473d720a-881c-445e-a54c-0938ce817873' class='xr-var-data-in' type='checkbox'><label for='data-473d720a-881c-445e-a54c-0938ce817873' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-77.4, -77.8, -78.2, -78.6, -78.7, -78.4, -78.1, -77.9, -77.6,
+       41.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-77.4 -77.8 -78.2 ... -80.3 -80.7</div><input id='attrs-79adfa2e-aebd-4559-98c5-c8e3ee9dc879' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-79adfa2e-aebd-4559-98c5-c8e3ee9dc879' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a9118fb9-85ce-4b8b-abdf-f3b3b7c95428' class='xr-var-data-in' type='checkbox'><label for='data-a9118fb9-85ce-4b8b-abdf-f3b3b7c95428' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-77.4, -77.8, -78.2, -78.6, -78.7, -78.4, -78.1, -77.9, -77.6,
        -77.3, -77.1, -76.9, -76.7, -76.6, -76.4, -76. , -76. , -75.7,
        -75.5, -75.3, -75.9, -76.4, -76.9, -77.2, -77.1, -76.9, -76.5,
        -75.6, -74.7, -73.9, -73. , -72. , -71. , -70.5, -71. , -73.2,
-       -74. , -74.4, -74.5, -76.2, -77.8, -78.9, -79.8, -80.3, -80.7])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vmax</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>25 25 25 30 35 ... 50 40 35 35 30</div><input id='attrs-0785d60b-813c-455f-bbad-8be18c8dd1d8' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-0785d60b-813c-455f-bbad-8be18c8dd1d8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5e002219-6e07-4d27-af1b-4a6ad93ac595' class='xr-var-data-in' type='checkbox'><label for='data-5e002219-6e07-4d27-af1b-4a6ad93ac595' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 25,  25,  25,  30,  35,  40,  40,  40,  45,  55,  60,  65,  75,
+       -74. , -74.4, -74.5, -76.2, -77.8, -78.9, -79.8, -80.3, -80.7])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vmax</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>25 25 25 30 35 ... 50 40 35 35 30</div><input id='attrs-365490ec-0ffb-424f-b56a-1986e191b6c0' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-365490ec-0ffb-424f-b56a-1986e191b6c0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b2f3dc24-ab74-40cc-b675-3a75f7a9005a' class='xr-var-data-in' type='checkbox'><label for='data-b2f3dc24-ab74-40cc-b675-3a75f7a9005a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 25,  25,  25,  30,  35,  40,  40,  40,  45,  55,  60,  65,  75,
         75,  85, 100, 100,  95,  95,  90,  75,  70,  65,  65,  60,  60,
         70,  70,  65,  65,  65,  65,  70,  80,  85,  80,  75,  70,  70,
-        55,  50,  40,  35,  35,  30])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mslp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1006 1005 1003 1002 ... 992 993 995</div><input id='attrs-02f8d2b0-c037-42b9-a32b-ad7af8d7c836' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-02f8d2b0-c037-42b9-a32b-ad7af8d7c836' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1c4853ca-c5b5-4cf5-bdc1-415068084145' class='xr-var-data-in' type='checkbox'><label for='data-1c4853ca-c5b5-4cf5-bdc1-415068084145' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1006, 1005, 1003, 1002, 1000,  998,  998,  995,  993,  990,  987,
+        55,  50,  40,  35,  35,  30])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mslp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1006 1005 1003 1002 ... 992 993 995</div><input id='attrs-97a56210-093c-40cd-9aaf-28467989f511' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-97a56210-093c-40cd-9aaf-28467989f511' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-be5fe05b-b0dd-452d-ab41-06f3c206d4fa' class='xr-var-data-in' type='checkbox'><label for='data-be5fe05b-b0dd-452d-ab41-06f3c206d4fa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1006, 1005, 1003, 1002, 1000,  998,  998,  995,  993,  990,  987,
         981,  972,  971,  964,  954,  954,  960,  966,  963,  965,  968,
         970,  971,  969,  968,  956,  960,  960,  959,  954,  952,  950,
         947,  945,  940,  943,  945,  946,  960,  978,  986,  992,  993,
-        995])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wmo_basin</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;north_atlantic&#x27; ... &#x27;north_atla...</div><input id='attrs-f02b8b0f-8cb0-4b9b-afa6-59b5c6e5db94' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f02b8b0f-8cb0-4b9b-afa6-59b5c6e5db94' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c5589c77-f029-4c59-bec3-e3ef5f1c0e6b' class='xr-var-data-in' type='checkbox'><label for='data-c5589c77-f029-4c59-bec3-e3ef5f1c0e6b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+        995])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wmo_basin</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;north_atlantic&#x27; ... &#x27;north_atla...</div><input id='attrs-2146ffaa-0e2c-4db6-a224-20f76915d206' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2146ffaa-0e2c-4db6-a224-20f76915d206' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fecab2b8-436b-4578-9d0f-38e7f918b1a7' class='xr-var-data-in' type='checkbox'><label for='data-fecab2b8-436b-4578-9d0f-38e7f918b1a7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
        &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
        &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
        &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
@@ -1010,7 +952,7 @@ Attributes:
        &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
        &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
        &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
-       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;], dtype=&#x27;&lt;U14&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-610d084b-e26f-486e-a074-3891cfa89064' class='xr-section-summary-in' type='checkbox'  ><label for='section-610d084b-e26f-486e-a074-3891cfa89064' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-3d10a742-3d98-4695-9349-039ff2d7bb44' class='xr-index-data-in' type='checkbox'/><label for='index-3d10a742-3d98-4695-9349-039ff2d7bb44' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2012-10-21 18:00:00&#x27;, &#x27;2012-10-22 00:00:00&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;], dtype=&#x27;&lt;U14&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-947fd9a7-3efb-49c5-896f-7e42afae264f' class='xr-section-summary-in' type='checkbox'  ><label for='section-947fd9a7-3efb-49c5-896f-7e42afae264f' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-5b480359-b9f6-4bff-aa6d-c0b9a01e2f45' class='xr-index-data-in' type='checkbox'/><label for='index-5b480359-b9f6-4bff-aa6d-c0b9a01e2f45' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2012-10-21 18:00:00&#x27;, &#x27;2012-10-22 00:00:00&#x27;,
                &#x27;2012-10-22 06:00:00&#x27;, &#x27;2012-10-22 12:00:00&#x27;,
                &#x27;2012-10-22 18:00:00&#x27;, &#x27;2012-10-23 00:00:00&#x27;,
                &#x27;2012-10-23 06:00:00&#x27;, &#x27;2012-10-23 12:00:00&#x27;,
@@ -1033,7 +975,7 @@ Attributes:
                &#x27;2012-10-30 12:00:00&#x27;, &#x27;2012-10-30 18:00:00&#x27;,
                &#x27;2012-10-31 00:00:00&#x27;, &#x27;2012-10-31 06:00:00&#x27;,
                &#x27;2012-10-31 12:00:00&#x27;],
-              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-cd8df1ce-400e-4a17-ab14-33036592439d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-cd8df1ce-400e-4a17-ab14-33036592439d' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>id :</span></dt><dd>AL182012</dd><dt><span>operational_id :</span></dt><dd>AL182012</dd><dt><span>name :</span></dt><dd>SANDY</dd><dt><span>year :</span></dt><dd>2012</dd><dt><span>season :</span></dt><dd>2012</dd><dt><span>basin :</span></dt><dd>north_atlantic</dd><dt><span>source_info :</span></dt><dd>NHC Hurricane Database</dd><dt><span>source :</span></dt><dd>hurdat</dd><dt><span>ace :</span></dt><dd>13.6675</dd></dl></div></li></ul></div></div></div></div>
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-af0f7185-d7e2-49a9-b4bb-5a0255f7648b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-af0f7185-d7e2-49a9-b4bb-5a0255f7648b' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>id :</span></dt><dd>AL182012</dd><dt><span>operational_id :</span></dt><dd>AL182012</dd><dt><span>name :</span></dt><dd>SANDY</dd><dt><span>year :</span></dt><dd>2012</dd><dt><span>season :</span></dt><dd>2012</dd><dt><span>basin :</span></dt><dd>north_atlantic</dd><dt><span>source_info :</span></dt><dd>NHC Hurricane Database</dd><dt><span>source :</span></dt><dd>hurdat</dd><dt><span>ace :</span></dt><dd>13.6675</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>And we can grab any of a number of forecasts:</p>
 <div class="cell docutils container">
@@ -1063,9 +1005,9 @@ Attributes:
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="spaghetti-plot-of-one-esemble-member">
-<h3>Spaghetti Plot of One Esemble Member<a class="headerlink" href="#spaghetti-plot-of-one-esemble-member" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+</section>
+<section id="spaghetti-plot-of-one-esemble-member">
+<h3>Spaghetti Plot of One Esemble Member<a class="headerlink" href="#spaghetti-plot-of-one-esemble-member" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Let’s set up our Cartopy grid to plot one ensemble member of the hurricane model.</p>
 <p>These steps might be familiar to you but we:</p>
 <ul class="simple">
@@ -1092,7 +1034,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8b3e79378c0a507a04fe86e1abf34d566a2b72798feadc7d315d87886274abc8.png" src="../_images/8b3e79378c0a507a04fe86e1abf34d566a2b72798feadc7d315d87886274abc8.png" />
+<img alt="../_images/740bb7f38925ab26df3ba83fbcddc3488dec6a7da46b42259116185ee1298f27.png" src="../_images/740bb7f38925ab26df3ba83fbcddc3488dec6a7da46b42259116185ee1298f27.png" />
 </div>
 </div>
 <p>Looking at GFS Ensemble Member Forecast AP01, we can make a spaghetti plot of each of these initializations.</p>
@@ -1136,14 +1078,14 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3be411eb0e30049c907f1360e767394c7a42f18eeb56db10b984548708b1e3b8.png" src="../_images/3be411eb0e30049c907f1360e767394c7a42f18eeb56db10b984548708b1e3b8.png" />
+<img alt="../_images/ab6e718870a57339466e184164d3783f0f042ee9546b4eea12046eb130a35204.png" src="../_images/ab6e718870a57339466e184164d3783f0f042ee9546b4eea12046eb130a35204.png" />
 </div>
 </div>
 <p>This plot is a great example of a spaghetti plot, but is it super useful? Is it confusing? Each line looks like it carries the same weight, when some of these possible paths are from hours before Sandy hit the American NorthEast and others are from days before.</p>
 <p>Maybe it is better to show the user some indication of how the forecast for this ensemble converged on the true path with later and later initialization times.</p>
-</div>
-<div class="section" id="spaghetti-plot-of-one-esemble-member-with-temporal-colormapping">
-<h3>Spaghetti Plot of One Esemble Member with Temporal Colormapping<a class="headerlink" href="#spaghetti-plot-of-one-esemble-member-with-temporal-colormapping" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+</section>
+<section id="spaghetti-plot-of-one-esemble-member-with-temporal-colormapping">
+<h3>Spaghetti Plot of One Esemble Member with Temporal Colormapping<a class="headerlink" href="#spaghetti-plot-of-one-esemble-member-with-temporal-colormapping" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Some additions to look out for:</p>
 <ul class="simple">
 <li><p>we grab the time information from the initialization name using <code class="docutils literal notranslate"><span class="pre">datetime</span></code></p></li>
@@ -1211,14 +1153,14 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2b3ba019b84f8a6b0a8f0ce344fce302772cdd39b2f348d4b1cb7fef633591a6.png" src="../_images/2b3ba019b84f8a6b0a8f0ce344fce302772cdd39b2f348d4b1cb7fef633591a6.png" />
+<img alt="../_images/cd325955ed7159f50696879b2c4e95cce0fa8c887197ba3c0b9b163181c2227f.png" src="../_images/cd325955ed7159f50696879b2c4e95cce0fa8c887197ba3c0b9b163181c2227f.png" />
 </div>
 </div>
 <p>Now we can see that as the storm progressed, the AP01 GFS Forecast Ensemble Member converges on Sandy’s true path as the storm progresses through October, 2012.</p>
 <p>Alternatively, we may want to plot the possible hurricane paths from multiple GFS Forecast Ensemble members from the same iteration timestamp as a spaghetti plot.</p>
-</div>
-<div class="section" id="spaghetti-plot-of-all-esemble-members-at-one-point-in-time">
-<h3>Spaghetti Plot of All Esemble Members at One Point in Time<a class="headerlink" href="#spaghetti-plot-of-all-esemble-members-at-one-point-in-time" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+</section>
+<section id="spaghetti-plot-of-all-esemble-members-at-one-point-in-time">
+<h3>Spaghetti Plot of All Esemble Members at One Point in Time<a class="headerlink" href="#spaghetti-plot-of-all-esemble-members-at-one-point-in-time" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>First, we need to grab all of the relevant forecast keys to GFS models (the ones that are titled <code class="docutils literal notranslate"><span class="pre">AP##</span></code> from 0 to 20):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1261,18 +1203,18 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/164b205d286b56b0677edf632c40f27f1fb5dd7b226b999a0b22f68887cc6703.png" src="../_images/164b205d286b56b0677edf632c40f27f1fb5dd7b226b999a0b22f68887cc6703.png" />
+<img alt="../_images/a1fe61062e5408fca606ba4c1cd5ff274cdc7af86f9660efd4a1ed123c76d579.png" src="../_images/a1fe61062e5408fca606ba4c1cd5ff274cdc7af86f9660efd4a1ed123c76d579.png" />
 </div>
 </div>
 <p>Hurricane Sandy hit the NorthEast on October 29, 2012. From this spaghetti plot we can see that by the 27th most ensemble members of the GFS forecast predicted a similar behavior for the storm.</p>
 <p>There is more analysis that could be done on hurriane trajectories. We have covered some plotting customization that might be useful for your analysis and data visualization.</p>
-</div>
-</div>
-<div class="section" id="spaghetti-contour-plot">
-<h2>Spaghetti Contour Plot<a class="headerlink" href="#spaghetti-contour-plot" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+</section>
+</section>
+<section id="spaghetti-contour-plot">
+<h2>Spaghetti Contour Plot<a class="headerlink" href="#spaghetti-contour-plot" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>In this example we will read in the geopotential height datafile <code class="docutils literal notranslate"><span class="pre">HGT500_MON_1958-1997.nc</span></code> from using geocat-datafiles. Then we will look at different timesteps of the <code class="docutils literal notranslate"><span class="pre">HGT</span></code> geopotential height variable at the 5500 gpm level, plotting this contour’s locations through time. This example is adapted from <a class="reference external" href="https://geocat.ucar.edu/">GeoCAT</a>’s <a class="reference external" href="https://geocat-examples.readthedocs.io/en/latest/gallery/Contours/NCL_conOncon_5.html">NCL_conOncon_5</a> script.</p>
-<div class="section" id="id1">
-<h3>Read in data:<a class="headerlink" href="#id1" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<section id="id1">
+<h3>Read in data:<a class="headerlink" href="#id1" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;netcdf_files/HGT500_MON_1958-1997.nc&quot;</span><span class="p">),</span>
@@ -1649,29 +1591,29 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 20MB
 Dimensions:  (time: 480, lat: 73, lon: 144)
 Coordinates:
-  * time     (time) int64 0 1 2 3 4 5 6 7 8 ... 472 473 474 475 476 477 478 479
-  * lat      (lat) float32 -90.0 -87.5 -85.0 -82.5 -80.0 ... 82.5 85.0 87.5 90.0
-  * lon      (lon) float32 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
+  * time     (time) int64 4kB 0 1 2 3 4 5 6 7 ... 473 474 475 476 477 478 479
+  * lat      (lat) float32 292B -90.0 -87.5 -85.0 -82.5 ... 82.5 85.0 87.5 90.0
+  * lon      (lon) float32 576B 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
 Data variables:
-    yrmon    (time) float64 ...
-    HGT      (time, lat, lon) float32 ...
+    yrmon    (time) float64 4kB ...
+    HGT      (time, lat, lon) float32 20MB ...
 Attributes:
     conventions:    None
     history:        NCEP/NCAR REANALYSIS MONTHLY MEAN SUBSETS\nftp://ncardata...
     source:         NCEP Reanalysis; ds090.2
     title:          500mb Geopotential Height: 1958-1997
     source_mss:     /SHEA/HVL/HGT_1958-1997.nc:  500 mb extracted
-    creation_date:  creation date: Tue Aug  7 16:31:48 MDT 2001</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-0bbcc908-3a9f-47d3-9f83-9822f2c06c58' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-0bbcc908-3a9f-47d3-9f83-9822f2c06c58' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 480</li><li><span class='xr-has-index'>lat</span>: 73</li><li><span class='xr-has-index'>lon</span>: 144</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-b49c4a3f-0901-448e-836f-ff4a084b11ad' class='xr-section-summary-in' type='checkbox'  checked><label for='section-b49c4a3f-0901-448e-836f-ff4a084b11ad' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4 5 ... 475 476 477 478 479</div><input id='attrs-ffeb1a0a-193e-4632-9c16-f2c6ac642949' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ffeb1a0a-193e-4632-9c16-f2c6ac642949' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2a0ab6e5-ea9a-4df3-b00f-a6c8ae120e0d' class='xr-var-data-in' type='checkbox'><label for='data-2a0ab6e5-ea9a-4df3-b00f-a6c8ae120e0d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>elapsed time</dd><dt><span>units :</span></dt><dd>months since 1958-1-1 00:00:00</dd></dl></div><div class='xr-var-data'><pre>array([  0,   1,   2, ..., 477, 478, 479])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-90.0 -87.5 -85.0 ... 87.5 90.0</div><input id='attrs-6ef6e201-50d7-4894-a1d5-85ff4fd28277' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6ef6e201-50d7-4894-a1d5-85ff4fd28277' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c702ec9f-8e12-4a66-afeb-55dce901001d' class='xr-var-data-in' type='checkbox'><label for='data-c702ec9f-8e12-4a66-afeb-55dce901001d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>short_name :</span></dt><dd>lat</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>array([-90. , -87.5, -85. , -82.5, -80. , -77.5, -75. , -72.5, -70. , -67.5,
+    creation_date:  creation date: Tue Aug  7 16:31:48 MDT 2001</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-40d57f4b-7437-4d60-b34b-05ffc3be1e39' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-40d57f4b-7437-4d60-b34b-05ffc3be1e39' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 480</li><li><span class='xr-has-index'>lat</span>: 73</li><li><span class='xr-has-index'>lon</span>: 144</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-414dd793-48eb-46bf-8645-fca31a685a1d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-414dd793-48eb-46bf-8645-fca31a685a1d' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4 5 ... 475 476 477 478 479</div><input id='attrs-de42141d-543f-4ad7-973d-fa56a886ee77' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-de42141d-543f-4ad7-973d-fa56a886ee77' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-40762f71-453a-46c7-b235-31cf32967934' class='xr-var-data-in' type='checkbox'><label for='data-40762f71-453a-46c7-b235-31cf32967934' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>elapsed time</dd><dt><span>units :</span></dt><dd>months since 1958-1-1 00:00:00</dd></dl></div><div class='xr-var-data'><pre>array([  0,   1,   2, ..., 477, 478, 479])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-90.0 -87.5 -85.0 ... 87.5 90.0</div><input id='attrs-00a2e9f6-e90b-4e85-96a8-2822360ef4cb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-00a2e9f6-e90b-4e85-96a8-2822360ef4cb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-98a3cb10-eefc-42c1-a69f-fef8184915c0' class='xr-var-data-in' type='checkbox'><label for='data-98a3cb10-eefc-42c1-a69f-fef8184915c0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>short_name :</span></dt><dd>lat</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>array([-90. , -87.5, -85. , -82.5, -80. , -77.5, -75. , -72.5, -70. , -67.5,
        -65. , -62.5, -60. , -57.5, -55. , -52.5, -50. , -47.5, -45. , -42.5,
        -40. , -37.5, -35. , -32.5, -30. , -27.5, -25. , -22.5, -20. , -17.5,
        -15. , -12.5, -10. ,  -7.5,  -5. ,  -2.5,   0. ,   2.5,   5. ,   7.5,
         10. ,  12.5,  15. ,  17.5,  20. ,  22.5,  25. ,  27.5,  30. ,  32.5,
         35. ,  37.5,  40. ,  42.5,  45. ,  47.5,  50. ,  52.5,  55. ,  57.5,
         60. ,  62.5,  65. ,  67.5,  70. ,  72.5,  75. ,  77.5,  80. ,  82.5,
-        85. ,  87.5,  90. ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.0 2.5 5.0 ... 352.5 355.0 357.5</div><input id='attrs-a87f742c-7b8e-48c4-ae42-3931c910f0c9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a87f742c-7b8e-48c4-ae42-3931c910f0c9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-53679933-8619-4320-8f77-e1046e70e8df' class='xr-var-data-in' type='checkbox'><label for='data-53679933-8619-4320-8f77-e1046e70e8df' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>short_name :</span></dt><dd>lon</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([  0. ,   2.5,   5. ,   7.5,  10. ,  12.5,  15. ,  17.5,  20. ,  22.5,
+        85. ,  87.5,  90. ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.0 2.5 5.0 ... 352.5 355.0 357.5</div><input id='attrs-14f42ab1-3b5a-4bde-a414-61981aa06928' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-14f42ab1-3b5a-4bde-a414-61981aa06928' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2af8dea9-66a7-40d4-a0b5-c7ab494783bc' class='xr-var-data-in' type='checkbox'><label for='data-2af8dea9-66a7-40d4-a0b5-c7ab494783bc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>short_name :</span></dt><dd>lon</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([  0. ,   2.5,   5. ,   7.5,  10. ,  12.5,  15. ,  17.5,  20. ,  22.5,
         25. ,  27.5,  30. ,  32.5,  35. ,  37.5,  40. ,  42.5,  45. ,  47.5,
         50. ,  52.5,  55. ,  57.5,  60. ,  62.5,  65. ,  67.5,  70. ,  72.5,
         75. ,  77.5,  80. ,  82.5,  85. ,  87.5,  90. ,  92.5,  95. ,  97.5,
@@ -1685,10 +1627,10 @@ Attributes:
        275. , 277.5, 280. , 282.5, 285. , 287.5, 290. , 292.5, 295. , 297.5,
        300. , 302.5, 305. , 307.5, 310. , 312.5, 315. , 317.5, 320. , 322.5,
        325. , 327.5, 330. , 332.5, 335. , 337.5, 340. , 342.5, 345. , 347.5,
-       350. , 352.5, 355. , 357.5], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-40c96f99-7373-439d-a38c-23b6763907f0' class='xr-section-summary-in' type='checkbox'  checked><label for='section-40c96f99-7373-439d-a38c-23b6763907f0' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>yrmon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-63833cbd-6c74-4fef-b5d3-4fb384f9caea' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-63833cbd-6c74-4fef-b5d3-4fb384f9caea' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ab58c0f0-64be-4cc8-bb64-9e4fb0839f6d' class='xr-var-data-in' type='checkbox'><label for='data-ab58c0f0-64be-4cc8-bb64-9e4fb0839f6d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>short_name :</span></dt><dd>YYYYMM</dd><dt><span>long_name :</span></dt><dd>Year-Month</dd><dt><span>units :</span></dt><dd>current date as 6 digit integer (YYYYMM)</dd></dl></div><div class='xr-var-data'><pre>[480 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>HGT</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-57c253b6-0779-465b-b993-fc058d0cb20b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-57c253b6-0779-465b-b993-fc058d0cb20b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4d2e7b1e-3603-47f4-909b-f20070c38fd8' class='xr-var-data-in' type='checkbox'><label for='data-4d2e7b1e-3603-47f4-909b-f20070c38fd8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>lev :</span></dt><dd>500.0</dd><dt><span>short_name :</span></dt><dd>HGT</dd><dt><span>long_name :</span></dt><dd>Geopotential Height</dd><dt><span>units :</span></dt><dd>gpm</dd></dl></div><div class='xr-var-data'><pre>[5045760 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-46cc0195-2f34-43a8-89c0-7528f55bb771' class='xr-section-summary-in' type='checkbox'  ><label for='section-46cc0195-2f34-43a8-89c0-7528f55bb771' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-762994ea-1a21-474d-aa7e-c1a626f99d96' class='xr-index-data-in' type='checkbox'/><label for='index-762994ea-1a21-474d-aa7e-c1a626f99d96' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
+       350. , 352.5, 355. , 357.5], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-79335822-295d-4bda-bad6-378dca4f2b6b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-79335822-295d-4bda-bad6-378dca4f2b6b' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>yrmon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-86bf0b4a-2b38-4f40-a1e2-a32119020c44' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-86bf0b4a-2b38-4f40-a1e2-a32119020c44' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6f703a74-3c46-4c78-a3a0-9c0458fb4754' class='xr-var-data-in' type='checkbox'><label for='data-6f703a74-3c46-4c78-a3a0-9c0458fb4754' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>short_name :</span></dt><dd>YYYYMM</dd><dt><span>long_name :</span></dt><dd>Year-Month</dd><dt><span>units :</span></dt><dd>current date as 6 digit integer (YYYYMM)</dd></dl></div><div class='xr-var-data'><pre>[480 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>HGT</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-167053b3-3fb5-4204-8f9a-259d8fd82c20' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-167053b3-3fb5-4204-8f9a-259d8fd82c20' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-aa001e13-570f-451f-aba7-3c3bcf44cbf7' class='xr-var-data-in' type='checkbox'><label for='data-aa001e13-570f-451f-aba7-3c3bcf44cbf7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>lev :</span></dt><dd>500.0</dd><dt><span>short_name :</span></dt><dd>HGT</dd><dt><span>long_name :</span></dt><dd>Geopotential Height</dd><dt><span>units :</span></dt><dd>gpm</dd></dl></div><div class='xr-var-data'><pre>[5045760 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1df99d39-4d9c-45ab-aefa-afff542379b1' class='xr-section-summary-in' type='checkbox'  ><label for='section-1df99d39-4d9c-45ab-aefa-afff542379b1' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b1e47c35-b569-45fb-a2f8-ee2d985f1bd4' class='xr-index-data-in' type='checkbox'/><label for='index-b1e47c35-b569-45fb-a2f8-ee2d985f1bd4' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
        ...
        470, 471, 472, 473, 474, 475, 476, 477, 478, 479],
-      dtype=&#x27;int64&#x27;, name=&#x27;time&#x27;, length=480))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-a56f542c-f612-4eee-814f-229565045946' class='xr-index-data-in' type='checkbox'/><label for='index-a56f542c-f612-4eee-814f-229565045946' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-90.0, -87.5, -85.0, -82.5, -80.0, -77.5, -75.0, -72.5, -70.0, -67.5,
+      dtype=&#x27;int64&#x27;, name=&#x27;time&#x27;, length=480))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-9548b07b-7200-47a5-80a0-74359c3d4198' class='xr-index-data-in' type='checkbox'/><label for='index-9548b07b-7200-47a5-80a0-74359c3d4198' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-90.0, -87.5, -85.0, -82.5, -80.0, -77.5, -75.0, -72.5, -70.0, -67.5,
        -65.0, -62.5, -60.0, -57.5, -55.0, -52.5, -50.0, -47.5, -45.0, -42.5,
        -40.0, -37.5, -35.0, -32.5, -30.0, -27.5, -25.0, -22.5, -20.0, -17.5,
        -15.0, -12.5, -10.0,  -7.5,  -5.0,  -2.5,   0.0,   2.5,   5.0,   7.5,
@@ -1696,16 +1638,16 @@ Attributes:
         35.0,  37.5,  40.0,  42.5,  45.0,  47.5,  50.0,  52.5,  55.0,  57.5,
         60.0,  62.5,  65.0,  67.5,  70.0,  72.5,  75.0,  77.5,  80.0,  82.5,
         85.0,  87.5,  90.0],
-      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-00fc8cb2-5cf9-4607-9626-c533c606548f' class='xr-index-data-in' type='checkbox'/><label for='index-00fc8cb2-5cf9-4607-9626-c533c606548f' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  0.0,   2.5,   5.0,   7.5,  10.0,  12.5,  15.0,  17.5,  20.0,  22.5,
+      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-e0ececaa-a02e-4270-af0a-e75753acb17e' class='xr-index-data-in' type='checkbox'/><label for='index-e0ececaa-a02e-4270-af0a-e75753acb17e' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  0.0,   2.5,   5.0,   7.5,  10.0,  12.5,  15.0,  17.5,  20.0,  22.5,
        ...
        335.0, 337.5, 340.0, 342.5, 345.0, 347.5, 350.0, 352.5, 355.0, 357.5],
-      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=144))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d0fd649b-f4c8-4334-9400-871937f24be5' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d0fd649b-f4c8-4334-9400-871937f24be5' class='xr-section-summary' >Attributes: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>conventions :</span></dt><dd>None</dd><dt><span>history :</span></dt><dd>NCEP/NCAR REANALYSIS MONTHLY MEAN SUBSETS
+      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=144))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f938cd34-d6ff-4368-aa60-02d8997a9859' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f938cd34-d6ff-4368-aa60-02d8997a9859' class='xr-section-summary' >Attributes: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>conventions :</span></dt><dd>None</dd><dt><span>history :</span></dt><dd>NCEP/NCAR REANALYSIS MONTHLY MEAN SUBSETS
 ftp://ncardata.ucar.edu/pub/reanalysis/monthly/presa/
 </dd><dt><span>source :</span></dt><dd>NCEP Reanalysis; ds090.2</dd><dt><span>title :</span></dt><dd>500mb Geopotential Height: 1958-1997</dd><dt><span>source_mss :</span></dt><dd>/SHEA/HVL/HGT_1958-1997.nc:  500 mb extracted</dd><dt><span>creation_date :</span></dt><dd>creation date: Tue Aug  7 16:31:48 MDT 2001</dd></dl></div></li></ul></div></div></div></div>
 </div>
-</div>
-<div class="section" id="initial-spaghetti-plot-on-north-polar-stereographic-projection">
-<h3>Initial Spaghetti Plot on North Polar Stereographic Projection<a class="headerlink" href="#initial-spaghetti-plot-on-north-polar-stereographic-projection" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+</section>
+<section id="initial-spaghetti-plot-on-north-polar-stereographic-projection">
+<h3>Initial Spaghetti Plot on North Polar Stereographic Projection<a class="headerlink" href="#initial-spaghetti-plot-on-north-polar-stereographic-projection" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Again, first let’s set up our Cartopy axes. This time setting our projection to <code class="docutils literal notranslate"><span class="pre">NorthPolarStereo</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1727,7 +1669,7 @@ ftp://ncardata.ucar.edu/pub/reanalysis/monthly/presa/
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2e117f7c7093f62e22ed691d70bb5d08290dfda03158e4cca2fcc6931aeedccf.png" src="../_images/2e117f7c7093f62e22ed691d70bb5d08290dfda03158e4cca2fcc6931aeedccf.png" />
+<img alt="../_images/2fe5688d4fca4712f1cdb3c3c38965b349b44c3d5e978711296676a35c64b91e.png" src="../_images/2fe5688d4fca4712f1cdb3c3c38965b349b44c3d5e978711296676a35c64b91e.png" />
 </div>
 </div>
 <p>Then let’s add our data to this plot.</p>
@@ -1775,12 +1717,12 @@ ftp://ncardata.ucar.edu/pub/reanalysis/monthly/presa/
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c490cc5d3eb35b8b40a53272cbc9c972af96764da0d1af2c1215abbc313cd234.png" src="../_images/c490cc5d3eb35b8b40a53272cbc9c972af96764da0d1af2c1215abbc313cd234.png" />
+<img alt="../_images/61cf1f34d4da7413d66e1ae5fd829ea6ae89287c1b459c84554d3cffc2b2403b.png" src="../_images/61cf1f34d4da7413d66e1ae5fd829ea6ae89287c1b459c84554d3cffc2b2403b.png" />
 </div>
 </div>
-</div>
-<div class="section" id="adding-directional-labels-to-polar-stereographic-projection">
-<h3>Adding Directional Labels to Polar Stereographic Projection<a class="headerlink" href="#adding-directional-labels-to-polar-stereographic-projection" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+</section>
+<section id="adding-directional-labels-to-polar-stereographic-projection">
+<h3>Adding Directional Labels to Polar Stereographic Projection<a class="headerlink" href="#adding-directional-labels-to-polar-stereographic-projection" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Adding labels to a map projection that aren’t lat/lon coordinates is less than intuitive. In this example we manually add labels and select their locations so that you can see NESW labels.</p>
 <p>For this we use <code class="docutils literal notranslate"><span class="pre">mticker.FixedLocator()</span></code> to manipulare gridline spacing, manipulate East and West tick labels separately, and specify tick locations with <code class="docutils literal notranslate"><span class="pre">ax.text(transform=ccrs.Geodetic())</span></code>.</p>
 <div class="cell docutils container">
@@ -1875,14 +1817,14 @@ ftp://ncardata.ucar.edu/pub/reanalysis/monthly/presa/
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4cb75ac25afb6cc7cbdf6bbcb840bb6d9780f1c0de5b073848b033b2389319b9.png" src="../_images/4cb75ac25afb6cc7cbdf6bbcb840bb6d9780f1c0de5b073848b033b2389319b9.png" />
+<img alt="../_images/40e49e7352b779aa683148072865b3b5d092f28b5be8e6cb9f839255aa53252c.png" src="../_images/40e49e7352b779aa683148072865b3b5d092f28b5be8e6cb9f839255aa53252c.png" />
 </div>
 </div>
 <p>Now in this example, there isn’t necessarily a temporal progression of geopotential height, but to be sure let’s add a colormap component to each of our loops.</p>
 <p>This is also useful because for your data visualization application there might be, and the commands are slightly different for a contour plot as for a line plot in the above example.</p>
-</div>
-<div class="section" id="contour-spaghetti-plot-temporal-colorbar-manipulation">
-<h3>Contour Spaghetti Plot Temporal Colorbar Manipulation<a class="headerlink" href="#contour-spaghetti-plot-temporal-colorbar-manipulation" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+</section>
+<section id="contour-spaghetti-plot-temporal-colorbar-manipulation">
+<h3>Contour Spaghetti Plot Temporal Colorbar Manipulation<a class="headerlink" href="#contour-spaghetti-plot-temporal-colorbar-manipulation" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Let’s update add a discrete colorbar that has yearly ticklabels. One challenge addressed in this example is setting the ticklabels to be in the center of each discrete color box.</p>
 <p>New code lines here are:</p>
 <ul class="simple">
@@ -1998,12 +1940,12 @@ ftp://ncardata.ucar.edu/pub/reanalysis/monthly/presa/
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a089008e62fb0588ce2e4b7dd4d9e7e561a304e06b5f809285ff388b6bc02b61.png" src="../_images/a089008e62fb0588ce2e4b7dd4d9e7e561a304e06b5f809285ff388b6bc02b61.png" />
+<img alt="../_images/cd7a1d7d19d026e912d4f6c9cd1e561054edfff83f95e831315d3de123054722.png" src="../_images/cd7a1d7d19d026e912d4f6c9cd1e561054edfff83f95e831315d3de123054722.png" />
 </div>
 </div>
-</div>
-<div class="section" id="contour-spaghetti-plot-with-hand-picked-colors">
-<h3>Contour Spaghetti Plot with Hand-Picked Colors<a class="headerlink" href="#contour-spaghetti-plot-with-hand-picked-colors" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+</section>
+<section id="contour-spaghetti-plot-with-hand-picked-colors">
+<h3>Contour Spaghetti Plot with Hand-Picked Colors<a class="headerlink" href="#contour-spaghetti-plot-with-hand-picked-colors" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>If you want your plot to be visually appealing it might be worth selecting different colors for each contour plot in the for-loop, however these do not have to be sequentially ordered or time-aware. It is actually simplest to hand-pick colors for each loop. In this iteration of the plot we hand pick colors in a <code class="docutils literal notranslate"><span class="pre">colorlist</span></code> and plot the first time step on its own to demonstrate plotting one loop unlike the others.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2120,29 +2062,29 @@ ftp://ncardata.ucar.edu/pub/reanalysis/monthly/presa/
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/64a9c67672f54eb0de08d54a8c57e889e0492a05ff5546982e669d64a74a54ca.png" src="../_images/64a9c67672f54eb0de08d54a8c57e889e0492a05ff5546982e669d64a74a54ca.png" />
+<img alt="../_images/7bd65f565db44536a08853ef194132072c5d161c6898321c93e49a03be76c184.png" src="../_images/7bd65f565db44536a08853ef194132072c5d161c6898321c93e49a03be76c184.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>Spaghetti Plots are many lines drawn on the same figure. They have pros and cons. They are visually stunning but can be confusing, so it is important to make sure your data visualization conveys accurate information either by manipulating color or linewidth. Since the manipulation of spaghetti plots have their own considerations, this chapter shows several design choices that you can use to jumpstart your visualization needs.</p>
-<div class="section" id="whats-next">
-<h3>What’s next?<a class="headerlink" href="#whats-next" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<section id="whats-next">
+<h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Next up let’s discuss <a class="reference internal" href="7-animation.html"><span class="doc std std-doc">Animation</span></a>.</p>
-</div>
-</div>
-<div class="section" id="resources-and-references">
-<h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+</section>
+</section>
+<section id="resources-and-references">
+<h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://tropycal.github.io/tropycal/">Tropycal documentation</a></p></li>
 <li><p><a class="reference external" href="https://geocat-examples.readthedocs.io/en/latest/">GeoCat-examples Visualization Gallery</a></p></li>
 <li><p><a class="reference external" href="https://geocat-viz.readthedocs.io/en/latest/">GeoCAT-Viz documentation</a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2164,43 +2106,350 @@ ftp://ncardata.ucar.edu/pub/reanalysis/monthly/presa/
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
-              <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="5-skewt.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Skew T Diagrams</p>
-        </div>
+                  </article>
+
+                
+                
+
+                
+                
+                  <footer class="prev-next-footer">
+                    
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="5-skewt.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Skew T Diagrams</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="7-animation.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="7-animation.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Animation</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </div>
-          </div>
-        </main>
+                  </footer>
+                
+              </div>
 
-      </div>
+              
+              
+                
+                  <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spaghetti-hurricane-plot">Spaghetti Hurricane Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-data">Read in Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spaghetti-plot-of-one-esemble-member">Spaghetti Plot of One Esemble Member</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spaghetti-plot-of-one-esemble-member-with-temporal-colormapping">Spaghetti Plot of One Esemble Member with Temporal Colormapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spaghetti-plot-of-all-esemble-members-at-one-point-in-time">Spaghetti Plot of All Esemble Members at One Point in Time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spaghetti-contour-plot">Spaghetti Contour Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Read in data:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-spaghetti-plot-on-north-polar-stereographic-projection">Initial Spaghetti Plot on North Polar Stereographic Projection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-directional-labels-to-polar-stereographic-projection">Adding Directional Labels to Polar Stereographic Projection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contour-spaghetti-plot-temporal-colorbar-manipulation">Contour Spaghetti Plot Temporal Colorbar Manipulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contour-spaghetti-plot-with-hand-picked-colors">Contour Spaghetti Plot with Hand-Picked Colors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+                
+              
+
+
+                
+                <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
-
-<footer class="footer">
-  <div class="container-fluid m-0 p-0">
   
-    <div class="footer-item">
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook/main?urlpath=lab/tree/notebooks/6-spaghetti.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/advanced-viz-cookbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/advanced-viz-cookbook/edit/main/notebooks/6-spaghetti.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/advanced-viz-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/6-spaghetti.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/6-spaghetti.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+            </div>
+
+            <footer class="bd-footer-content">
+              
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
+<p class="component-author">
+By the <a href="https://projectpythia.org/">Project Pythia</a> Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on 2 April 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+            </footer>
+
+        </main>
+    </div>
+  </div>
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+     
+  
+  
+  
+  
+    <div class="footer-items__start">
+      <div class="container-fluid m-0 p-0">
+      
+        <div class="footer-item">
   <div class="container-fluid footer-logos">
     <div class="container-xl">
       <div class="row d-flex flex-wrap align-items-center">
         <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
-          <img alt="NCAR" src="../_images/NCAR-contemp-logo-blue.svg" style="width: 100%">
+          <img alt="NCAR" src="../_images/NSF-NCAR_Lockup-UCAR-Dark_102523.svg" style="width: 100%">
         </div>
         <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
           <img alt="Unidata" src="../_images/Unidata_logo_horizontal_1200x300.svg" style="width: 100%">
@@ -2210,34 +2459,26 @@ ftp://ncardata.ucar.edu/pub/reanalysis/monthly/presa/
         </div>
       </div>
     </div>
-  </div>
-    </div>
-  
-    <div class="footer-item">
-    
-    </div>
-  
-    <div class="footer-item">
-      <div class="container-fluid footer-info">
+  </div></div>
+      
+        <div class="footer-item">  <div class="container-fluid footer-info">
     <div class="container-xl">
       <div class="d-flex justify-content-center">
         <p class="py-1 m-0">
-            &copy;&nbsp;2023.
+            &copy;&nbsp;2024.
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 12 January 2024.
+          Last updated on 2 April 2024.
         </p>
       </div>
     </div>
-  </div>
+  </div></div>
+      
+      </div>
     </div>
   
-    <div class="footer-item">
-    
-    </div>
-  
-  </div>
-</footer>
+
+  </footer>
   </body>
 </html>

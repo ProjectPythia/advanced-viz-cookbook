@@ -1,103 +1,133 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Plot Elements &#8212; Advanced Visualization Cookbook</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-pythia-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-pythia-theme.min.css?v=e502140d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=c54c090a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/3-plot-elements';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Taylor Diagrams" href="4-taylor-diagrams.html" />
     <link rel="prev" title="What Makes for Good Data Visualization?" href="2-good-viz.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-T52X8HNYE8');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="2 April 2024"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="132">
-    <div class="container-fluid" id="shim"></div>
-    <div class="container-fluid" id="banner"></div>
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main"><div class="container-xl">
-
-  <div id="navbar-start">
-    
-    
-
-<a class="navbar-brand" href="https://projectpythia.org">
-  <img src="../_static/pythia_logo-white-rtext.svg" class="logo" alt="logo">
-</a>
-
-
-    
-  </div>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
-  <div id="navbar-collapsible" class=" collapse navbar-collapse">
-    <div id="navbar-center" class="mr-auto">
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <div class="pst-scroll-pixel-helper"></div>
+    <header class="bd-header navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand logo" href="https://projectpythia.org">
+  
+  
+  
+  
+  
+    
+    
       
-      <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
+    
+    
+    <img src="../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Advanced Visualization Cookbook - Home"/>
+    <script>document.write(`<img src="../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Advanced Visualization Cookbook - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
   
   <li class="nav-item">
     
@@ -135,324 +165,260 @@ const thebe_selector_output = ".output, .cell_output"
   </li>
   
   
-</ul>
-      </div>
+</ul></div>
       
     </div>
-
-    <div id="navbar-end">
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/ProjectPythia" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://twitter.com/project_pythia" rel="noopener" target="_blank" title="Twitter">
-            <span><i class="fab fa-twitter-square"></i></span>
-            <label class="sr-only">Twitter</label>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" rel="noopener" target="_blank" title="YouTube">
-            <span><i class="fab fa-youtube-square"></i></span>
-            <label class="sr-only">YouTube</label>
-          </a>
-        </li>
-      </ul>
-      </div>
-      
-    </div>
-  </div>
-</div>
-    </nav>
-    <div class="container-xl">
-      <div class="row">
-        
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
-        <form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../README.html">
-   Advanced Visualization Cookbook
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preamble
- </span>
-</p>
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+        
+        
+        
+        <div class="bd-sidebar-primary bd-sidebar">
+          
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Advanced Visualization Cookbook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="how-to-cite.html">
-   How to Cite This Cookbook
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite This Cookbook</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Basics of Geoscience Visualization
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics of Geoscience Visualization</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="1-comparison.html">
-   Comparison of Visualization Packages
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-good-viz.html">
-   What Makes for Good Data Visualization?
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Plot Elements
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="1-comparison.html">Comparison of Visualization Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-good-viz.html">What Makes for Good Data Visualization?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Plot Elements</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Specialty Plots
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Specialty Plots</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="4-taylor-diagrams.html">
-   Taylor Diagrams
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5-skewt.html">
-   Skew T Diagrams
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="4-taylor-diagrams.html">Taylor Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-skewt.html">Skew T Diagrams</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Visualization of Structured Grids
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization of Structured Grids</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="6-spaghetti.html">
-   Spaghetti Plots
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="6-spaghetti.html">Spaghetti Plots</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Animation
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Animation</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="7-animation.html">
-   Animation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="7-animation.html">Animation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Interactivity
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interactivity</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="8-interactive-holoviz-mpas.html">
-   HoloViz Visualization
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="8-interactive-holoviz-mpas.html">HoloViz Visualization</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by <a href="https://projectpythia.org">Project Pythia</a>.<br><br>
-All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons BY 4.0 (CC BY 4.0)</a>.<br><br>
-
-</div>
-
-</div>
-
-        
-
-        <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main"><div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/3-plot-elements.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/ProjectPythia/advanced-viz-cookbook/"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/ProjectPythia/advanced-viz-cookbook//issues/new?title=Issue%20on%20page%20%2Fnotebooks/3-plot-elements.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/ProjectPythia/advanced-viz-cookbook/edit/main/notebooks/3-plot-elements.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook/main?urlpath=lab/tree/notebooks/3-plot-elements.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
 
         </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> On this page
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisites">
-   Prerequisites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data">
-   Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#figure">
-   Figure
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#axis">
-   Axis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plot">
-   Plot
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#titles-and-labels">
-   Titles and Labels
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#legends">
-   Legends
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#colorbars">
-   Colorbars
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#annotations">
-   Annotations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#whats-next">
-     What’s next?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resources-and-references">
-   Resources and references
-  </a>
- </li>
-</ul>
+        
+        <main id="main-content" class="bd-main" role="main">
+          
 
-            </nav>
-        </div>
-    </div>
-</div>
-          <div id="main-content" class="row">
-            <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-              
-              <div>
+            <div class="bd-content">
+
+              <div class="bd-article-container">
+
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="plot-elements">
-<h1>Plot Elements<a class="headerlink" href="#plot-elements" title="Permalink to this headline"><i class="fas fa-link"></i></a></h1>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
-<table class="colwidths-auto table">
+                  
+                  
+<div id="searchbox"></div>
+                  <article class="bd-article">
+                    
+  <section class="tex2jax_ignore mathjax_ignore" id="plot-elements">
+<h1>Plot Elements<a class="headerlink" href="#plot-elements" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Concepts</p></th>
 <th class="head"><p>Importance</p></th>
@@ -484,9 +450,9 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>The first piece of data visualization is the data!</p>
 <p>Let’s generate some dummy data to work with:</p>
 <div class="cell docutils container">
@@ -498,9 +464,9 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="figure">
-<h2>Figure<a class="headerlink" href="#figure" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+</section>
+<section id="figure">
+<h2>Figure<a class="headerlink" href="#figure" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>The figure is the object that contains your entire visualization. Creating a figure tends to be the first step in plotting, even if it doesn’t currently show anything:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -514,9 +480,9 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="axis">
-<h2>Axis<a class="headerlink" href="#axis" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+</section>
+<section id="axis">
+<h2>Axis<a class="headerlink" href="#axis" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>We then add axes to our plot. You can add multiple axes to one plot in order to produce subplots, or just one. Axes will automatically inherit their limits from the data plotted, or can be manually set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -526,12 +492,12 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7add222fa4e53c0dc416a7ffd4554e6a611f5a7cc9f2e144549bb29786fd0298.png" src="../_images/7add222fa4e53c0dc416a7ffd4554e6a611f5a7cc9f2e144549bb29786fd0298.png" />
+<img alt="../_images/0d2199f7c89580a5e480a8e3b2dbe560ccab7fa8b92b10756088a2fd6a3acf51.png" src="../_images/0d2199f7c89580a5e480a8e3b2dbe560ccab7fa8b92b10756088a2fd6a3acf51.png" />
 </div>
 </div>
-</div>
-<div class="section" id="plot">
-<h2>Plot<a class="headerlink" href="#plot" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+</section>
+<section id="plot">
+<h2>Plot<a class="headerlink" href="#plot" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>Adding the data to the figure can be done through several different plot types: line, contour, bar, histogram. Here we use two line plots:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -544,12 +510,12 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7fce943938ad889d6eb5bcf58e612982427bc994321efc6d62df64ff126406c2.png" src="../_images/7fce943938ad889d6eb5bcf58e612982427bc994321efc6d62df64ff126406c2.png" />
+<img alt="../_images/7745f3456719463eaaadca66e38d7b92a5603480e69f8da427d4ae342772f09e.png" src="../_images/7745f3456719463eaaadca66e38d7b92a5603480e69f8da427d4ae342772f09e.png" />
 </div>
 </div>
-</div>
-<div class="section" id="titles-and-labels">
-<h2>Titles and Labels<a class="headerlink" href="#titles-and-labels" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+</section>
+<section id="titles-and-labels">
+<h2>Titles and Labels<a class="headerlink" href="#titles-and-labels" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>Titles and labels are important for indicating what the figure is plotting. It is a good idea to include relevant units in your axis labels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -565,12 +531,12 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a4e809ae69d3ba9fc9fdb556ffd648695169d1341987183ebdcdcb1b413cef69.png" src="../_images/a4e809ae69d3ba9fc9fdb556ffd648695169d1341987183ebdcdcb1b413cef69.png" />
+<img alt="../_images/3d6fa97eab7405f99e81ce9414c5ba2a244b68ab7d6cfbebe02c710960dcce86.png" src="../_images/3d6fa97eab7405f99e81ce9414c5ba2a244b68ab7d6cfbebe02c710960dcce86.png" />
 </div>
 </div>
-</div>
-<div class="section" id="legends">
-<h2>Legends<a class="headerlink" href="#legends" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+</section>
+<section id="legends">
+<h2>Legends<a class="headerlink" href="#legends" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>If you’re plotting multiple lines of data, it’s a good idea to include a legend. Here is how you call or point to the legend:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -588,12 +554,12 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/97aefb8347aaff6ba9fb23ec7e653b70c1a11ea99c933c1b57ebf629612e94a7.png" src="../_images/97aefb8347aaff6ba9fb23ec7e653b70c1a11ea99c933c1b57ebf629612e94a7.png" />
+<img alt="../_images/ae2279203dd9b5d469b43583a4a2041f2a0de4388d3b9fb1c161ba894157c0f5.png" src="../_images/ae2279203dd9b5d469b43583a4a2041f2a0de4388d3b9fb1c161ba894157c0f5.png" />
 </div>
 </div>
-</div>
-<div class="section" id="colorbars">
-<h2>Colorbars<a class="headerlink" href="#colorbars" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+</section>
+<section id="colorbars">
+<h2>Colorbars<a class="headerlink" href="#colorbars" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>While legends are more appropriate for line or bar plots, colorbars are most commonly used for contour plots and sometimes to apply a third level of dimension to a scatter plot.</p>
 <p>Let’s shift our example to better demonstrate a colorbar by workign with a filled contour plot:</p>
 <div class="cell docutils container">
@@ -977,17 +943,17 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray (lat: 4, lon: 5)&gt;
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray (lat: 4, lon: 5)&gt; Size: 160B
 array([[ 1. ,  4. ,  5. ,  6. ,  8.2],
        [ 9. ,  8.4, 10. , 10.6,  9.7],
        [ 4.4,  5. ,  0. ,  6.6,  1.4],
        [ 4.6,  5.2,  1.5,  7.6,  2.4]])
 Coordinates:
-  * lat      (lat) int64 0 1 2 3
-  * lon      (lon) int64 0 1 2 3 4</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 4</li><li><span class='xr-has-index'>lon</span>: 5</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-9800a236-9150-41d9-b966-50b88d74e83a' class='xr-array-in' type='checkbox' checked><label for='section-9800a236-9150-41d9-b966-50b88d74e83a' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>1.0 4.0 5.0 6.0 8.2 9.0 8.4 10.0 ... 0.0 6.6 1.4 4.6 5.2 1.5 7.6 2.4</span></div><div class='xr-array-data'><pre>array([[ 1. ,  4. ,  5. ,  6. ,  8.2],
+  * lat      (lat) int64 32B 0 1 2 3
+  * lon      (lon) int64 40B 0 1 2 3 4</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 4</li><li><span class='xr-has-index'>lon</span>: 5</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-5a3b8434-3fe1-4bb8-b70d-c87aa1a2317a' class='xr-array-in' type='checkbox' checked><label for='section-5a3b8434-3fe1-4bb8-b70d-c87aa1a2317a' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>1.0 4.0 5.0 6.0 8.2 9.0 8.4 10.0 ... 0.0 6.6 1.4 4.6 5.2 1.5 7.6 2.4</span></div><div class='xr-array-data'><pre>array([[ 1. ,  4. ,  5. ,  6. ,  8.2],
        [ 9. ,  8.4, 10. , 10.6,  9.7],
        [ 4.4,  5. ,  0. ,  6.6,  1.4],
-       [ 4.6,  5.2,  1.5,  7.6,  2.4]])</pre></div></div></li><li class='xr-section-item'><input id='section-5a6dcb16-480f-45f2-9c9b-099a7a41ff26' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5a6dcb16-480f-45f2-9c9b-099a7a41ff26' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3</div><input id='attrs-2733409c-0f63-4faf-98e0-60f888e4277f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2733409c-0f63-4faf-98e0-60f888e4277f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-40a2b7dd-3557-4eff-8b3a-838f0ff1eee8' class='xr-var-data-in' type='checkbox'><label for='data-40a2b7dd-3557-4eff-8b3a-838f0ff1eee8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 1, 2, 3])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4</div><input id='attrs-3d71f859-1bb8-46bb-a596-de96bc10b637' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3d71f859-1bb8-46bb-a596-de96bc10b637' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-71ebc5a9-9e6b-4939-86be-756981c27c4a' class='xr-var-data-in' type='checkbox'><label for='data-71ebc5a9-9e6b-4939-86be-756981c27c4a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 1, 2, 3, 4])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0c8959a8-d691-4a32-acf2-6d18c29a2db2' class='xr-section-summary-in' type='checkbox'  ><label for='section-0c8959a8-d691-4a32-acf2-6d18c29a2db2' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-be80ab0e-f530-48cf-8d0b-aafbd5909360' class='xr-index-data-in' type='checkbox'/><label for='index-be80ab0e-f530-48cf-8d0b-aafbd5909360' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([0, 1, 2, 3], dtype=&#x27;int64&#x27;, name=&#x27;lat&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-18a9de03-5a1a-4d4c-b3b3-918cf8ba6825' class='xr-index-data-in' type='checkbox'/><label for='index-18a9de03-5a1a-4d4c-b3b3-918cf8ba6825' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([0, 1, 2, 3, 4], dtype=&#x27;int64&#x27;, name=&#x27;lon&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-51f78b54-1732-455b-9614-b88e757b4d01' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-51f78b54-1732-455b-9614-b88e757b4d01' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+       [ 4.6,  5.2,  1.5,  7.6,  2.4]])</pre></div></div></li><li class='xr-section-item'><input id='section-a1ae7a65-fc19-432e-b3d6-036ba239ee51' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a1ae7a65-fc19-432e-b3d6-036ba239ee51' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3</div><input id='attrs-a9e0aaa2-9bbb-41c5-9cde-cce53fee2f32' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-a9e0aaa2-9bbb-41c5-9cde-cce53fee2f32' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cfb91607-278e-42e0-b3eb-fd929a15096a' class='xr-var-data-in' type='checkbox'><label for='data-cfb91607-278e-42e0-b3eb-fd929a15096a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 1, 2, 3])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4</div><input id='attrs-f2c2c0a0-b99b-4a3f-a6ac-c29b78f5065c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f2c2c0a0-b99b-4a3f-a6ac-c29b78f5065c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-332df289-7e25-451f-9288-498bf7e66b34' class='xr-var-data-in' type='checkbox'><label for='data-332df289-7e25-451f-9288-498bf7e66b34' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 1, 2, 3, 4])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e2024222-fc59-492c-a49e-30cb522521d4' class='xr-section-summary-in' type='checkbox'  ><label for='section-e2024222-fc59-492c-a49e-30cb522521d4' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-ceaac76a-4748-45c1-8f24-00105362e58b' class='xr-index-data-in' type='checkbox'/><label for='index-ceaac76a-4748-45c1-8f24-00105362e58b' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([0, 1, 2, 3], dtype=&#x27;int64&#x27;, name=&#x27;lat&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-a3146e1b-d3c5-4ec2-82cb-a174cf394302' class='xr-index-data-in' type='checkbox'/><label for='index-a3146e1b-d3c5-4ec2-82cb-a174cf394302' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([0, 1, 2, 3, 4], dtype=&#x27;int64&#x27;, name=&#x27;lon&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3e357649-17a2-44e4-bb4a-c941dcd73cea' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-3e357649-17a2-44e4-bb4a-c941dcd73cea' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1005,12 +971,12 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/aedd959608cb64830588d6cb8042a887564bdcd7d05d1e3bb5948a8e7898101f.png" src="../_images/aedd959608cb64830588d6cb8042a887564bdcd7d05d1e3bb5948a8e7898101f.png" />
+<img alt="../_images/686b990a4302561457794026f9cd83f9b9293e45858cdf8bc4f84fc47ae6a425.png" src="../_images/686b990a4302561457794026f9cd83f9b9293e45858cdf8bc4f84fc47ae6a425.png" />
 </div>
 </div>
-</div>
-<div class="section" id="annotations">
-<h2>Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+</section>
+<section id="annotations">
+<h2>Annotations<a class="headerlink" href="#annotations" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>Additional annotations allow you to specify some text and a location to indicate almost anything.</p>
 <p>Here we use GeoCAT-viz to add annotations to the maxima in a contour plot:</p>
 <div class="cell docutils container">
@@ -1039,23 +1005,23 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b60221f0ae39d3d1748f091e830022e55ead9f9a7f4afbf9f73f7884ec1e45c3.png" src="../_images/b60221f0ae39d3d1748f091e830022e55ead9f9a7f4afbf9f73f7884ec1e45c3.png" />
+<img alt="../_images/800908a4099b1974969c49a7506269293da80f3d779ca9a7bb2dbec805d7483c.png" src="../_images/800908a4099b1974969c49a7506269293da80f3d779ca9a7bb2dbec805d7483c.png" />
 </div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>There are several key elements to a Python plot and knowing what they are called is instrumental to begin your journey for further customization.</p>
-<div class="section" id="whats-next">
-<h3>What’s next?<a class="headerlink" href="#whats-next" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<section id="whats-next">
+<h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Next up, the specialty plots called <a class="reference internal" href="4-taylor-diagrams.html"><span class="doc std std-doc">Taylor Diagrams</span></a>.</p>
-</div>
-</div>
-<div class="section" id="resources-and-references">
-<h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
-</div>
-</div>
+</section>
+</section>
+<section id="resources-and-references">
+<h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1077,43 +1043,342 @@ Coordinates:
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
-              <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="2-good-viz.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">What Makes for Good Data Visualization?</p>
-        </div>
+                  </article>
+
+                
+                
+
+                
+                
+                  <footer class="prev-next-footer">
+                    
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2-good-viz.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">What Makes for Good Data Visualization?</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="4-taylor-diagrams.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="4-taylor-diagrams.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Taylor Diagrams</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </div>
-          </div>
-        </main>
+                  </footer>
+                
+              </div>
 
-      </div>
+              
+              
+                
+                  <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure">Figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axis">Axis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot">Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#titles-and-labels">Titles and Labels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legends">Legends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colorbars">Colorbars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotations">Annotations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+                
+              
+
+
+                
+                <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
-
-<footer class="footer">
-  <div class="container-fluid m-0 p-0">
   
-    <div class="footer-item">
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook/main?urlpath=lab/tree/notebooks/3-plot-elements.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/advanced-viz-cookbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/advanced-viz-cookbook/edit/main/notebooks/3-plot-elements.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/advanced-viz-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/3-plot-elements.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/3-plot-elements.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+            </div>
+
+            <footer class="bd-footer-content">
+              
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
+<p class="component-author">
+By the <a href="https://projectpythia.org/">Project Pythia</a> Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on 2 April 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+            </footer>
+
+        </main>
+    </div>
+  </div>
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+     
+  
+  
+  
+  
+    <div class="footer-items__start">
+      <div class="container-fluid m-0 p-0">
+      
+        <div class="footer-item">
   <div class="container-fluid footer-logos">
     <div class="container-xl">
       <div class="row d-flex flex-wrap align-items-center">
         <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
-          <img alt="NCAR" src="../_images/NCAR-contemp-logo-blue.svg" style="width: 100%">
+          <img alt="NCAR" src="../_images/NSF-NCAR_Lockup-UCAR-Dark_102523.svg" style="width: 100%">
         </div>
         <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
           <img alt="Unidata" src="../_images/Unidata_logo_horizontal_1200x300.svg" style="width: 100%">
@@ -1123,34 +1388,26 @@ Coordinates:
         </div>
       </div>
     </div>
-  </div>
-    </div>
-  
-    <div class="footer-item">
-    
-    </div>
-  
-    <div class="footer-item">
-      <div class="container-fluid footer-info">
+  </div></div>
+      
+        <div class="footer-item">  <div class="container-fluid footer-info">
     <div class="container-xl">
       <div class="d-flex justify-content-center">
         <p class="py-1 m-0">
-            &copy;&nbsp;2023.
+            &copy;&nbsp;2024.
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 12 January 2024.
+          Last updated on 2 April 2024.
         </p>
       </div>
     </div>
-  </div>
+  </div></div>
+      
+      </div>
     </div>
   
-    <div class="footer-item">
-    
-    </div>
-  
-  </div>
-</footer>
+
+  </footer>
   </body>
 </html>
