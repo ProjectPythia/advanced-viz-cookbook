@@ -20,6 +20,7 @@ dependencies:
   - geocat-datafiles
   - geoviews
   - tropycal
+  - sphinx-pythia-theme
   - pip
   - pip:
-      - sphinx-pythia-theme
+      - jupyter_bokeh
