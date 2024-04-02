@@ -20,6 +20,4 @@ dependencies:
   - geocat-datafiles
   - geoviews
   - tropycal
-  - pip
-  - pip:
-      - sphinx-pythia-theme
+  - sphinx-pythia-theme
