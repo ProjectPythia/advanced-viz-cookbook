@@ -21,3 +21,6 @@ dependencies:
   - geoviews
   - tropycal
   - sphinx-pythia-theme
+  - pip
+  - pip:
+      - jupyter_bokeh
