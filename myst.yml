@@ -20,4 +20,24 @@ project:
     - name: The Project Pythia Community
   copyright: '2024'
   toc:
-    - file: README.md
+    - title: Preamble
+      children:
+        - file: notebooks/how-to-cite
+    - title: Basics of Geoscience Visualization
+      children:
+        - file: notebooks/1-comparison
+        - file: notebooks/2-good-viz
+        - file: notebooks/3-plot-elements
+    - title: Specialty Plots
+      children:
+        - file: notebooks/4-taylor-diagrams
+        - file: notebooks/5-skewt
+    - title: Visualization of Structured Grids
+      children:
+        - file: notebooks/6-spaghetti
+    - title: Animation
+      children:
+        - file: notebooks/7-animation
+    - title: Interactivity
+      children:
+        - file: notebooks/8-interactive-holoviz-mpas
