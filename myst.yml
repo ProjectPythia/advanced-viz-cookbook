@@ -1,13 +1,5 @@
 # See docs at: https://mystmd.org/guide/frontmatter
 version: 1
-project:
-  id: a6700194-275a-4ba7-92a2-0cb0f0794313
-  # title:
-  # description:
-  keywords: []
-  authors: []
-  github: https://github.com/projectpythia-mystmd/advanced-viz-cookbook
-  # bibliography: []
 site:
   template: book-theme
   options:
@@ -25,6 +17,7 @@ site:
       url: https://projectpythia.org/index.html#join-us
 project:
   title: Advanced Visualization Cookbook
+  github: https://github.com/projectpythia-mystmd/advanced-viz-cookbook
   abbreviations:
     GRIB: General Regularly-distributed Information in Binary
     HRRR: High-Resolution Rapid Refresh
