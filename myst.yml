@@ -10,12 +10,26 @@ project:
   # bibliography: []
 site:
   template: book-theme
-  # title:
-  # options:
-  #   favicon: favicon.ico
-  #   logo: site_logo.png
-  nav: []
-  actions:
-    - title: Learn More
-      url: https://mystmd.org/guide
-  domains: []
+  options:
+    logo: notebooks/images/logos/pythia_logo-white-rtext.svg
+  nav:
+    - title: Home
+      url: https://projectpythia.org
+    - title: Foundations
+      url: https://foundations.projectpythia.org
+    - title: Cookbooks
+      url: https://cookbooks.projectpythia.org
+    - title: Resources
+      url: https://projectpythia.org/resource-gallery.html
+    - title: Community
+      url: https://projectpythia.org/index.html#join-us
+project:
+  title: Advanced Visualization Cookbook
+  abbreviations:
+    GRIB: General Regularly-distributed Information in Binary
+    HRRR: High-Resolution Rapid Refresh
+  authors:
+    - name: The Project Pythia Community
+  copyright: '2024'
+  toc:
+    - file: README.md
