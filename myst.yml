@@ -1,0 +1,21 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: a6700194-275a-4ba7-92a2-0cb0f0794313
+  # title:
+  # description:
+  keywords: []
+  authors: []
+  github: https://github.com/projectpythia-mystmd/advanced-viz-cookbook
+  # bibliography: []
+site:
+  template: book-theme
+  # title:
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
+  nav: []
+  actions:
+    - title: Learn More
+      url: https://mystmd.org/guide
+  domains: []
