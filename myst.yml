@@ -23,6 +23,7 @@ project:
     - name: The Project Pythia Community
   copyright: '2024'
   toc:
+    - file: README.md
     - title: Preamble
       children:
         - file: notebooks/how-to-cite
