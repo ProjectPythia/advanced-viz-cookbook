@@ -14,6 +14,9 @@ site:
     - title: Community
       url: https://projectpythia.org/index.html#join-us
 project:
+  jupyter:
+    binder:
+      repo: projectpythia-mystmd/advanced-viz-cookbook
   title: Advanced Visualization Cookbook
   github: https://github.com/projectpythia-mystmd/advanced-viz-cookbook
   authors:
