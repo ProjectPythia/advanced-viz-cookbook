@@ -32,3 +32,6 @@ project:
     - title: Interactivity
       children:
         - file: notebooks/8-interactive-holoviz-mpas.ipynb
+  jupyter:
+    binder:
+      url: https://binder.projectpythia.org/
