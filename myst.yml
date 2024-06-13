@@ -7,6 +7,8 @@ project:
   authors:
     - name: The Project Pythia Community
   copyright: '2024'
+  references:
+    spec: https://projectpythia-mystmd.github.io/pythia-foundations
   toc:
     - file: README.md
     - title: Preamble
