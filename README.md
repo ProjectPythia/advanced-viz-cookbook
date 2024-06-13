@@ -82,7 +82,7 @@ If you are interested in running this material locally on your com
    ```bash
    cd advanced-viz-cookbook
    ```
-1. Create and activate your {terms}`conda` environment from the `environment.yml` file
+1. Create and activate your [](xref:foundations#term-conda) environment from the `environment.yml` file
    ```bash
    conda env create -f environment.yml
    conda activate advanced-viz-cookbook
