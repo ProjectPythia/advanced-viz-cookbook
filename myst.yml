@@ -30,3 +30,6 @@ project:
     - title: Interactivity
       children:
         - file: notebooks/8-interactive-holoviz-mpas.ipynb
+ jupyter:
+      binder:
+        repo: projectpythia-mystmd/advanced-viz-cookbook
