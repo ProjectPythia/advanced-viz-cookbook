@@ -1,14 +1,12 @@
 version: 1
 extends:
-  - pythia.yml
+  - https://raw.githubusercontent.com/projectpythia-mystmd/pythia-config/main/pythia.yml
 project:
   title: Advanced Visualization Cookbook
   github: https://github.com/projectpythia-mystmd/advanced-viz-cookbook
   authors:
     - name: The Project Pythia Community
   copyright: '2024'
-  references:
-    spec: https://projectpythia-mystmd.github.io/pythia-foundations
   toc:
     - file: README.md
     - title: Preamble
@@ -32,6 +30,3 @@ project:
     - title: Interactivity
       children:
         - file: notebooks/8-interactive-holoviz-mpas.ipynb
-  jupyter:
-    binder:
-      url: https://binder.projectpythia.org/
