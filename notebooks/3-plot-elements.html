@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-pythia-theme.min.css?v=ba7ce088" />
@@ -37,10 +39,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=c54c090a" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -79,7 +82,8 @@
     <link rel="prev" title="What Makes for Good Data Visualization?" href="2-good-viz.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="21 October 2024"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="12 December 2024"/>
   </head>
   
   
@@ -117,8 +121,8 @@
       
     
     
-    <img src="../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Advanced Visualization Cookbook - Home"/>
-    <script>document.write(`<img src="../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Advanced Visualization Cookbook - Home"/>`);</script>
+    <img src="../_static/advancedvizcookbook.png" class="logo__image only-light" alt="Advanced Visualization Cookbook - Home"/>
+    <img src="../_static/advancedvizcookbook.png" class="logo__image only-dark pst-js-only" alt="Advanced Visualization Cookbook - Home"/>
   
   
 </a></div>
@@ -345,7 +349,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -498,7 +501,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a38bbe9524718c5f11c5238365f7fd042a36c6f7191d6a7d418b1e33b4fdc157.png" src="../_images/a38bbe9524718c5f11c5238365f7fd042a36c6f7191d6a7d418b1e33b4fdc157.png" />
+<img alt="../_images/3bb4692add7791aacda173f4f9144da2f888b50f9978a3f043f5fb65aa8b05ac.png" src="../_images/3bb4692add7791aacda173f4f9144da2f888b50f9978a3f043f5fb65aa8b05ac.png" />
 </div>
 </div>
 </section>
@@ -516,7 +519,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6322bf96868bb27a39841e44c0e51741aaabd00d4ef59b71e232855b2cd59d8e.png" src="../_images/6322bf96868bb27a39841e44c0e51741aaabd00d4ef59b71e232855b2cd59d8e.png" />
+<img alt="../_images/19eb0c7f27dad2f4f54978c7fbfb23e11f042e0320985fcb65b1a93df70048d2.png" src="../_images/19eb0c7f27dad2f4f54978c7fbfb23e11f042e0320985fcb65b1a93df70048d2.png" />
 </div>
 </div>
 </section>
@@ -537,7 +540,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6e17ed65e190b703e236745dcb532ffaf8389615c697374186dc37d55bf89c96.png" src="../_images/6e17ed65e190b703e236745dcb532ffaf8389615c697374186dc37d55bf89c96.png" />
+<img alt="../_images/ebd014f4aa6e93ab2e0dd51efc187a60051bb5c022a3b5619908da9f8078c6c4.png" src="../_images/ebd014f4aa6e93ab2e0dd51efc187a60051bb5c022a3b5619908da9f8078c6c4.png" />
 </div>
 </div>
 </section>
@@ -560,7 +563,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9840fa29f9678a0a2c63031eec163beac5f17fe23a85bf9904631003ff045b8c.png" src="../_images/9840fa29f9678a0a2c63031eec163beac5f17fe23a85bf9904631003ff045b8c.png" />
+<img alt="../_images/84676d14dd82cfea5c02109a31b04af93b8330e899bd5dc9a49332cb07965b93.png" src="../_images/84676d14dd82cfea5c02109a31b04af93b8330e899bd5dc9a49332cb07965b93.png" />
 </div>
 </div>
 </section>
@@ -616,14 +619,14 @@
   --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
 }
 
-html[theme=dark],
-html[data-theme=dark],
-body[data-theme=dark],
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
   --xr-font-color3: rgba(255, 255, 255, 0.38);
-  --xr-border-color: #1F1F1F;
+  --xr-border-color: #1f1f1f;
   --xr-disabled-color: #515151;
   --xr-background-color: #111111;
   --xr-background-color-row-even: #111111;
@@ -678,6 +681,7 @@ body.vscode-dark {
 .xr-section-item input {
   display: inline-block;
   opacity: 0;
+  height: 0;
 }
 
 .xr-section-item input + label {
@@ -714,7 +718,7 @@ body.vscode-dark {
 
 .xr-section-summary-in + label:before {
   display: inline-block;
-  content: '►';
+  content: "►";
   font-size: 11px;
   width: 15px;
   text-align: center;
@@ -725,7 +729,7 @@ body.vscode-dark {
 }
 
 .xr-section-summary-in:checked + label:before {
-  content: '▼';
+  content: "▼";
 }
 
 .xr-section-summary-in:checked + label > span {
@@ -797,15 +801,15 @@ body.vscode-dark {
 }
 
 .xr-dim-list:before {
-  content: '(';
+  content: "(";
 }
 
 .xr-dim-list:after {
-  content: ')';
+  content: ")";
 }
 
 .xr-dim-list li:not(:last-child):after {
-  content: ',';
+  content: ",";
   padding-right: 5px;
 }
 
@@ -962,10 +966,10 @@ array([[ 1. ,  4. ,  5. ,  6. ,  8.2],
        [ 4.6,  5.2,  1.5,  7.6,  2.4]])
 Coordinates:
   * lat      (lat) int64 32B 0 1 2 3
-  * lon      (lon) int64 40B 0 1 2 3 4</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 4</li><li><span class='xr-has-index'>lon</span>: 5</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-bb41de72-98e5-4741-b544-5aab725d5e4c' class='xr-array-in' type='checkbox' checked><label for='section-bb41de72-98e5-4741-b544-5aab725d5e4c' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>1.0 4.0 5.0 6.0 8.2 9.0 8.4 10.0 ... 0.0 6.6 1.4 4.6 5.2 1.5 7.6 2.4</span></div><div class='xr-array-data'><pre>array([[ 1. ,  4. ,  5. ,  6. ,  8.2],
+  * lon      (lon) int64 40B 0 1 2 3 4</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 4</li><li><span class='xr-has-index'>lon</span>: 5</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-d35f455c-d366-40fc-b6e8-9611db8b70d2' class='xr-array-in' type='checkbox' checked><label for='section-d35f455c-d366-40fc-b6e8-9611db8b70d2' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>1.0 4.0 5.0 6.0 8.2 9.0 8.4 10.0 ... 0.0 6.6 1.4 4.6 5.2 1.5 7.6 2.4</span></div><div class='xr-array-data'><pre>array([[ 1. ,  4. ,  5. ,  6. ,  8.2],
        [ 9. ,  8.4, 10. , 10.6,  9.7],
        [ 4.4,  5. ,  0. ,  6.6,  1.4],
-       [ 4.6,  5.2,  1.5,  7.6,  2.4]])</pre></div></div></li><li class='xr-section-item'><input id='section-315e76d0-1564-4fcb-bff2-873808f2025a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-315e76d0-1564-4fcb-bff2-873808f2025a' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3</div><input id='attrs-befac789-4fe7-48e7-9885-484098a14d14' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-befac789-4fe7-48e7-9885-484098a14d14' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-395948a3-c2a2-46c1-bdf8-d93e215e5524' class='xr-var-data-in' type='checkbox'><label for='data-395948a3-c2a2-46c1-bdf8-d93e215e5524' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 1, 2, 3])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4</div><input id='attrs-06b1e5f3-a367-4e49-a897-b42a6b437094' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-06b1e5f3-a367-4e49-a897-b42a6b437094' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-df11d4f0-7700-46df-8a7b-aef6f7676566' class='xr-var-data-in' type='checkbox'><label for='data-df11d4f0-7700-46df-8a7b-aef6f7676566' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 1, 2, 3, 4])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d2420b70-7592-4052-aea0-02b8fe2f3e2d' class='xr-section-summary-in' type='checkbox'  ><label for='section-d2420b70-7592-4052-aea0-02b8fe2f3e2d' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-aaac3af0-a101-42d7-9c3e-3f0a18c85fb5' class='xr-index-data-in' type='checkbox'/><label for='index-aaac3af0-a101-42d7-9c3e-3f0a18c85fb5' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([0, 1, 2, 3], dtype=&#x27;int64&#x27;, name=&#x27;lat&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-13ebfa74-aa60-445e-a004-8c322608287f' class='xr-index-data-in' type='checkbox'/><label for='index-13ebfa74-aa60-445e-a004-8c322608287f' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([0, 1, 2, 3, 4], dtype=&#x27;int64&#x27;, name=&#x27;lon&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0e30c72d-20c5-4e0c-b6b1-bd561beffb91' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-0e30c72d-20c5-4e0c-b6b1-bd561beffb91' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+       [ 4.6,  5.2,  1.5,  7.6,  2.4]])</pre></div></div></li><li class='xr-section-item'><input id='section-bb5e03ee-0804-4442-957e-b192a5d6d974' class='xr-section-summary-in' type='checkbox'  checked><label for='section-bb5e03ee-0804-4442-957e-b192a5d6d974' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3</div><input id='attrs-f0ffbd1e-c569-4fe7-89af-2635f7304321' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f0ffbd1e-c569-4fe7-89af-2635f7304321' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1be024dd-9499-4dde-a325-932aad7a74d6' class='xr-var-data-in' type='checkbox'><label for='data-1be024dd-9499-4dde-a325-932aad7a74d6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 1, 2, 3])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4</div><input id='attrs-a775dcba-f9d7-433d-9169-235f2e959401' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-a775dcba-f9d7-433d-9169-235f2e959401' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d087eb68-5746-4bc9-a2c5-a3448aa0f412' class='xr-var-data-in' type='checkbox'><label for='data-d087eb68-5746-4bc9-a2c5-a3448aa0f412' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 1, 2, 3, 4])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-824943d2-9d55-4eee-bcb4-5c3f8e104bea' class='xr-section-summary-in' type='checkbox'  ><label for='section-824943d2-9d55-4eee-bcb4-5c3f8e104bea' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-550d2d67-1a82-45a8-b761-00846493430f' class='xr-index-data-in' type='checkbox'/><label for='index-550d2d67-1a82-45a8-b761-00846493430f' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([0, 1, 2, 3], dtype=&#x27;int64&#x27;, name=&#x27;lat&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-0d2b0b95-c7dc-4186-9e45-f7e9fb94bd4b' class='xr-index-data-in' type='checkbox'/><label for='index-0d2b0b95-c7dc-4186-9e45-f7e9fb94bd4b' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([0, 1, 2, 3, 4], dtype=&#x27;int64&#x27;, name=&#x27;lon&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-536e51e8-c8fa-4708-bb61-c5d562225c34' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-536e51e8-c8fa-4708-bb61-c5d562225c34' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -983,7 +987,7 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/566a26e603f853d157bbd9d6058b03aefc2e0a05e372515d4044da7af8f8759b.png" src="../_images/566a26e603f853d157bbd9d6058b03aefc2e0a05e372515d4044da7af8f8759b.png" />
+<img alt="../_images/164bf94e8f81d2ec11248f06bd92f678ad140448e16d7cb2d29e1610d7b5aa0b.png" src="../_images/164bf94e8f81d2ec11248f06bd92f678ad140448e16d7cb2d29e1610d7b5aa0b.png" />
 </div>
 </div>
 </section>
@@ -1017,7 +1021,7 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4092d4629ef5f978c76be6a24cf4006ac3190c95d7a37cb93d10ae36cd59f873.png" src="../_images/4092d4629ef5f978c76be6a24cf4006ac3190c95d7a37cb93d10ae36cd59f873.png" />
+<img alt="../_images/5c75d2a03cc4a0734cb661f37298cd8f332e4ec526fae303338d544452fb49c9.png" src="../_images/5c75d2a03cc4a0734cb661f37298cd8f332e4ec526fae303338d544452fb49c9.png" />
 </div>
 </div>
 </section>
@@ -1301,24 +1305,16 @@ Coordinates:
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -1356,7 +1352,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 21 October 2024.
+  Last updated on 12 December 2024.
   <br/>
 </p>
   </div>
@@ -1373,8 +1369,8 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   </div>
     
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
      
@@ -1410,7 +1406,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 21 October 2024.
+          Last updated on 12 December 2024.
         </p>
       </div>
     </div>

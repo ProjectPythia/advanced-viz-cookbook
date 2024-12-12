@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-pythia-theme.min.css?v=ba7ce088" />
@@ -37,10 +39,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=c54c090a" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -79,7 +82,8 @@
     <link rel="prev" title="Taylor Diagrams" href="4-taylor-diagrams.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="21 October 2024"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="12 December 2024"/>
   </head>
   
   
@@ -117,8 +121,8 @@
       
     
     
-    <img src="../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Advanced Visualization Cookbook - Home"/>
-    <script>document.write(`<img src="../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Advanced Visualization Cookbook - Home"/>`);</script>
+    <img src="../_static/advancedvizcookbook.png" class="logo__image only-light" alt="Advanced Visualization Cookbook - Home"/>
+    <img src="../_static/advancedvizcookbook.png" class="logo__image only-dark pst-js-only" alt="Advanced Visualization Cookbook - Home"/>
   
   
 </a></div>
@@ -345,7 +349,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -783,10 +786,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7f939e211f50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Barbs at 0x7f0af3a1a490&gt;
 </pre></div>
 </div>
-<img alt="../_images/cf698416b9b3c14adb229db26dbea5e542cb3f95675f47307ca2a4b3c10be82a.png" src="../_images/cf698416b9b3c14adb229db26dbea5e542cb3f95675f47307ca2a4b3c10be82a.png" />
+<img alt="../_images/2f0b5b593e4786031394e9375a07f86d58c5f41768436b6666300840fc6542be.png" src="../_images/2f0b5b593e4786031394e9375a07f86d58c5f41768436b6666300840fc6542be.png" />
 </div>
 </div>
 <p>Let’s talk break that down a bit.</p>
@@ -831,10 +834,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f9395d62d10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f0af4484990&gt;
 </pre></div>
 </div>
-<img alt="../_images/d88602b1a7caadc4997f0e68a84959e8c27576950a9b9ff7a2c63f572038d516.png" src="../_images/d88602b1a7caadc4997f0e68a84959e8c27576950a9b9ff7a2c63f572038d516.png" />
+<img alt="../_images/febebb6fe7c1f17c5ea9cc636df35df9f7a577698affff1cdbf6439356c82dea.png" src="../_images/febebb6fe7c1f17c5ea9cc636df35df9f7a577698affff1cdbf6439356c82dea.png" />
 </div>
 </div>
 <p>Similarly to the <code class="docutils literal notranslate"><span class="pre">plot_barbs</span></code> command, the <code class="docutils literal notranslate"><span class="pre">SkewT</span></code> object provides convenient methods for adding the remaining structural elements to the plot.</p>
@@ -877,7 +880,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;pressure (hPa)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/550a0ac978766490517c9bf0bd461574ac59ec66f55b944e39a97c6d80da92fc.png" src="../_images/550a0ac978766490517c9bf0bd461574ac59ec66f55b944e39a97c6d80da92fc.png" />
+<img alt="../_images/82d1df26031b0090ddd188f9804987f9edb384276b1ffd935f5928e141ced7bf.png" src="../_images/82d1df26031b0090ddd188f9804987f9edb384276b1ffd935f5928e141ced7bf.png" />
 </div>
 </div>
 <p>Here, we’ve made the following changes:</p>
@@ -951,10 +954,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f9395ab2310&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.LineCollection at 0x7f0aeb6f3a50&gt;
 </pre></div>
 </div>
-<img alt="../_images/3640935b632c9ea4263c46364522bf276d0c34bbd228e74e7277ebec3238f110.png" src="../_images/3640935b632c9ea4263c46364522bf276d0c34bbd228e74e7277ebec3238f110.png" />
+<img alt="../_images/0d1c0035853d6c583625de48b9f9991f6db96b46af33e36d93314e3a32eef36a.png" src="../_images/0d1c0035853d6c583625de48b9f9991f6db96b46af33e36d93314e3a32eef36a.png" />
 </div>
 </div>
 </section>
@@ -1245,24 +1248,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -1300,7 +1295,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 21 October 2024.
+  Last updated on 12 December 2024.
   <br/>
 </p>
   </div>
@@ -1317,8 +1312,8 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   </div>
     
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
      
@@ -1354,7 +1349,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 21 October 2024.
+          Last updated on 12 December 2024.
         </p>
       </div>
     </div>
