@@ -12,9 +12,6 @@ dependencies:
   - metpy
   - geocat-viz>=2023.10.0
   - colorcet
-  - hvplot
-  - plotly
-  - seaborn
   - uxarray
   - datashader
   - geocat-datafiles
