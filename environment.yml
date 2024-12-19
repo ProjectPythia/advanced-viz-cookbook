@@ -2,10 +2,10 @@ name: advanced-viz-cookbook
 channels:
   - conda-forge
 dependencies:
-  - python>=3.9,<3.12
+  - sphinx-pythia-theme
   - jupyter-book
   - jupyterlab
-  - jupyter_server
+  - jupyter_bokeh
   - pandas
   - matplotlib
   - cartopy
@@ -20,7 +20,3 @@ dependencies:
   - geocat-datafiles
   - geoviews
   - tropycal
-  - sphinx-pythia-theme
-  - pip
-  - pip:
-      - jupyter_bokeh
