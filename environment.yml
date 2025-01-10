@@ -11,6 +11,7 @@ dependencies:
   - metpy
   - geocat-viz>=2023.10.0
   - colorcet
+  - cftime
   - xarray
   - geocat-datafiles
   - tropycal
