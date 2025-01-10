@@ -1,0 +1,2528 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spaghetti Plots &#8212; Advanced Visualization Cookbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-pythia-theme.min.css?v=ba7ce088" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=c54c090a" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/6-spaghetti';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Animation" href="7-animation.html" />
+    <link rel="prev" title="Skew T Diagrams" href="5-skewt.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="10 January 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div class="pst-scroll-pixel-helper"></div>
+    <header class="bd-header navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="https://projectpythia.org">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Advanced Visualization Cookbook - Home"/>
+    <img src="../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark pst-js-only" alt="Advanced Visualization Cookbook - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+        
+        
+        
+        <div class="bd-sidebar-primary bd-sidebar">
+          
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Advanced Visualization Cookbook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite This Cookbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics of Geoscience Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1-comparison.html">Comparison of Visualization Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-good-viz.html">What Makes for Good Data Visualization?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-plot-elements.html">Plot Elements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Specialty Plots</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="4-taylor-diagrams.html">Taylor Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-skewt.html">Skew T Diagrams</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization of Structured Grids</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spaghetti Plots</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Animation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="7-animation.html">Animation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+        </div>
+
+        
+        <main id="main-content" class="bd-main" role="main">
+          
+
+            <div class="bd-content">
+
+              <div class="bd-article-container">
+
+                
+                  
+                  
+<div id="searchbox"></div>
+                  <article class="bd-article">
+                    
+  <section class="tex2jax_ignore mathjax_ignore" id="spaghetti-plots">
+<h1>Spaghetti Plots<a class="headerlink" href="#spaghetti-plots" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Spaghetti Plots are a tool typically used to visualize movement. Essentially they are many line plots displayed on the same axes. By drawing the same path at different times or from different forecasts, we can see the patterns and chaos associated with the plotted variable.</p>
+<ol class="arabic simple">
+<li><p>Spaghetti Hurricane Plot</p></li>
+<li><p>Spaghetti Contour Plot</p></li>
+</ol>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concepts</p></th>
+<th class="head"><p>Importance</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib.html">Matplotlib</a></p></td>
+<td><p>Necessary</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/cartopy.html">Cartopy</a></p></td>
+<td><p>Necessary</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p><strong>Time to learn</strong>: 10 minutes</p></li>
+</ul>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mticker</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.feature</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cfeature</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">geocat.viz</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geocat.datafiles</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gdf</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">tropycal.tracks</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tracks</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="spaghetti-hurricane-plot">
+<h2>Spaghetti Hurricane Plot<a class="headerlink" href="#spaghetti-hurricane-plot" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Visualizing the predicted path of an incoming hurricane is both complicated and important. There are many plots that meteorologists are trained to read, but when shared with the public can be confusing or alarming. There are strengths and weaknesses to each hurricane visualization approach. The cone of uncertainty, for example, is often misinterpreted to suggest the hurricane growth in time rather than widening of path possibilities. Spaghetti plots on the other hand, clearly show hurricane paths but show them as equal to each other.</p>
+<p>In this example we will plot some forecasted paths from the 2012 North-Atlantic storm Hurricane Sandy. Each forecast is from the Global Ensemble Forecast System (GEFS) provided by the National Centers for Environmental Prediction at NOAA.</p>
+<p>We’ll use the package <a class="reference internal" href="#tropycal.github.io/tropycal/"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">tropycal</span></code></span></a> to easily access HURDAT2 and IBTrACS reanalysis data and operational National Hurricane Center (NHC) Best Track data. <code class="docutils literal notranslate"><span class="pre">tropycal</span></code> has a lot of great features for real time hurricane visualization, but since this Cookbook is comparatively static we’re using a past hurricane and only using this package to access the data. Our plotting will be done with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">cartopy</span></code>.</p>
+<section id="read-in-data">
+<h3>Read in Data<a class="headerlink" href="#read-in-data" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>First, to grab our hurricane data from tropycal we need to specify a basin:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basin</span> <span class="o">=</span> <span class="n">tracks</span><span class="o">.</span><span class="n">TrackDataset</span><span class="p">(</span><span class="n">basin</span><span class="o">=</span><span class="s1">&#39;north_atlantic&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--&gt; Starting to read in HURDAT2 data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--&gt; Completed reading in HURDAT2 data (1.94 seconds)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Find your storm by name and year:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">storm</span> <span class="o">=</span> <span class="n">basin</span><span class="o">.</span><span class="n">get_storm</span><span class="p">((</span><span class="s1">&#39;sandy&#39;</span><span class="p">,</span><span class="mi">2012</span><span class="p">))</span>
+
+<span class="n">sandy_ds</span> <span class="o">=</span> <span class="n">storm</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
+<span class="n">sandy_ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 5kB
+Dimensions:    (time: 45)
+Coordinates:
+  * time       (time) datetime64[ns] 360B 2012-10-21T18:00:00 ... 2012-10-31T...
+Data variables:
+    extra_obs  (time) int64 360B 0 0 0 0 0 0 0 0 0 0 0 ... 0 0 1 1 0 0 0 0 0 0 0
+    special    (time) &lt;U1 180B &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; ... &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27;
+    type       (time) &lt;U2 360B &#x27;LO&#x27; &#x27;LO&#x27; &#x27;LO&#x27; &#x27;TD&#x27; &#x27;TS&#x27; ... &#x27;EX&#x27; &#x27;EX&#x27; &#x27;EX&#x27; &#x27;EX&#x27;
+    lat        (time) float64 360B 14.3 13.9 13.5 13.1 ... 40.4 40.7 41.1 41.5
+    lon        (time) float64 360B -77.4 -77.8 -78.2 -78.6 ... -79.8 -80.3 -80.7
+    vmax       (time) int64 360B 25 25 25 30 35 40 40 ... 70 55 50 40 35 35 30
+    mslp       (time) int64 360B 1006 1005 1003 1002 1000 ... 986 992 993 995
+    wmo_basin  (time) &lt;U14 3kB &#x27;north_atlantic&#x27; ... &#x27;north_atlantic&#x27;
+Attributes:
+    id:              AL182012
+    operational_id:  AL182012
+    name:            SANDY
+    year:            2012
+    season:          2012
+    basin:           north_atlantic
+    source_info:     NHC Hurricane Database
+    source:          hurdat
+    ace:             13.6675</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-807b6601-367b-46bf-88c7-5fe80c3aaeb1' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-807b6601-367b-46bf-88c7-5fe80c3aaeb1' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 45</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-7b869f9b-662e-4bac-bfb4-8bf8a8e5968f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7b869f9b-662e-4bac-bfb4-8bf8a8e5968f' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2012-10-21T18:00:00 ... 2012-10-...</div><input id='attrs-7a6ddba9-a951-49ab-b899-6827b92b2944' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-7a6ddba9-a951-49ab-b899-6827b92b2944' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f67a506c-4606-4d75-be70-28887bd0851f' class='xr-var-data-in' type='checkbox'><label for='data-f67a506c-4606-4d75-be70-28887bd0851f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2012-10-21T18:00:00.000000000&#x27;, &#x27;2012-10-22T00:00:00.000000000&#x27;,
+       &#x27;2012-10-22T06:00:00.000000000&#x27;, &#x27;2012-10-22T12:00:00.000000000&#x27;,
+       &#x27;2012-10-22T18:00:00.000000000&#x27;, &#x27;2012-10-23T00:00:00.000000000&#x27;,
+       &#x27;2012-10-23T06:00:00.000000000&#x27;, &#x27;2012-10-23T12:00:00.000000000&#x27;,
+       &#x27;2012-10-23T18:00:00.000000000&#x27;, &#x27;2012-10-24T00:00:00.000000000&#x27;,
+       &#x27;2012-10-24T06:00:00.000000000&#x27;, &#x27;2012-10-24T12:00:00.000000000&#x27;,
+       &#x27;2012-10-24T18:00:00.000000000&#x27;, &#x27;2012-10-24T19:00:00.000000000&#x27;,
+       &#x27;2012-10-25T00:00:00.000000000&#x27;, &#x27;2012-10-25T05:25:00.000000000&#x27;,
+       &#x27;2012-10-25T06:00:00.000000000&#x27;, &#x27;2012-10-25T09:00:00.000000000&#x27;,
+       &#x27;2012-10-25T12:00:00.000000000&#x27;, &#x27;2012-10-25T18:00:00.000000000&#x27;,
+       &#x27;2012-10-26T00:00:00.000000000&#x27;, &#x27;2012-10-26T06:00:00.000000000&#x27;,
+       &#x27;2012-10-26T12:00:00.000000000&#x27;, &#x27;2012-10-26T18:00:00.000000000&#x27;,
+       &#x27;2012-10-27T00:00:00.000000000&#x27;, &#x27;2012-10-27T06:00:00.000000000&#x27;,
+       &#x27;2012-10-27T12:00:00.000000000&#x27;, &#x27;2012-10-27T18:00:00.000000000&#x27;,
+       &#x27;2012-10-28T00:00:00.000000000&#x27;, &#x27;2012-10-28T06:00:00.000000000&#x27;,
+       &#x27;2012-10-28T12:00:00.000000000&#x27;, &#x27;2012-10-28T18:00:00.000000000&#x27;,
+       &#x27;2012-10-29T00:00:00.000000000&#x27;, &#x27;2012-10-29T06:00:00.000000000&#x27;,
+       &#x27;2012-10-29T12:00:00.000000000&#x27;, &#x27;2012-10-29T18:00:00.000000000&#x27;,
+       &#x27;2012-10-29T21:00:00.000000000&#x27;, &#x27;2012-10-29T23:30:00.000000000&#x27;,
+       &#x27;2012-10-30T00:00:00.000000000&#x27;, &#x27;2012-10-30T06:00:00.000000000&#x27;,
+       &#x27;2012-10-30T12:00:00.000000000&#x27;, &#x27;2012-10-30T18:00:00.000000000&#x27;,
+       &#x27;2012-10-31T00:00:00.000000000&#x27;, &#x27;2012-10-31T06:00:00.000000000&#x27;,
+       &#x27;2012-10-31T12:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-db601c9f-e769-4812-b4cd-18e6eaf3e402' class='xr-section-summary-in' type='checkbox'  checked><label for='section-db601c9f-e769-4812-b4cd-18e6eaf3e402' class='xr-section-summary' >Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>extra_obs</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 0 0 0 0 0 0 0 ... 1 0 0 0 0 0 0 0</div><input id='attrs-00cc582c-5f16-4be7-b880-d5dc5b3e7895' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-00cc582c-5f16-4be7-b880-d5dc5b3e7895' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ff42b19c-7e55-4ab1-a44f-7168c0fa1970' class='xr-var-data-in' type='checkbox'><label for='data-ff42b19c-7e55-4ab1-a44f-7168c0fa1970' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0,
+       0])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>special</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U1</div><div class='xr-var-preview xr-preview'>&#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; ... &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27;</div><input id='attrs-0e3ceb4d-c39c-47b1-bfcd-eca3bff76927' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-0e3ceb4d-c39c-47b1-bfcd-eca3bff76927' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f7bc8076-5745-470e-b50b-64d3810135fc' class='xr-var-data-in' type='checkbox'><label for='data-f7bc8076-5745-470e-b50b-64d3810135fc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;L&#x27;, &#x27;&#x27;, &#x27;L&#x27;,
+       &#x27;&#x27;, &#x27;T&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;,
+       &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;S&#x27;, &#x27;L&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;], dtype=&#x27;&lt;U1&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>type</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U2</div><div class='xr-var-preview xr-preview'>&#x27;LO&#x27; &#x27;LO&#x27; &#x27;LO&#x27; ... &#x27;EX&#x27; &#x27;EX&#x27; &#x27;EX&#x27;</div><input id='attrs-7cef33f4-c819-4f88-bbb6-acebe63fb24f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-7cef33f4-c819-4f88-bbb6-acebe63fb24f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b86ef0ba-6de5-4d91-a594-9784dea1a4ed' class='xr-var-data-in' type='checkbox'><label for='data-b86ef0ba-6de5-4d91-a594-9784dea1a4ed' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;LO&#x27;, &#x27;LO&#x27;, &#x27;LO&#x27;, &#x27;TD&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;,
+       &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;,
+       &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;,
+       &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;,
+       &#x27;EX&#x27;], dtype=&#x27;&lt;U2&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>14.3 13.9 13.5 ... 40.7 41.1 41.5</div><input id='attrs-dd8e6e9c-fc72-4234-86d7-1f36b558f8ce' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-dd8e6e9c-fc72-4234-86d7-1f36b558f8ce' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0a1ed9b5-fa6b-4d02-8a51-a99c20b9ae01' class='xr-var-data-in' type='checkbox'><label for='data-0a1ed9b5-fa6b-4d02-8a51-a99c20b9ae01' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([14.3, 13.9, 13.5, 13.1, 12.7, 12.6, 12.9, 13.4, 14. , 14.7, 15.6,
+       16.6, 17.7, 17.9, 18.9, 20. , 20.1, 20.9, 21.7, 23.3, 24.8, 25.7,
+       26.4, 27. , 27.5, 28.1, 28.8, 29.7, 30.5, 31.3, 32. , 32.8, 33.9,
+       35.3, 36.9, 38.3, 38.8, 39.4, 39.5, 39.9, 40.1, 40.4, 40.7, 41.1,
+       41.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-77.4 -77.8 -78.2 ... -80.3 -80.7</div><input id='attrs-3dbfb545-755a-4d5b-b7d7-36554e20d0d2' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3dbfb545-755a-4d5b-b7d7-36554e20d0d2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8143940a-dc37-475b-bbbb-3da664b9bcd6' class='xr-var-data-in' type='checkbox'><label for='data-8143940a-dc37-475b-bbbb-3da664b9bcd6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-77.4, -77.8, -78.2, -78.6, -78.7, -78.4, -78.1, -77.9, -77.6,
+       -77.3, -77.1, -76.9, -76.7, -76.6, -76.4, -76. , -76. , -75.7,
+       -75.5, -75.3, -75.9, -76.4, -76.9, -77.2, -77.1, -76.9, -76.5,
+       -75.6, -74.7, -73.9, -73. , -72. , -71. , -70.5, -71. , -73.2,
+       -74. , -74.4, -74.5, -76.2, -77.8, -78.9, -79.8, -80.3, -80.7])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vmax</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>25 25 25 30 35 ... 50 40 35 35 30</div><input id='attrs-c9388b4f-7ba5-482e-ab13-1565c55b956e' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c9388b4f-7ba5-482e-ab13-1565c55b956e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-62c45a93-549d-4454-a601-7f4ebee4ae3b' class='xr-var-data-in' type='checkbox'><label for='data-62c45a93-549d-4454-a601-7f4ebee4ae3b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 25,  25,  25,  30,  35,  40,  40,  40,  45,  55,  60,  65,  75,
+        75,  85, 100, 100,  95,  95,  90,  75,  70,  65,  65,  60,  60,
+        70,  70,  65,  65,  65,  65,  70,  80,  85,  80,  75,  70,  70,
+        55,  50,  40,  35,  35,  30])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mslp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1006 1005 1003 1002 ... 992 993 995</div><input id='attrs-2fb2ad5c-7aba-4457-8a58-82567450c1a8' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2fb2ad5c-7aba-4457-8a58-82567450c1a8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bd5421f1-ca51-4299-8306-1ddbcfbc6995' class='xr-var-data-in' type='checkbox'><label for='data-bd5421f1-ca51-4299-8306-1ddbcfbc6995' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1006, 1005, 1003, 1002, 1000,  998,  998,  995,  993,  990,  987,
+        981,  972,  971,  964,  954,  954,  960,  966,  963,  965,  968,
+        970,  971,  969,  968,  956,  960,  960,  959,  954,  952,  950,
+        947,  945,  940,  943,  945,  946,  960,  978,  986,  992,  993,
+        995])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wmo_basin</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;north_atlantic&#x27; ... &#x27;north_atla...</div><input id='attrs-eb377e91-611a-4dcd-953c-6ca3e558e73a' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-eb377e91-611a-4dcd-953c-6ca3e558e73a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-09e46650-ddd6-4120-b604-7bffa99ef228' class='xr-var-data-in' type='checkbox'><label for='data-09e46650-ddd6-4120-b604-7bffa99ef228' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;], dtype=&#x27;&lt;U14&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-5f95aa43-b14e-4cc3-a3f1-225c65e4ccf4' class='xr-section-summary-in' type='checkbox'  ><label for='section-5f95aa43-b14e-4cc3-a3f1-225c65e4ccf4' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-d675f9e8-4a4e-42ad-abc4-819342ad90fd' class='xr-index-data-in' type='checkbox'/><label for='index-d675f9e8-4a4e-42ad-abc4-819342ad90fd' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2012-10-21 18:00:00&#x27;, &#x27;2012-10-22 00:00:00&#x27;,
+               &#x27;2012-10-22 06:00:00&#x27;, &#x27;2012-10-22 12:00:00&#x27;,
+               &#x27;2012-10-22 18:00:00&#x27;, &#x27;2012-10-23 00:00:00&#x27;,
+               &#x27;2012-10-23 06:00:00&#x27;, &#x27;2012-10-23 12:00:00&#x27;,
+               &#x27;2012-10-23 18:00:00&#x27;, &#x27;2012-10-24 00:00:00&#x27;,
+               &#x27;2012-10-24 06:00:00&#x27;, &#x27;2012-10-24 12:00:00&#x27;,
+               &#x27;2012-10-24 18:00:00&#x27;, &#x27;2012-10-24 19:00:00&#x27;,
+               &#x27;2012-10-25 00:00:00&#x27;, &#x27;2012-10-25 05:25:00&#x27;,
+               &#x27;2012-10-25 06:00:00&#x27;, &#x27;2012-10-25 09:00:00&#x27;,
+               &#x27;2012-10-25 12:00:00&#x27;, &#x27;2012-10-25 18:00:00&#x27;,
+               &#x27;2012-10-26 00:00:00&#x27;, &#x27;2012-10-26 06:00:00&#x27;,
+               &#x27;2012-10-26 12:00:00&#x27;, &#x27;2012-10-26 18:00:00&#x27;,
+               &#x27;2012-10-27 00:00:00&#x27;, &#x27;2012-10-27 06:00:00&#x27;,
+               &#x27;2012-10-27 12:00:00&#x27;, &#x27;2012-10-27 18:00:00&#x27;,
+               &#x27;2012-10-28 00:00:00&#x27;, &#x27;2012-10-28 06:00:00&#x27;,
+               &#x27;2012-10-28 12:00:00&#x27;, &#x27;2012-10-28 18:00:00&#x27;,
+               &#x27;2012-10-29 00:00:00&#x27;, &#x27;2012-10-29 06:00:00&#x27;,
+               &#x27;2012-10-29 12:00:00&#x27;, &#x27;2012-10-29 18:00:00&#x27;,
+               &#x27;2012-10-29 21:00:00&#x27;, &#x27;2012-10-29 23:30:00&#x27;,
+               &#x27;2012-10-30 00:00:00&#x27;, &#x27;2012-10-30 06:00:00&#x27;,
+               &#x27;2012-10-30 12:00:00&#x27;, &#x27;2012-10-30 18:00:00&#x27;,
+               &#x27;2012-10-31 00:00:00&#x27;, &#x27;2012-10-31 06:00:00&#x27;,
+               &#x27;2012-10-31 12:00:00&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3af3ca1e-f48d-4eae-9463-52874b928aa8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3af3ca1e-f48d-4eae-9463-52874b928aa8' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>id :</span></dt><dd>AL182012</dd><dt><span>operational_id :</span></dt><dd>AL182012</dd><dt><span>name :</span></dt><dd>SANDY</dd><dt><span>year :</span></dt><dd>2012</dd><dt><span>season :</span></dt><dd>2012</dd><dt><span>basin :</span></dt><dd>north_atlantic</dd><dt><span>source_info :</span></dt><dd>NHC Hurricane Database</dd><dt><span>source :</span></dt><dd>hurdat</dd><dt><span>ace :</span></dt><dd>13.6675</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>And we can grab any of a number of forecasts:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecasts</span> <span class="o">=</span> <span class="n">storm</span><span class="o">.</span><span class="n">get_operational_forecasts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">forecasts</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;CARQ&#39;, &#39;CMC&#39;, &#39;NAM&#39;, &#39;NGX&#39;, &#39;UKX&#39;, &#39;AC00&#39;, &#39;AEM2&#39;, &#39;AEMN&#39;, &#39;AP01&#39;, &#39;AP02&#39;, &#39;AP03&#39;, &#39;AP04&#39;, &#39;AP05&#39;, &#39;AP06&#39;, &#39;AP07&#39;, &#39;AP08&#39;, &#39;AP09&#39;, &#39;AP10&#39;, &#39;AP12&#39;, &#39;AP13&#39;, &#39;AP14&#39;, &#39;AP15&#39;, &#39;AP16&#39;, &#39;AP17&#39;, &#39;AP18&#39;, &#39;AP20&#39;, &#39;AVN2&#39;, &#39;AVNO&#39;, &#39;BAMD&#39;, &#39;BAMM&#39;, &#39;BAMS&#39;, &#39;CEMN&#39;, &#39;CLIP&#39;, &#39;CLP5&#39;, &#39;CMC2&#39;, &#39;COT2&#39;, &#39;COTC&#39;, &#39;DSHP&#39;, &#39;FIM9&#39;, &#39;FM92&#39;, &#39;G012&#39;, &#39;GFD2&#39;, &#39;GFDE&#39;, &#39;GFDL&#39;, &#39;GFDT&#39;, &#39;GFT2&#39;, &#39;GHM2&#39;, &#39;GP01&#39;, &#39;GPM2&#39;, &#39;GPMN&#39;, &#39;HWE2&#39;, &#39;HWF2&#39;, &#39;HWFE&#39;, &#39;HWRF&#39;, &#39;ICON&#39;, &#39;IV15&#39;, &#39;IVCN&#39;, &#39;IVCR&#39;, &#39;LBAR&#39;, &#39;LGEM&#39;, &#39;NAM2&#39;, &#39;NGX2&#39;, &#39;OFCP&#39;, &#39;OFP2&#39;, &#39;SHF5&#39;, &#39;SHFR&#39;, &#39;SHIP&#39;, &#39;TCLP&#39;, &#39;TV15&#39;, &#39;TVCA&#39;, &#39;TVCC&#39;, &#39;TVCE&#39;, &#39;TVCN&#39;, &#39;UWN2&#39;, &#39;UWN8&#39;, &#39;XTRP&#39;, &#39;ZGFS&#39;, &#39;AEMI&#39;, &#39;AP11&#39;, &#39;AP19&#39;, &#39;AVNI&#39;, &#39;CMCI&#39;, &#39;COTI&#39;, &#39;FM9I&#39;, &#39;GFDI&#39;, &#39;GFTI&#39;, &#39;GHMI&#39;, &#39;GPMI&#39;, &#39;HWFI&#39;, &#39;NAMI&#39;, &#39;NGXI&#39;, &#39;OFPI&#39;, &#39;RI25&#39;, &#39;SPC3&#39;, &#39;UKXI&#39;, &#39;DRCL&#39;, &#39;GFE2&#39;, &#39;MRCL&#39;, &#39;MRFO&#39;, &#39;UKX2&#39;, &#39;UKM&#39;, &#39;AHW4&#39;, &#39;G01I&#39;, &#39;OFCL&#39;, &#39;OCD5&#39;, &#39;BCD5&#39;, &#39;OCS5&#39;, &#39;BCS5&#39;, &#39;OFCI&#39;, &#39;UKMI&#39;, &#39;AHW2&#39;, &#39;EGRR&#39;, &#39;FSSE&#39;, &#39;RI30&#39;, &#39;RI35&#39;, &#39;RYOC&#39;, &#39;UKM2&#39;, &#39;AHWI&#39;, &#39;EGRI&#39;, &#39;TCOA&#39;, &#39;EGR2&#39;, &#39;UWNI&#39;, &#39;HWEI&#39;, &#39;APSU&#39;, &#39;APSI&#39;, &#39;APS2&#39;, &#39;OFC2&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each key represents a forecast model, we’ll select the GFS AP01 forecast which has many initializations. These initializations are named by time in YYYYMMDDHH format:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecasts_AP01</span> <span class="o">=</span> <span class="n">forecasts</span><span class="p">[</span><span class="s1">&#39;AP01&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">forecasts_AP01</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;2012102112&#39;, &#39;2012102118&#39;, &#39;2012102200&#39;, &#39;2012102206&#39;, &#39;2012102212&#39;, &#39;2012102218&#39;, &#39;2012102300&#39;, &#39;2012102306&#39;, &#39;2012102312&#39;, &#39;2012102318&#39;, &#39;2012102400&#39;, &#39;2012102406&#39;, &#39;2012102412&#39;, &#39;2012102418&#39;, &#39;2012102500&#39;, &#39;2012102506&#39;, &#39;2012102512&#39;, &#39;2012102518&#39;, &#39;2012102600&#39;, &#39;2012102606&#39;, &#39;2012102612&#39;, &#39;2012102618&#39;, &#39;2012102700&#39;, &#39;2012102706&#39;, &#39;2012102712&#39;, &#39;2012102718&#39;, &#39;2012102800&#39;, &#39;2012102806&#39;, &#39;2012102812&#39;, &#39;2012102818&#39;, &#39;2012102900&#39;, &#39;2012102906&#39;, &#39;2012102912&#39;, &#39;2012102918&#39;, &#39;2012103000&#39;, &#39;2012103006&#39;, &#39;2012103012&#39;, &#39;2012103018&#39;, &#39;2012103100&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="spaghetti-plot-of-one-esemble-member">
+<h3>Spaghetti Plot of One Esemble Member<a class="headerlink" href="#spaghetti-plot-of-one-esemble-member" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Let’s set up our Cartopy grid to plot one ensemble member of the hurricane model.</p>
+<p>These steps might be familiar to you but we:</p>
+<ul class="simple">
+<li><p>create our axes with a Plate Caree projection</p></li>
+<li><p>add land features</p></li>
+<li><p>add grid lines</p></li>
+<li><p>edit our gridline labels to not duplicate on all four sides</p></li>
+<li><p>edit our gridline label fontsize</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Cartopy Projection with land features</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add Gridlines to right and bottom</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlabels_top</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">ylabels_left</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,}</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">ylabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0d83e35d9be19cf540c17b9c96c17f1e0b0e3f19d1091b1c47bc52dfc0b9ff00.png" src="../_images/0d83e35d9be19cf540c17b9c96c17f1e0b0e3f19d1091b1c47bc52dfc0b9ff00.png" />
+</div>
+</div>
+<p>Looking at GFS Ensemble Member Forecast AP01, we can make a spaghetti plot of each of these initializations.</p>
+<p>The crux of the visualization is that we loop through and plot each initialization (in <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">forecasts_AP01</span></code>), plot the true hurricane path, and add a legend (<code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Cartopy Projection with land features</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add Gridlines to right and bottom</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlabels_top</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">ylabels_left</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,}</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">ylabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,}</span>
+
+<span class="c1"># Spaghetti Plot of AP01 forecasts</span>
+<span class="n">forecasts_AP01</span> <span class="o">=</span> <span class="n">forecasts</span><span class="p">[</span><span class="s1">&#39;AP01&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">forecasts_AP01</span><span class="p">:</span>
+    <span class="c1"># We&#39;re naming this line even though it is over-written each loop,</span>
+    <span class="c1"># so that we can reference the last line in the legend</span>
+    <span class="c1"># (as they all share the same formatting)</span>
+    <span class="n">forecast_path</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecasts_AP01</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span>
+                            <span class="n">forecasts_AP01</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">],</span>
+                            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cornflowerblue&#39;</span><span class="p">,</span>
+                            <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Plot the real storm path in a thicker black line</span>
+<span class="n">true_path</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sandy_ds</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span>
+    <span class="n">sandy_ds</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Make it thicker than the ensemble paths</span>
+
+<span class="c1"># Add a legend with only one forecast_path and the true_path</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">true_path</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">forecast_path</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="s1">&#39;True Path&#39;</span><span class="p">,</span> <span class="s1">&#39;GFS AP01 Forecasts&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Hurricane Sandy (2012)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4f39ed234999a40234d9407af3e40d691c0ce2d2f27823b454817c1c0f168c94.png" src="../_images/4f39ed234999a40234d9407af3e40d691c0ce2d2f27823b454817c1c0f168c94.png" />
+</div>
+</div>
+<p>This plot is a great example of a spaghetti plot, but is it super useful? Is it confusing? Each line looks like it carries the same weight, when some of these possible paths are from hours before Sandy hit the American NorthEast and others are from days before.</p>
+<p>Maybe it is better to show the user some indication of how the forecast for this ensemble converged on the true path with later and later initialization times.</p>
+</section>
+<section id="spaghetti-plot-of-one-esemble-member-with-temporal-colormapping">
+<h3>Spaghetti Plot of One Esemble Member with Temporal Colormapping<a class="headerlink" href="#spaghetti-plot-of-one-esemble-member-with-temporal-colormapping" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Some additions to look out for:</p>
+<ul class="simple">
+<li><p>we grab the time information from the initialization name using <code class="docutils literal notranslate"><span class="pre">datetime</span></code></p></li>
+<li><p>normalize a colormap by the time information with <code class="docutils literal notranslate"><span class="pre">cmap</span> <span class="pre">=</span> <span class="pre">mpl.colors.ListedColormap(plt.cm.autumn_r(normalized_times))</span></code></p></li>
+<li><p>loop through the colormap as we loop through the time steps within the ensemble member</p></li>
+<li><p>add a colorbar  with <code class="docutils literal notranslate"><span class="pre">plt.colorbar(plt.cm.ScalarMappable(cmap=cmap))</span></code>, where <code class="docutils literal notranslate"><span class="pre">ScalarMappable</span></code> is used to map scalar data to RGBA.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Cartopy Projection with land features</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add Gridlines to right and bottom</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlabels_top</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">ylabels_left</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,}</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">ylabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,}</span>
+
+<span class="c1"># Spaghetti Plot of AP01 forecasts</span>
+<span class="n">forecasts_AP01</span> <span class="o">=</span> <span class="n">forecasts</span><span class="p">[</span><span class="s1">&#39;AP01&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get time information from initialization name</span>
+<span class="nb">format</span> <span class="o">=</span> <span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">%H&#39;</span>
+<span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">forecasts_AP01</span><span class="o">.</span><span class="n">keys</span><span class="p">())]</span>
+<span class="n">normalized_times</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span> <span class="o">-</span> <span class="n">times</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">times</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">times</span><span class="p">]</span>
+
+<span class="c1"># Create a color list for forecast iteration</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">autumn_r</span><span class="p">(</span><span class="n">normalized_times</span><span class="p">))</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">forecasts_AP01</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">forecasts_AP01</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span>
+        <span class="n">forecasts_AP01</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">],</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">c</span><span class="p">),</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># Plot the real storm path</span>
+<span class="n">true_path</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sandy_ds</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span>
+    <span class="n">sandy_ds</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="c1"># Selecting a color matching one of the cmap extremes</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Path&#39;</span><span class="p">)</span> <span class="c1"># The easiest way to add a plot to the legend is with the label kwarg</span>
+
+<span class="c1"># Add a legend with only one the true_path</span>
+<span class="c1"># Forecasted paths will be shown in a colorbar</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Hurricane Sandy&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add colorbar</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.075</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;GFS AP01 Forecasts&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c1"># Set tick locations and labels for every 4th tick</span>
+<span class="c1"># i.e. once a day (a new initialiation every 6 hours)</span>
+<span class="n">tick_indices</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">times</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([</span><span class="n">normalized_times</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tick_indices</span><span class="p">])</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([</span><span class="n">times</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tick_indices</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;OCT-2012&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4a459ba4c8a2db5e39916b186033685b2a14ba67ea986a717e209147c2554f0b.png" src="../_images/4a459ba4c8a2db5e39916b186033685b2a14ba67ea986a717e209147c2554f0b.png" />
+</div>
+</div>
+<p>Now we can see that as the storm progressed, the AP01 GFS Forecast Ensemble Member converges on Sandy’s true path as the storm progresses through October, 2012.</p>
+<p>Alternatively, we may want to plot the possible hurricane paths from multiple GFS Forecast Ensemble members from the same iteration timestamp as a spaghetti plot.</p>
+</section>
+<section id="spaghetti-plot-of-all-esemble-members-at-one-point-in-time">
+<h3>Spaghetti Plot of All Esemble Members at One Point in Time<a class="headerlink" href="#spaghetti-plot-of-all-esemble-members-at-one-point-in-time" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>First, we need to grab all of the relevant forecast keys to GFS models (the ones that are titled <code class="docutils literal notranslate"><span class="pre">AP##</span></code> from 0 to 20):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List of valid AP## keys from 0 to 20</span>
+<span class="n">GFS_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AP&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)]</span>
+
+<span class="c1"># Arbitrarily selected midnight on October 27, 2012 to plot all forecasts at</span>
+<span class="n">time</span> <span class="o">=</span> <span class="s1">&#39;2012102700&#39;</span>
+
+<span class="c1"># Set up Cartopy Projection with land features</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add Gridlines to right and bottom</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlabels_top</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">ylabels_left</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,}</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">ylabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,}</span>
+
+<span class="c1"># Spaghetti Plot of forecasts</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">ap</span> <span class="o">=</span> <span class="n">forecasts</span><span class="p">[</span><span class="n">GFS_keys</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">forecast_path</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ap</span><span class="p">[</span><span class="n">time</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span>
+        <span class="n">ap</span><span class="p">[</span><span class="n">time</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">],</span>
+        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cornflowerblue&#39;</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Plot the real storm path in a thicker black line</span>
+<span class="n">true_path</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sandy_ds</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span> <span class="n">sandy_ds</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Add a legend with only one forecast_path and the true_path</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">true_path</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">forecast_path</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+    <span class="p">[</span><span class="s1">&#39;True Path&#39;</span><span class="p">,</span> <span class="s1">&#39;AP01 - AP20&#39;</span><span class="p">],</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Hurricane Sandy - GFS Forecasts from Oct-27-2012&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bf520ce00098942d5c0c47ce93db3b6b01a95914f734885c36932e1da6623fb4.png" src="../_images/bf520ce00098942d5c0c47ce93db3b6b01a95914f734885c36932e1da6623fb4.png" />
+</div>
+</div>
+<p>Hurricane Sandy hit the NorthEast on October 29, 2012. From this spaghetti plot we can see that by the 27th most ensemble members of the GFS forecast predicted a similar behavior for the storm.</p>
+<p>There is more analysis that could be done on hurriane trajectories. We have covered some plotting customization that might be useful for your analysis and data visualization.</p>
+</section>
+</section>
+<section id="spaghetti-contour-plot">
+<h2>Spaghetti Contour Plot<a class="headerlink" href="#spaghetti-contour-plot" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>In this example we will read in the geopotential height datafile <code class="docutils literal notranslate"><span class="pre">HGT500_MON_1958-1997.nc</span></code> from using geocat-datafiles. Then we will look at different timesteps of the <code class="docutils literal notranslate"><span class="pre">HGT</span></code> geopotential height variable at the 5500 gpm level, plotting this contour’s locations through time. This example is adapted from <a class="reference external" href="https://geocat.ucar.edu/">GeoCAT</a>’s <a class="reference external" href="https://geocat-examples.readthedocs.io/en/latest/gallery/Contours/NCL_conOncon_5.html">NCL_conOncon_5</a> script.</p>
+<section id="id1">
+<h3>Read in data:<a class="headerlink" href="#id1" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;netcdf_files/HGT500_MON_1958-1997.nc&quot;</span><span class="p">),</span>
+                     <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading file &#39;netcdf_files/HGT500_MON_1958-1997.nc&#39; from &#39;https://github.com/NCAR/GeoCAT-datafiles/raw/main/netcdf_files/HGT500_MON_1958-1997.nc&#39; to &#39;/home/runner/.cache/geocat&#39;.
+</pre></div>
+</div>
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 20MB
+Dimensions:  (time: 480, lat: 73, lon: 144)
+Coordinates:
+  * time     (time) int64 4kB 0 1 2 3 4 5 6 7 ... 473 474 475 476 477 478 479
+  * lat      (lat) float32 292B -90.0 -87.5 -85.0 -82.5 ... 82.5 85.0 87.5 90.0
+  * lon      (lon) float32 576B 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
+Data variables:
+    yrmon    (time) float64 4kB ...
+    HGT      (time, lat, lon) float32 20MB ...
+Attributes:
+    conventions:    None
+    history:        NCEP/NCAR REANALYSIS MONTHLY MEAN SUBSETS\nftp://ncardata...
+    source:         NCEP Reanalysis; ds090.2
+    title:          500mb Geopotential Height: 1958-1997
+    source_mss:     /SHEA/HVL/HGT_1958-1997.nc:  500 mb extracted
+    creation_date:  creation date: Tue Aug  7 16:31:48 MDT 2001</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-69e251a2-fc1e-4d7d-9ded-215120613477' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-69e251a2-fc1e-4d7d-9ded-215120613477' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 480</li><li><span class='xr-has-index'>lat</span>: 73</li><li><span class='xr-has-index'>lon</span>: 144</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-6d942a2f-9c44-497c-b3b9-a6b3ada39867' class='xr-section-summary-in' type='checkbox'  checked><label for='section-6d942a2f-9c44-497c-b3b9-a6b3ada39867' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4 5 ... 475 476 477 478 479</div><input id='attrs-10d85343-9d49-43b0-95b7-f9226d33d7fe' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-10d85343-9d49-43b0-95b7-f9226d33d7fe' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d4d80014-8ccc-4a52-bd96-feb591f6bf77' class='xr-var-data-in' type='checkbox'><label for='data-d4d80014-8ccc-4a52-bd96-feb591f6bf77' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>elapsed time</dd><dt><span>units :</span></dt><dd>months since 1958-1-1 00:00:00</dd></dl></div><div class='xr-var-data'><pre>array([  0,   1,   2, ..., 477, 478, 479])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-90.0 -87.5 -85.0 ... 87.5 90.0</div><input id='attrs-c19ecfde-f900-4cb8-83a7-18fa11bf9e33' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c19ecfde-f900-4cb8-83a7-18fa11bf9e33' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8a7a5c98-855f-48e4-b0dd-a75488cdefdd' class='xr-var-data-in' type='checkbox'><label for='data-8a7a5c98-855f-48e4-b0dd-a75488cdefdd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>short_name :</span></dt><dd>lat</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>array([-90. , -87.5, -85. , -82.5, -80. , -77.5, -75. , -72.5, -70. , -67.5,
+       -65. , -62.5, -60. , -57.5, -55. , -52.5, -50. , -47.5, -45. , -42.5,
+       -40. , -37.5, -35. , -32.5, -30. , -27.5, -25. , -22.5, -20. , -17.5,
+       -15. , -12.5, -10. ,  -7.5,  -5. ,  -2.5,   0. ,   2.5,   5. ,   7.5,
+        10. ,  12.5,  15. ,  17.5,  20. ,  22.5,  25. ,  27.5,  30. ,  32.5,
+        35. ,  37.5,  40. ,  42.5,  45. ,  47.5,  50. ,  52.5,  55. ,  57.5,
+        60. ,  62.5,  65. ,  67.5,  70. ,  72.5,  75. ,  77.5,  80. ,  82.5,
+        85. ,  87.5,  90. ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.0 2.5 5.0 ... 352.5 355.0 357.5</div><input id='attrs-07dc9a67-5e58-4c28-b1e2-b7d29658c537' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-07dc9a67-5e58-4c28-b1e2-b7d29658c537' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bf7737bd-b2cd-438e-8beb-7fb3580e0a5f' class='xr-var-data-in' type='checkbox'><label for='data-bf7737bd-b2cd-438e-8beb-7fb3580e0a5f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>short_name :</span></dt><dd>lon</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([  0. ,   2.5,   5. ,   7.5,  10. ,  12.5,  15. ,  17.5,  20. ,  22.5,
+        25. ,  27.5,  30. ,  32.5,  35. ,  37.5,  40. ,  42.5,  45. ,  47.5,
+        50. ,  52.5,  55. ,  57.5,  60. ,  62.5,  65. ,  67.5,  70. ,  72.5,
+        75. ,  77.5,  80. ,  82.5,  85. ,  87.5,  90. ,  92.5,  95. ,  97.5,
+       100. , 102.5, 105. , 107.5, 110. , 112.5, 115. , 117.5, 120. , 122.5,
+       125. , 127.5, 130. , 132.5, 135. , 137.5, 140. , 142.5, 145. , 147.5,
+       150. , 152.5, 155. , 157.5, 160. , 162.5, 165. , 167.5, 170. , 172.5,
+       175. , 177.5, 180. , 182.5, 185. , 187.5, 190. , 192.5, 195. , 197.5,
+       200. , 202.5, 205. , 207.5, 210. , 212.5, 215. , 217.5, 220. , 222.5,
+       225. , 227.5, 230. , 232.5, 235. , 237.5, 240. , 242.5, 245. , 247.5,
+       250. , 252.5, 255. , 257.5, 260. , 262.5, 265. , 267.5, 270. , 272.5,
+       275. , 277.5, 280. , 282.5, 285. , 287.5, 290. , 292.5, 295. , 297.5,
+       300. , 302.5, 305. , 307.5, 310. , 312.5, 315. , 317.5, 320. , 322.5,
+       325. , 327.5, 330. , 332.5, 335. , 337.5, 340. , 342.5, 345. , 347.5,
+       350. , 352.5, 355. , 357.5], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-b153c142-1fba-433b-aa0f-c9382d382088' class='xr-section-summary-in' type='checkbox'  checked><label for='section-b153c142-1fba-433b-aa0f-c9382d382088' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>yrmon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-cc7684d8-9d8f-407c-8f67-5b2504313c31' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cc7684d8-9d8f-407c-8f67-5b2504313c31' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-77421ab7-e0b1-4abc-9d46-c2c95037f562' class='xr-var-data-in' type='checkbox'><label for='data-77421ab7-e0b1-4abc-9d46-c2c95037f562' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>short_name :</span></dt><dd>YYYYMM</dd><dt><span>long_name :</span></dt><dd>Year-Month</dd><dt><span>units :</span></dt><dd>current date as 6 digit integer (YYYYMM)</dd></dl></div><div class='xr-var-data'><pre>[480 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>HGT</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2d1784fd-5fb8-4eb2-909e-0c6d75a977fb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2d1784fd-5fb8-4eb2-909e-0c6d75a977fb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1ac0217b-4cb6-4858-9a33-ce194cf6005a' class='xr-var-data-in' type='checkbox'><label for='data-1ac0217b-4cb6-4858-9a33-ce194cf6005a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>lev :</span></dt><dd>500.0</dd><dt><span>short_name :</span></dt><dd>HGT</dd><dt><span>long_name :</span></dt><dd>Geopotential Height</dd><dt><span>units :</span></dt><dd>gpm</dd></dl></div><div class='xr-var-data'><pre>[5045760 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-46ecbf90-ef37-4739-b25a-136d675c16d0' class='xr-section-summary-in' type='checkbox'  ><label for='section-46ecbf90-ef37-4739-b25a-136d675c16d0' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-ef956a75-4bf1-470c-bcd7-2dfc2d06185d' class='xr-index-data-in' type='checkbox'/><label for='index-ef956a75-4bf1-470c-bcd7-2dfc2d06185d' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
+       ...
+       470, 471, 472, 473, 474, 475, 476, 477, 478, 479],
+      dtype=&#x27;int64&#x27;, name=&#x27;time&#x27;, length=480))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-87d5806e-72ee-4747-b3b5-c95312c9d15c' class='xr-index-data-in' type='checkbox'/><label for='index-87d5806e-72ee-4747-b3b5-c95312c9d15c' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-90.0, -87.5, -85.0, -82.5, -80.0, -77.5, -75.0, -72.5, -70.0, -67.5,
+       -65.0, -62.5, -60.0, -57.5, -55.0, -52.5, -50.0, -47.5, -45.0, -42.5,
+       -40.0, -37.5, -35.0, -32.5, -30.0, -27.5, -25.0, -22.5, -20.0, -17.5,
+       -15.0, -12.5, -10.0,  -7.5,  -5.0,  -2.5,   0.0,   2.5,   5.0,   7.5,
+        10.0,  12.5,  15.0,  17.5,  20.0,  22.5,  25.0,  27.5,  30.0,  32.5,
+        35.0,  37.5,  40.0,  42.5,  45.0,  47.5,  50.0,  52.5,  55.0,  57.5,
+        60.0,  62.5,  65.0,  67.5,  70.0,  72.5,  75.0,  77.5,  80.0,  82.5,
+        85.0,  87.5,  90.0],
+      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-85091414-c1c7-4ad7-9572-aadda736fec8' class='xr-index-data-in' type='checkbox'/><label for='index-85091414-c1c7-4ad7-9572-aadda736fec8' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  0.0,   2.5,   5.0,   7.5,  10.0,  12.5,  15.0,  17.5,  20.0,  22.5,
+       ...
+       335.0, 337.5, 340.0, 342.5, 345.0, 347.5, 350.0, 352.5, 355.0, 357.5],
+      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=144))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1ffb8a6b-2b91-441b-af90-be9a7ef30d13' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1ffb8a6b-2b91-441b-af90-be9a7ef30d13' class='xr-section-summary' >Attributes: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>conventions :</span></dt><dd>None</dd><dt><span>history :</span></dt><dd>NCEP/NCAR REANALYSIS MONTHLY MEAN SUBSETS
+ftp://ncardata.ucar.edu/pub/reanalysis/monthly/presa/
+</dd><dt><span>source :</span></dt><dd>NCEP Reanalysis; ds090.2</dd><dt><span>title :</span></dt><dd>500mb Geopotential Height: 1958-1997</dd><dt><span>source_mss :</span></dt><dd>/SHEA/HVL/HGT_1958-1997.nc:  500 mb extracted</dd><dt><span>creation_date :</span></dt><dd>creation date: Tue Aug  7 16:31:48 MDT 2001</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+<section id="initial-spaghetti-plot-on-north-polar-stereographic-projection">
+<h3>Initial Spaghetti Plot on North Polar Stereographic Projection<a class="headerlink" href="#initial-spaghetti-plot-on-north-polar-stereographic-projection" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Again, first let’s set up our Cartopy axes. This time setting our projection to <code class="docutils literal notranslate"><span class="pre">NorthPolarStereo</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Cartopy Map Projection</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">NorthPolarStereo</span><span class="p">())</span>
+
+<span class="n">gv</span><span class="o">.</span><span class="n">set_map_boundary</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">south_pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set draw_labels to False so that we can manually manipulate it</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+                  <span class="n">draw_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgray&#39;</span><span class="p">,</span>
+                  <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/edaf31b4e6085910de719fb76c7d8a53cd42a2835ec57cbb7aed5b875d5f7265.png" src="../_images/edaf31b4e6085910de719fb76c7d8a53cd42a2835ec57cbb7aed5b875d5f7265.png" />
+</div>
+</div>
+<p>Then let’s add our data to this plot.</p>
+<p>We will iterate through every 12th timestep</p>
+<ul class="simple">
+<li><p>handling any artifacts of the global wrapping at 0 or 360 degrees with <code class="docutils literal notranslate"><span class="pre">gv.xr_add_cyclic_longitudes(p,</span> <span class="pre">&quot;lon&quot;)</span></code></p></li>
+<li><p>and calling a contour plot on a single level.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Cartopy Map Projection</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">NorthPolarStereo</span><span class="p">())</span>
+
+<span class="n">gv</span><span class="o">.</span><span class="n">set_map_boundary</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">south_pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set draw_labels to False so that we can manually manipulate it</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+                  <span class="n">draw_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgray&#39;</span><span class="p">,</span>
+                  <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Iterate through the 19 timesteps, plotting the data</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+    <span class="c1"># Get a slice of data at the 12*x timestep</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">HGT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">12</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># Use geocat-viz utility function to handle the no-shown-data artifact</span>
+    <span class="c1"># of 0 and 360-degree longitudes</span>
+    <span class="n">slon</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">xr_add_cyclic_longitudes</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot contour data at pressure level 5500 for the 12*x timestep</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">slon</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                          <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+                          <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                          <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">5500</span><span class="p">],</span>
+                          <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+                          <span class="n">add_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6201cad0ee5dedf722bb75b0a4b16e789b28177e43553ee576803504e4aa0d7c.png" src="../_images/6201cad0ee5dedf722bb75b0a4b16e789b28177e43553ee576803504e4aa0d7c.png" />
+</div>
+</div>
+</section>
+<section id="adding-directional-labels-to-polar-stereographic-projection">
+<h3>Adding Directional Labels to Polar Stereographic Projection<a class="headerlink" href="#adding-directional-labels-to-polar-stereographic-projection" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Adding labels to a map projection that aren’t lat/lon coordinates is less than intuitive. In this example we manually add labels and select their locations so that you can see NESW labels.</p>
+<p>For this we use <code class="docutils literal notranslate"><span class="pre">mticker.FixedLocator()</span></code> to manipulare gridline spacing, manipulate East and West tick labels separately, and specify tick locations with <code class="docutils literal notranslate"><span class="pre">ax.text(transform=ccrs.Geodetic())</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Create an axis with a polar stereographic projection</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">NorthPolarStereo</span><span class="p">())</span>
+
+<span class="c1"># Add land feature to map</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set map boundary to include latitudes between 0 and 40 and longitudes</span>
+<span class="c1"># between -180 and 180 only</span>
+<span class="n">gv</span><span class="o">.</span><span class="n">set_map_boundary</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">south_pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Set draw_labels to False so that you can manually manipulate it later</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+                  <span class="n">draw_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgray&#39;</span><span class="p">,</span>
+                  <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Manipulate latitude and longitude gridline numbers and spacing</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">ylocator</span> <span class="o">=</span> <span class="n">mticker</span><span class="o">.</span><span class="n">FixedLocator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlocator</span> <span class="o">=</span> <span class="n">mticker</span><span class="o">.</span><span class="n">FixedLocator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="c1"># Manipulate longitude labels (0, 30 E, 60 E, ..., 30 W, etc.)</span>
+<span class="n">ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">etick</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+    <span class="sa">r</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">E&#39;</span> <span class="o">%</span> <span class="n">tick</span> <span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">ticks</span> <span class="k">if</span> <span class="p">(</span><span class="n">tick</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tick</span> <span class="o">!=</span> <span class="mi">180</span><span class="p">)</span>
+<span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;180&#39;</span><span class="p">]</span>
+<span class="n">wtick</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">W&#39;</span> <span class="o">%</span> <span class="n">tick</span> <span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">ticks</span> <span class="k">if</span> <span class="p">(</span><span class="n">tick</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tick</span> <span class="o">!=</span> <span class="mi">180</span><span class="p">)]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">etick</span> <span class="o">+</span> <span class="n">wtick</span>
+<span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">yticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Latitude where the labels will be drawn</span>
+<span class="k">for</span> <span class="n">xtick</span><span class="p">,</span> <span class="n">ytick</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span> <span class="n">yticks</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="s1">&#39;180&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xtick</span><span class="p">,</span>
+                <span class="n">ytick</span><span class="p">,</span>
+                <span class="n">label</span><span class="p">,</span>
+                <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="n">label</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xtick</span><span class="p">,</span>
+                <span class="n">ytick</span><span class="p">,</span>
+                <span class="n">label</span><span class="p">,</span>
+                <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xtick</span><span class="p">,</span>
+                <span class="n">ytick</span><span class="p">,</span>
+                <span class="n">label</span><span class="p">,</span>
+                <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
+
+<span class="c1"># Iterate through 18 different timesteps</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">19</span><span class="p">):</span>
+
+    <span class="c1"># Get a slice of data at the 12*x+1 timestep</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">HGT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">12</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Use geocat-viz utility function to handle the no-shown-data artifact</span>
+    <span class="c1"># of 0 and 360-degree longitudes</span>
+    <span class="n">slon</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">xr_add_cyclic_longitudes</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot contour data at pressure level 5500 for the 12*x+1 timestep</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">slon</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                          <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+                          <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                          <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">5500</span><span class="p">],</span>
+                          <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+                          <span class="n">add_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Use geocat.viz.util convenience function to add titles</span>
+<span class="n">gv</span><span class="o">.</span><span class="n">set_titles_and_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span>
+                         <span class="n">maintitle</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\bf</span><span class="si">{Spaghetti}</span><span class="s2">$&quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;$\bf</span><span class="si">{Plot}</span><span class="s2">$&quot;</span><span class="p">,</span>
+                         <span class="n">lefttitle</span><span class="o">=</span><span class="n">slon</span><span class="o">.</span><span class="n">long_name</span><span class="p">,</span>
+                         <span class="n">righttitle</span><span class="o">=</span><span class="s1">&#39;5500 &#39;</span><span class="o">+</span><span class="n">slon</span><span class="o">.</span><span class="n">units</span><span class="p">)</span>
+
+<span class="c1"># Make tight layout</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4c784f7d6b2c7b6bab0267f4b24212df38501b7fad055daaffe585f24c8678db.png" src="../_images/4c784f7d6b2c7b6bab0267f4b24212df38501b7fad055daaffe585f24c8678db.png" />
+</div>
+</div>
+<p>Now in this example, there isn’t necessarily a temporal progression of geopotential height, but to be sure let’s add a colormap component to each of our loops.</p>
+<p>This is also useful because for your data visualization application there might be, and the commands are slightly different for a contour plot as for a line plot in the above example.</p>
+</section>
+<section id="contour-spaghetti-plot-temporal-colorbar-manipulation">
+<h3>Contour Spaghetti Plot Temporal Colorbar Manipulation<a class="headerlink" href="#contour-spaghetti-plot-temporal-colorbar-manipulation" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Let’s update add a discrete colorbar that has yearly ticklabels. One challenge addressed in this example is setting the ticklabels to be in the center of each discrete color box.</p>
+<p>New code lines here are:</p>
+<ul class="simple">
+<li><p>creating a discrete colormap with <code class="docutils literal notranslate"><span class="pre">plt.get_cmap('winter_r',</span> <span class="pre">n)</span></code> and color bounds with <code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code></p></li>
+<li><p>specifying the color in each contour call with <code class="docutils literal notranslate"><span class="pre">colors=[cmap(bounds)[x]]</span></code></p></li>
+<li><p>adjusting the time unit for the colorbar ticks</p></li>
+<li><p>adding a colorbar for the normalized colormap, calling the <code class="docutils literal notranslate"><span class="pre">orientation</span></code>, <code class="docutils literal notranslate"><span class="pre">shrink</span></code>, and <code class="docutils literal notranslate"><span class="pre">pad</span></code> keyword arguments to make it display well</p></li>
+<li><p>setting colorbar tick location to be at color midpoints with <code class="docutils literal notranslate"><span class="pre">cbar.set_ticks()</span></code>, yet forcing their labels to be years (not year midpoints) with <code class="docutils literal notranslate"><span class="pre">cbar.set_ticklabels()</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Cartopy Map Projection</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">NorthPolarStereo</span><span class="p">())</span>
+
+<span class="n">gv</span><span class="o">.</span><span class="n">set_map_boundary</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">south_pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set draw_labels to False so that we can manually manipulate it</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+                  <span class="n">draw_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgray&#39;</span><span class="p">,</span>
+                  <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Manipulate latitude and longitude gridline numbers and spacing</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">ylocator</span> <span class="o">=</span> <span class="n">mticker</span><span class="o">.</span><span class="n">FixedLocator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlocator</span> <span class="o">=</span> <span class="n">mticker</span><span class="o">.</span><span class="n">FixedLocator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="c1"># Manipulate longitude labels (0, 30 E, 60 E, ..., 30 W, etc.)</span>
+<span class="n">ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">etick</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+    <span class="sa">r</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">E&#39;</span> <span class="o">%</span> <span class="n">tick</span> <span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">ticks</span> <span class="k">if</span> <span class="p">(</span><span class="n">tick</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tick</span> <span class="o">!=</span> <span class="mi">180</span><span class="p">)</span>
+<span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;180&#39;</span><span class="p">]</span>
+<span class="n">wtick</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">W&#39;</span> <span class="o">%</span> <span class="n">tick</span> <span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">ticks</span> <span class="k">if</span> <span class="p">(</span><span class="n">tick</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tick</span> <span class="o">!=</span> <span class="mi">180</span><span class="p">)]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">etick</span> <span class="o">+</span> <span class="n">wtick</span>
+<span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">yticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Latitude where the labels will be drawn</span>
+<span class="k">for</span> <span class="n">xtick</span><span class="p">,</span> <span class="n">ytick</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span> <span class="n">yticks</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="s1">&#39;180&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xtick</span><span class="p">,</span>
+                <span class="n">ytick</span><span class="p">,</span>
+                <span class="n">label</span><span class="p">,</span>
+                <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="n">label</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xtick</span><span class="p">,</span>
+                <span class="n">ytick</span><span class="p">,</span>
+                <span class="n">label</span><span class="p">,</span>
+                <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xtick</span><span class="p">,</span>
+                <span class="n">ytick</span><span class="p">,</span>
+                <span class="n">label</span><span class="p">,</span>
+                <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
+
+<span class="c1"># Create a color list for each of the 19 contours</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;winter_r&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="c1"># the `, n` makes the colormap display discretized</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Iterate through the timesteps</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+    <span class="c1"># Get a slice of data at the 12*x timestep</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">HGT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">12</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># Handle wrapping artifacts</span>
+    <span class="n">slon</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">xr_add_cyclic_longitudes</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot contour data at pressure level 5500 for the 12*x timestep</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">slon</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                          <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+                          <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                          <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">5500</span><span class="p">],</span>
+                          <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="n">cmap</span><span class="p">(</span><span class="n">bounds</span><span class="p">)[</span><span class="n">x</span><span class="p">]],</span> <span class="c1"># set colors to use our new cmap</span>
+                          <span class="n">add_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Add a colorbar</span>
+<span class="c1"># The default time unit is in months since 1958, years is more intuitive</span>
+<span class="n">year_0</span> <span class="o">=</span> <span class="mi">1958</span>
+<span class="n">year_n</span> <span class="o">=</span> <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">12</span><span class="o">*</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">+</span> <span class="n">year_0</span>
+
+<span class="n">norm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">year_0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">year_n</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span>
+    <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="c1"># Shrink to the approximate size of the map</span>
+    <span class="n">pad</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1"># Pad so colorbar doesn&#39;t overlap with directional label</span>
+
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">year_0</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">year_n</span><span class="p">))</span> <span class="c1"># Set tick locations to be at color midpoints</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">year_0</span><span class="p">,</span> <span class="n">year_n</span><span class="p">))</span> <span class="c1"># Set tick labels to be years (despite their location value being year + 0.5)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Time (years)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Use geocat.viz.util convenience function to add titles</span>
+<span class="n">gv</span><span class="o">.</span><span class="n">set_titles_and_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span>
+                         <span class="n">maintitle</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\bf</span><span class="si">{Spaghetti}</span><span class="s2">$&quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;$\bf</span><span class="si">{Plot}</span><span class="s2">$&quot;</span><span class="p">,</span>
+                         <span class="n">lefttitle</span><span class="o">=</span><span class="n">slon</span><span class="o">.</span><span class="n">long_name</span><span class="p">,</span>
+                         <span class="n">righttitle</span><span class="o">=</span><span class="s1">&#39;5500 &#39;</span><span class="o">+</span><span class="n">slon</span><span class="o">.</span><span class="n">units</span><span class="p">)</span>
+
+<span class="c1"># Make tight layout</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/85442bd4a912fecb69dcd0827795c5582f117a8068d637b5d1dc4ce29b782a8b.png" src="../_images/85442bd4a912fecb69dcd0827795c5582f117a8068d637b5d1dc4ce29b782a8b.png" />
+</div>
+</div>
+</section>
+<section id="contour-spaghetti-plot-with-hand-picked-colors">
+<h3>Contour Spaghetti Plot with Hand-Picked Colors<a class="headerlink" href="#contour-spaghetti-plot-with-hand-picked-colors" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>If you want your plot to be visually appealing it might be worth selecting different colors for each contour plot in the for-loop, however these do not have to be sequentially ordered or time-aware. It is actually simplest to hand-pick colors for each loop. In this iteration of the plot we hand pick colors in a <code class="docutils literal notranslate"><span class="pre">colorlist</span></code> and plot the first time step on its own to demonstrate plotting one loop unlike the others.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Create an axis with a polar stereographic projection</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">NorthPolarStereo</span><span class="p">())</span>
+
+<span class="c1"># Add land feature to map</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set map boundary to include latitudes between 0 and 40 and longitudes</span>
+<span class="c1"># between -180 and 180 only</span>
+<span class="n">gv</span><span class="o">.</span><span class="n">set_map_boundary</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">south_pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Set draw_labels to False so that you can manually manipulate it later</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+                  <span class="n">draw_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgray&#39;</span><span class="p">,</span>
+                  <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Manipulate latitude and longitude gridline numbers and spacing</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">ylocator</span> <span class="o">=</span> <span class="n">mticker</span><span class="o">.</span><span class="n">FixedLocator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlocator</span> <span class="o">=</span> <span class="n">mticker</span><span class="o">.</span><span class="n">FixedLocator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="c1"># Manipulate longitude labels (0, 30 E, 60 E, ..., 30 W, etc.)</span>
+<span class="n">ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">etick</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+    <span class="sa">r</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">E&#39;</span> <span class="o">%</span> <span class="n">tick</span> <span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">ticks</span> <span class="k">if</span> <span class="p">(</span><span class="n">tick</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tick</span> <span class="o">!=</span> <span class="mi">180</span><span class="p">)</span>
+<span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;180&#39;</span><span class="p">]</span>
+<span class="n">wtick</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">W&#39;</span> <span class="o">%</span> <span class="n">tick</span> <span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">ticks</span> <span class="k">if</span> <span class="p">(</span><span class="n">tick</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tick</span> <span class="o">!=</span> <span class="mi">180</span><span class="p">)]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">etick</span> <span class="o">+</span> <span class="n">wtick</span>
+<span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">yticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Latitude where the labels will be drawn</span>
+<span class="k">for</span> <span class="n">xtick</span><span class="p">,</span> <span class="n">ytick</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span> <span class="n">yticks</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="s1">&#39;180&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xtick</span><span class="p">,</span>
+                <span class="n">ytick</span><span class="p">,</span>
+                <span class="n">label</span><span class="p">,</span>
+                <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="n">label</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xtick</span><span class="p">,</span>
+                <span class="n">ytick</span><span class="p">,</span>
+                <span class="n">label</span><span class="p">,</span>
+                <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xtick</span><span class="p">,</span>
+                <span class="n">ytick</span><span class="p">,</span>
+                <span class="n">label</span><span class="p">,</span>
+                <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
+
+<span class="c1"># Get slice of data at the 0th timestep - plot this contour line separately</span>
+<span class="c1"># because it will be thicker than the other contour lines</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">HGT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Use geocat-viz utility function to handle the no-shown-data</span>
+<span class="c1"># artifact of 0 and 360-degree longitudes</span>
+<span class="n">slon</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">xr_add_cyclic_longitudes</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot contour data at pressure level 5500 at the first timestep</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">slon</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                      <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+                      <span class="n">linewidths</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+                      <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">5500</span><span class="p">],</span>
+                      <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+                      <span class="n">add_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Create a color list for each of the next 18 contours</span>
+<span class="n">colorlist</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;crimson&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;hotpink&quot;</span><span class="p">,</span> <span class="s2">&quot;crimson&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;skyblue&quot;</span><span class="p">,</span> <span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="s2">&quot;lightyellow&quot;</span><span class="p">,</span> <span class="s2">&quot;mediumorchid&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;slateblue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;palegreen&quot;</span><span class="p">,</span> <span class="s2">&quot;magenta&quot;</span><span class="p">,</span> <span class="s2">&quot;springgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;pink&quot;</span><span class="p">,</span> <span class="s2">&quot;forestgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;violet&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># Iterate through 18 different timesteps</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">18</span><span class="p">):</span>
+
+    <span class="c1"># Get a slice of data at the 12*x+1 timestep</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">HGT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">12</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Use geocat-viz utility function to handle the no-shown-data artifact</span>
+    <span class="c1"># of 0 and 360-degree longitudes</span>
+    <span class="n">slon</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">xr_add_cyclic_longitudes</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot contour data at pressure level 5500 for the 12*x+1 timestep</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">slon</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                          <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+                          <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                          <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">5500</span><span class="p">],</span>
+                          <span class="n">colors</span><span class="o">=</span><span class="n">colorlist</span><span class="p">[</span><span class="n">x</span><span class="p">],</span>
+                          <span class="n">add_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Use geocat.viz.util convenience function to add titles</span>
+<span class="n">gv</span><span class="o">.</span><span class="n">set_titles_and_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span>
+                         <span class="n">maintitle</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\bf</span><span class="si">{Spaghetti}</span><span class="s2">$&quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;$\bf</span><span class="si">{Plot}</span><span class="s2">$&quot;</span><span class="p">,</span>
+                         <span class="n">lefttitle</span><span class="o">=</span><span class="n">slon</span><span class="o">.</span><span class="n">long_name</span><span class="p">,</span>
+                         <span class="n">righttitle</span><span class="o">=</span><span class="s1">&#39;5500 &#39;</span><span class="o">+</span><span class="n">slon</span><span class="o">.</span><span class="n">units</span><span class="p">)</span>
+
+<span class="c1"># Make tight layout</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e8e0a93702d6dc1db7d1add062b3bfa39ea2be8f38a975024e2a4a48d09fcf69.png" src="../_images/e8e0a93702d6dc1db7d1add062b3bfa39ea2be8f38a975024e2a4a48d09fcf69.png" />
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Spaghetti Plots are many lines drawn on the same figure. They have pros and cons. They are visually stunning but can be confusing, so it is important to make sure your data visualization conveys accurate information either by manipulating color or linewidth. Since the manipulation of spaghetti plots have their own considerations, this chapter shows several design choices that you can use to jumpstart your visualization needs.</p>
+<section id="whats-next">
+<h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Next up let’s discuss <a class="reference internal" href="7-animation.html"><span class="doc std std-doc">Animation</span></a>.</p>
+</section>
+</section>
+<section id="resources-and-references">
+<h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://tropycal.github.io/tropycal/">Tropycal documentation</a></p></li>
+<li><p><a class="reference external" href="https://geocat-examples.readthedocs.io/en/latest/">GeoCat-examples Visualization Gallery</a></p></li>
+<li><p><a class="reference external" href="https://geocat-viz.readthedocs.io/en/latest/">GeoCAT-Viz documentation</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                  </article>
+
+                
+                
+
+                
+                
+                  <footer class="prev-next-footer">
+                    
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="5-skewt.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Skew T Diagrams</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="7-animation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Animation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                  </footer>
+                
+              </div>
+
+              
+              
+                
+                  <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spaghetti-hurricane-plot">Spaghetti Hurricane Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-data">Read in Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spaghetti-plot-of-one-esemble-member">Spaghetti Plot of One Esemble Member</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spaghetti-plot-of-one-esemble-member-with-temporal-colormapping">Spaghetti Plot of One Esemble Member with Temporal Colormapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spaghetti-plot-of-all-esemble-members-at-one-point-in-time">Spaghetti Plot of All Esemble Members at One Point in Time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spaghetti-contour-plot">Spaghetti Contour Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Read in data:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-spaghetti-plot-on-north-polar-stereographic-projection">Initial Spaghetti Plot on North Polar Stereographic Projection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-directional-labels-to-polar-stereographic-projection">Adding Directional Labels to Polar Stereographic Projection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contour-spaghetti-plot-temporal-colorbar-manipulation">Contour Spaghetti Plot Temporal Colorbar Manipulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contour-spaghetti-plot-with-hand-picked-colors">Contour Spaghetti Plot with Hand-Picked Colors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+                
+              
+
+
+                
+                <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.pythia.2i2c.cloud/v2/gh/ProjectPythia/advanced-viz-cookbook/main?urlpath=lab/tree/notebooks/6-spaghetti.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/advanced-viz-cookbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/advanced-viz-cookbook/edit/main/notebooks/6-spaghetti.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/advanced-viz-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/6-spaghetti.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/6-spaghetti.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+            </div>
+
+            <footer class="bd-footer-content">
+              
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the <a href="https://projectpythia.org/">Project Pythia</a> Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on 10 January 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+            </footer>
+
+        </main>
+    </div>
+  </div>
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+     
+  
+  
+  
+  
+    <div class="footer-items__start">
+      <div class="container-fluid m-0 p-0">
+      
+        <div class="footer-item">
+  <div class="container-fluid footer-logos">
+    <div class="container-xl">
+      <div class="row d-flex flex-wrap align-items-center">
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="NCAR" src="../_images/NSF-NCAR_Lockup-UCAR-Dark_102523.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="Unidata" src="../_images/Unidata_logo_horizontal_1200x300.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="UAlbany" src="../_images/UAlbany-A2-logo-purple-gold.svg" style="width: 100%">
+        </div>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item">  <div class="container-fluid footer-info">
+    <div class="container-xl">
+      <div class="d-flex justify-content-center">
+        <p class="py-1 m-0">
+            &copy;&nbsp;2024.
+        
+          By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
+        
+          Last updated on 10 January 2025.
+        </p>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item"><div class="container-fluid footer-extra">
+    <div class="container">
+      <center>
+        Theme by <a href="https://projectpythia.org">Project Pythia</a>. All code
+        in Pythia Cookbooks is licensed under
+        <a href="https://opensource.org/license/apache-2-0">Apache 2.0</a>. All
+        other non-code content is licensed under
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          Creative Commons BY 4.0 (CC BY 4.0)</a
+        >.
+      </center>
+      <br /><br />
+      <div class="row">
+        <p class="m-0">
+          <img
+            src="../_static/footer-logo-nsf.png"
+            style="float: left; width: 60px; height: 60px; margin-right: 1rem"
+          />
+          This material is based upon work supported by the National Science
+          Foundation under Grant Nos. 2026863 and 2026899. Any opinions, findings,
+          and conclusions or recommendations expressed in this material are those
+          of the author(s) and do not necessarily reflect the views of the
+          National Science Foundation.
+        </p>
+      </div>
+    </div>
+  </div></div>
+      
+      </div>
+    </div>
+  
+
+  </footer>
+  </body>
+</html>
