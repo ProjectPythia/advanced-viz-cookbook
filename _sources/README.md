@@ -47,6 +47,8 @@ Animated plots are great tools for science communication and outreach. We will d
 
 Dynamically rendering, animating, panning & zooming over a plot can be great to increase data fidelity. We will showcase how to use Holoviz technologies with Bokeh backend to create interactive plots, utilizing an unstructured grid data in the Model for Prediction Across Scales (MPAS) format.
 
+Due to environment configuration limitations, interactive plotting will be temporarily be moved to a separate Cookbook.
+
 ## Running the Notebooks
 
 You can either run the notebook using [Binder](https://binder.projectpythia.org/) or on your local machine.
