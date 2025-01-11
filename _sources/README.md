@@ -2,7 +2,7 @@
 
 # Advanced Visualization Cookbook
 
-[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.pythia.2i2c.cloud/v2/gh/ProjectPythia/advanced-viz-cookbook.git/main?labpath=notebooks)
+[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook.git/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/671205314.svg)](https://zenodo.org/badge/latestdoi/671205314)
 
 This Project Pythia Cookbook covers advanced visualization techniques building upon and combining various Python packages.
@@ -11,7 +11,7 @@ This Project Pythia Cookbook covers advanced visualization techniques building u
 
 The possibilities of data visualization in Python are almost endless. Already using `matplotlib` the workhorse behind many visualization packages, the user has a lot of customization options available to them. `cartopy`, `metpy`, `seaborn`, `geocat-viz`, and `datashader` are all also great packages that can offer unique additions to your Python visualization toolbox.
 
-This Cookbook will house various visualization workflow examples that use different visualization packages, highlight the differences in functionality between the packages, any noteable syntax distinctions, and demonstrate combining tools to achieve a specific outcome.
+This cookbook will house various visualization workflow examples that use different visualization packages, highlight the differences in functionality between the packages, any noteable syntax distinctions, and demonstrate combining tools to achieve a specific outcome.
 
 ## Authors
 
@@ -29,11 +29,11 @@ This cookbook is broken up into a few sections - a "Basics of Geoscience Visuali
 
 ### Basics of Geoscience Visualization
 
-Here we introduce the basics of geoscience visualization, the elements of a plot, different types of plots, and some unique considerations when dealing with model and measured data. Here we also share a comparison of different visualization packages available to the Scientific Python programmer.
+Here we introduce the basics of geoscience visualization, the elements of a plot, different types of plots, and some unique considerations when dealing with model and measured data. We also share a comparison of different visualization packages available in the scientific Python ecosystem.
 
 ### Specialty Plots
 
-There are some plot types that are unique to atmospheric science such as Taylor Diagrams or Skew-T plots. Here we will use [`metpy`](https://unidata.github.io/MetPy/latest/index.html) and [`geocat-viz`](https://geocat-viz.readthedocs.io/en/latest/) to demonstrate these specialty plots.
+There are some plot types that are unique to atmospheric science such as Taylor Diagrams and Skew-T plots. Here we will use [`metpy`](https://unidata.github.io/MetPy/latest/index.html) and [`geocat-viz`](https://geocat-viz.readthedocs.io/en/latest/) to demonstrate these specialty plots.
 
 ### Visualization of Structured Grids
 

@@ -83,7 +83,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="10 January 2025"/>
+    <meta name="docbuild:last-update" content="11 January 2025"/>
   </head>
   
   
@@ -427,17 +427,17 @@
 <h1>Comparison of Visualization Packages<a class="headerlink" href="#comparison-of-visualization-packages" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>There are nearly endless possibilities when it comes to data visualization in Python. Some of these choices can be overwhelming. This chapter aims to lay out and distinguish different Python visualization libraries so that you are more equipped to make the right choice for your data visualization needs. This Cookbook is not a comprehensive tutorial on these packages, but we can offere enough information and links to documentation or relevant tutorials to help get you started.</p>
+<p>There are nearly endless possibilities when it comes to data visualization in Python. Some of these choices can be overwhelming. This chapter aims to lay out and distinguish between different Python visualization libraries so that you are better equipped to make the right choice for your data visualization needs. This cookbook is not a comprehensive tutorial on these packages, but we can offer enough information and resources to help get you started.</p>
 <ol class="arabic simple">
 <li><p>Matplotlib</p></li>
 <li><p>Cartopy</p></li>
 <li><p>GeoCAT-viz</p></li>
 <li><p>MetPy</p></li>
-<li><p>Vapor</p></li>
+<li><p>VAPOR</p></li>
 </ol>
 <div class="tip admonition">
 <p class="admonition-title">Info</p>
-<p>The plotting libraries mentioned here are either ones used extensively by the authors of this Cookbook OR ones that we get asked about a lot when giving plotting tutorials. This does not cover every library that can be used for plotting in the Python scientific ecosystem, but should cover the more popular packages you might come across.</p>
+<p>The plotting libraries mentioned here are either ones used extensively by the authors of this Cookbook OR ones that we get asked about a lot when giving data visualization tutorials. This does not cover every library that can be used for plotting in Python, but should cover the more popular packages you might come across.</p>
 <p>Missing a plotting library that you use and want others to know more about? Let us know by opening a <a class="reference external" href="https://github.com/ProjectPythia/advanced-viz-cookbook/issues">GitHub Issue</a>.</p>
 </div>
 </section>
@@ -463,14 +463,14 @@
 </table>
 </div>
 <ul class="simple">
-<li><p><strong>Time to learn</strong>: 50 minutes</p></li>
+<li><p><strong>Time to learn</strong>: 10 minutes</p></li>
 </ul>
 </section>
 <hr class="docutils" />
 <section id="matplotlib">
 <h2>Matplotlib<a class="headerlink" href="#matplotlib" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p><a class="reference internal" href="../_images/matplotlib.svg"><img alt="Matplotlib Logo" src="../_images/matplotlib.svg" style="width: 250px;" /></a></img></p>
-<p>Matplotlib is the workhorse of Python visualization needs. It is a comprehensive plotting library that has the capacity to make static, animated, or interactive visualizations. It is hard to imagine plotting in Python without first getting comfortable with Matplotlib. Be sure to check out the <a class="reference external" href="https://matplotlib.org/">Matplotlib documentation</a> as well as the <a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib.html">Pythia foundations chapter on Matplotlib</a> for guidance.</p>
+<a class="reference internal image-reference" href="../_images/matplotlib.svg"><img alt="Matplotlib logo" src="../_images/matplotlib.svg" style="width: 250px;" /></a>
+<p>Matplotlib is the workhorse of the Python visualization landscape. It is a comprehensive plotting library that has the capacity to make static, animated, or interactive visualizations. It is hard to imagine plotting in Python without first getting comfortable with Matplotlib. Be sure to check out the <a class="reference external" href="https://matplotlib.org/">Matplotlib documentation</a> as well as the <a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib.html">Pythia foundations chapter on Matplotlib</a> for guidance.</p>
 <p>Matplotlib’s syntax should feel familiar to anyone who has plotted data in Matlab.</p>
 <p>Here is a <a class="reference external" href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/simple_plot.html">simple plotting example from Matplotlib</a>:</p>
 <div class="cell docutils container">
@@ -500,8 +500,8 @@
 </section>
 <section id="cartopy">
 <h2>Cartopy<a class="headerlink" href="#cartopy" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p><a class="reference internal" href="../_images/cartopy.jpeg"><img alt="Cartopy Logo" src="../_images/cartopy.jpeg" style="width: 250px;" /></a></img></p>
-<p>Cartopy is a Python package for plotting data on the globe. It is the go-to package for plotting maps, dealing with different projections, and adding surface features to your plot. Cartopy is buit on top of <a class="reference external" href="https://proj.org/en/9.2/">PROJ</a>, NumPy and <a class="reference external" href="https://shapely.readthedocs.io/en/stable/manual.html">Shapely</a>, and Matplotlib. To learn more about what Cartopy can do, check out the <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy documentation</a> and the <a class="reference external" href="https://foundations.projectpythia.org/core/cartopy.html">Pythia foundations Cartopy chapter</a>.</p>
+<a class="reference internal image-reference" href="../_images/cartopy.jpeg"><img alt="Cartopy logo" src="../_images/cartopy.jpeg" style="width: 250px;" /></a>
+<p>Cartopy is a Python package for plotting data on the globe. It is the go-to package for plotting maps, dealing with different projections, and adding surface features to your plot. Cartopy is buit on top of <a class="reference external" href="https://proj.org/en/9.2/">PROJ</a>, NumPy, <a class="reference external" href="https://shapely.readthedocs.io/en/stable/manual.html">Shapely</a>, and Matplotlib. To learn more about what Cartopy can do, check out the <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy documentation</a> and the <a class="reference external" href="https://foundations.projectpythia.org/core/cartopy.html">Pythia Foundations Cartopy Chapter</a>.</p>
 <p>You may have heard about <a class="reference external" href="https://matplotlib.org/basemap/index.html">Basemap</a>, another geoscience plotting library, which was deprecated in favor of Cartopy.</p>
 <p>Here is a <a class="reference external" href="https://scitools.org.uk/cartopy/docs/v0.15/matplotlib/intro.html">simple plotting example from Cartopy</a>:</p>
 <div class="cell docutils container">
@@ -526,8 +526,8 @@
 </section>
 <section id="geocat-viz">
 <h2>GeoCAT-Viz<a class="headerlink" href="#geocat-viz" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p><a class="reference internal" href="../_images/geocat.png"><img alt="GeoCAT Logo" src="../_images/geocat.png" style="width: 250px;" /></a></img></p>
-<p>The GeoCAT team at the National Center for Atmospheric Research (NCAR) aims to help scientists transitioning from <a class="reference external" href="https://www.ncl.ucar.edu/">NCL</a> to Python. Out of this team come three different visualization aids: the <a class="reference external" href="https://geocat-examples.readthedocs.io/en/latest/">GeoCAT-examples Visualization Gallery</a> which contains tons of different plotting examples that you can use as a starting place for your figures, <a class="reference external" href="https://ncar.github.io/geocat-applications/">GeoCAT-applications</a> which is designed to be a quick reference guide demonstrating capabilities within the scientific Python ecosystem, and the <a class="reference external" href="https://geocat-viz.readthedocs.io/en/latest/">GeoCAT-Viz package (documentation)</a> which contains many convenience functions that formerly existed in NCL or for making Python plots look publication-ready.</p>
+<a class="reference internal image-reference" href="../_images/geocat.png"><img alt="GeoCAT logo" src="../_images/geocat.png" style="width: 250px;" /></a>
+<p>The GeoCAT team at the NSF National Center for Atmospheric Research (NSF NCAR) aims to help scientists transitioning from <a class="reference external" href="https://www.ncl.ucar.edu/">NCL</a> to Python. Out of this team come three different visualization aids: the <a class="reference external" href="https://geocat-examples.readthedocs.io/en/latest/">GeoCAT-examples visualization gallery</a> which contains tons of different plotting examples that you can use as a starting place for your figures, <a class="reference external" href="https://ncar.github.io/geocat-applications/">GeoCAT-applications</a> which is designed to be a quick reference guide demonstrating capabilities within the scientific Python ecosystem, and the <a class="reference external" href="https://geocat-viz.readthedocs.io/en/latest/">GeoCAT-viz package (documentation)</a> which contains many convenience functions that formerly existed in NCL and/or for making Python plots look publication-ready.</p>
 <p>Here is a simple example of a GeoCAT-viz convenience function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -582,8 +582,8 @@
 </section>
 <section id="metpy">
 <h2>MetPy<a class="headerlink" href="#metpy" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p><a class="reference internal" href="../_images/metpy.png"><img alt="Metpy Logo" src="../_images/metpy.png" style="width: 250px;" /></a></img></p>
-<p>Metpy is a collection of tools for data reading, analysis, and visualization with weather data. Matplotlib offers some useful functionality for unique plots such as Skew-T diagrams, as well as declaritive plotting functionality. Check out the <a class="reference external" href="https://unidata.github.io/MetPy/latest/index.html">MetPy documentation</a>.</p>
+<a class="reference internal image-reference" href="../_images/metpy.png"><img alt="MetPy logo" src="../_images/metpy.png" style="width: 250px;" /></a>
+<p>MetPy is a collection of tools for data I/O, analysis, and visualization with weather data. MetPy offers some useful functionality for unique plots such as Skew-T diagrams, as well as declaritive plotting functionality. Check out the <a class="reference external" href="https://unidata.github.io/MetPy/latest/index.html">MetPy documentation</a>.</p>
 <p>Here is a simple Skew-T plot from their <a class="reference external" href="https://unidata.github.io/MetPy/latest/userguide/startingguide.html">Getting Started documentation</a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -634,15 +634,14 @@
 </section>
 <section id="vapor">
 <h2>VAPOR<a class="headerlink" href="#vapor" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p><a class="reference internal" href="../_images/vapor.png"><img alt="VAPOR Logo" src="../_images/vapor.png" style="width: 250px;" /></a></img></p>
-<p>VAPOR stands for the Visualization and Analysis Platform for Ocean, Atmosphere, and Solar Researchers and is another project from NCAR. VAPOR provides an interactive 3D visualization environment. Learn more at the <a class="reference external" href="https://www.vapor.ucar.edu/">VAPOR documentation</a>. VAPOR requires a GPU-enabled environment to run.</p>
+<a class="reference internal image-reference" href="../_images/vapor.png"><img alt="VAPOR logo" src="../_images/vapor.png" style="width: 250px;" /></a>
+<p>VAPOR stands for the Visualization and Analysis Platform for Ocean, Atmosphere, and Solar Researchers and is another project from NCAR. VAPOR provides an interactive 3D visualization environment.  Traditionally users interacted through a graphical user interface (GUI), but it now has a Python API as well. Learn more at the <a class="reference external" href="https://www.vapor.ucar.edu/">VAPOR documentation</a>. Note that VAPOR requires a GPU-enabled environment to run.</p>
 <div class="tip admonition">
 <p class="admonition-title">Info</p>
 <p>For more VAPOR content, be sure to check out the <a class="reference external" href="https://projectpythia.org/vapor-python-cookbook/README.html">VAPOR Pythia Cookbook</a>.</p>
 </div>
-<p>Interactive visualization libraries such as Plotly, UXarray, seaborn, bokeh, and hvplot will be explored in a separate interactive plotting Cookbook.</p>
+<p>Interactive visualization libraries such as Plotly, Seaborn, Bokeh, and hvPlot will be explored in a separate interactive plotting cookbook.</p>
 </section>
-<hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>Each Python plotting library offers a slightly different niche in the data visualization world. Some are better for creating publication figures (matplotlib, cartopy, metpy, geocat-viz, uxarray) while others offer interactive functionality that is great for websites, demonstrations, and other forms of engagement (holoviews, seaborn, plotly, bokeh, and vapor). Hopefully the mini examples on this page allow you to play around and see which user interfaces you like best for your visualization needs.</p>
@@ -656,10 +655,10 @@
 <ul class="simple">
 <li><p><a class="reference external" href="https://matplotlib.org/">Matplotlib documentation</a></p></li>
 <li><p><a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy documentation</a></p></li>
-<li><p><a class="reference external" href="https://geocat-examples.readthedocs.io/en/latest/">GeoCat-examples Visualization Gallery</a></p></li>
-<li><p><a class="reference external" href="https://geocat-viz.readthedocs.io/en/latest/">GeoCAT-Viz documentation</a></p></li>
+<li><p><a class="reference external" href="https://geocat-examples.readthedocs.io/en/latest/">GeoCAT-examples visualization gallery</a></p></li>
+<li><p><a class="reference external" href="https://geocat-viz.readthedocs.io/en/latest/">GeoCAT-viz documentation</a></p></li>
 <li><p><a class="reference external" href="https://unidata.github.io/MetPy/latest/index.html">MetPy documentation</a></p></li>
-<li><p><a class="reference external" href="https://www.vapor.ucar.edu/">Vapor documentation</a></p></li>
+<li><p><a class="reference external" href="https://www.vapor.ucar.edu/">VAPOR documentation</a></p></li>
 <li><p><a class="reference external" href="https://plotly.com/python/">Plotly Python documentation</a></p></li>
 <li><p><a class="reference external" href="https://seaborn.pydata.org/">Seaborn documentation</a></p></li>
 <li><p><a class="reference external" href="https://bokeh.org/">Bokeh documentation</a></p></li>
@@ -787,7 +786,7 @@
       
       
       
-      <li><a href="https://binder.pythia.2i2c.cloud/v2/gh/ProjectPythia/advanced-viz-cookbook/main?urlpath=lab/tree/notebooks/1-comparison.ipynb" target="_blank"
+      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook/main?urlpath=lab/tree/notebooks/1-comparison.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -982,7 +981,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 10 January 2025.
+  Last updated on 11 January 2025.
   <br/>
 </p>
   </div>
@@ -1036,7 +1035,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 10 January 2025.
+          Last updated on 11 January 2025.
         </p>
       </div>
     </div>
