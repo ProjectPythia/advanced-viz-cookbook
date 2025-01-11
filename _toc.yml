@@ -4,7 +4,7 @@ parts:
   - caption: Preamble
     chapters:
       - file: notebooks/how-to-cite
-  - caption: Basics of Geoscience Visualization
+  - caption: Review Visualization Foundations
     chapters:
       - file: notebooks/1-comparison
       - file: notebooks/2-good-viz
@@ -13,12 +13,7 @@ parts:
     chapters:
       - file: notebooks/4-taylor-diagrams
       - file: notebooks/5-skewt
-  - caption: Visualization of Structured Grids
-    chapters:
       - file: notebooks/6-spaghetti
   - caption: Animation
     chapters:
       - file: notebooks/7-animation
-  - caption: Interactivity
-    chapters:
-      - file: notebooks/8-interactive-holoviz-mpas
