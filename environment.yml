@@ -5,6 +5,7 @@ dependencies:
   - sphinx-pythia-theme
   - jupyter-book
   - jupyterlab
+  - jupyterlab-myst
   - pandas
   - matplotlib
   - cartopy

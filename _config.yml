@@ -52,7 +52,7 @@ sphinx:
           icon: fab fa-youtube-square
           type: fontawesome
       launch_buttons:
-        binderhub_url: https://binder.pythia.2i2c.cloud
+        binderhub_url: https://binder.projectpythia.org
         notebook_interface: jupyterlab
       logo:
         link: https://projectpythia.org
