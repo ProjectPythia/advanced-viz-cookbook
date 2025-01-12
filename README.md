@@ -27,27 +27,17 @@ This cookbook will house various visualization workflow examples that use differ
 
 This cookbook is broken up into a few sections - a "Basics of Geoscience Visualization" intro that compares different visualization packages and plot elements, and then example workflows of advanced visualization applications that are further subdivided.
 
-### Basics of Geoscience Visualization
+### Review Visualization Foundations
 
-Here we introduce the basics of geoscience visualization, the elements of a plot, different types of plots, and some unique considerations when dealing with model and measured data. We also share a comparison of different visualization packages available in the scientific Python ecosystem.
+Here we review the basics of geoscience visualization, the elements of a plot, different types of plots, and some unique considerations when dealing with model and measured data. We also share a comparison of different visualization packages available in the scientific Python ecosystem.
 
 ### Specialty Plots
 
-There are some plot types that are unique to atmospheric science such as Taylor Diagrams and Skew-T plots. Here we will use [`metpy`](https://unidata.github.io/MetPy/latest/index.html) and [`geocat-viz`](https://geocat-viz.readthedocs.io/en/latest/) to demonstrate these specialty plots.
-
-### Visualization of Structured Grids
-
-In this section we will demonstrate how to visualize data that is on a structured grid. Namely, we will look at Spaghetti Hurricane plots. Here we will have workflows that utilize packages such as [`cartopy`](https://scitools.org.uk/cartopy/docs/latest/) and [`geocat-viz`](https://geocat-viz.readthedocs.io/en/latest/).
+There are some plot types that are unique to atmospheric science such as Taylor Diagrams and Skew-T plots. Here we will use [`metpy`](https://unidata.github.io/MetPy/latest/index.html) and [`geocat-viz`](https://geocat-viz.readthedocs.io/en/latest/). Additionally, we will look at Spaghetti plots, both for Hurricane data and geopotential height on a polar stereographic projection, utilizing [`cartopy`](https://scitools.org.uk/cartopy/docs/latest/).
 
 ### Animation
 
 Animated plots are great tools for science communication and outreach. We will demonstrate how to make your plots come to life. In this book, we use "animated plots" to refer to stable animations, such as the creation of gifs or videos.
-
-### Interactivity
-
-Dynamically rendering, animating, panning & zooming over a plot can be great to increase data fidelity. We will showcase how to use Holoviz technologies with Bokeh backend to create interactive plots, utilizing an unstructured grid data in the Model for Prediction Across Scales (MPAS) format.
-
-Due to environment configuration limitations, interactive plotting will be temporarily be moved to a separate Cookbook.
 
 ## Running the Notebooks
 
