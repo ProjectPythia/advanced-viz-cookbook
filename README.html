@@ -82,7 +82,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="11 January 2025"/>
+    <meta name="docbuild:last-update" content="12 January 2025"/>
   </head>
   
   
@@ -372,7 +372,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="notebooks/how-to-cite.html">How to Cite This Cookbook</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics of Geoscience Visualization</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Review of Visualization Foundations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="notebooks/1-comparison.html">Comparison of Visualization Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/2-good-viz.html">What Makes for Good Data Visualization?</a></li>
@@ -382,9 +382,6 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="notebooks/4-taylor-diagrams.html">Taylor Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/5-skewt.html">Skew T Diagrams</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization of Structured Grids</span></p>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="notebooks/6-spaghetti.html">Spaghetti Plots</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Animation</span></p>
@@ -447,27 +444,19 @@
 </section>
 <section id="structure">
 <h2>Structure<a class="headerlink" href="#structure" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>This cookbook is broken up into a few sections - a “Basics of Geoscience Visualization” intro that compares different visualization packages and plot elements, and then example workflows of advanced visualization applications that are further subdivided.</p>
-<section id="basics-of-geoscience-visualization">
-<h3>Basics of Geoscience Visualization<a class="headerlink" href="#basics-of-geoscience-visualization" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>This cookbook is broken up into a few sections - a “Review of Visualization Foundations” intro that compares different visualization packages and plot elements, and then example workflows of advanced visualization applications that are further subdivided.</p>
+<section id="review-of-visualization-foundations">
+<h3>Review of Visualization Foundations<a class="headerlink" href="#review-of-visualization-foundations" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Here we introduce the basics of geoscience visualization, the elements of a plot, different types of plots, and some unique considerations when dealing with model and measured data. We also share a comparison of different visualization packages available in the scientific Python ecosystem.</p>
 </section>
 <section id="specialty-plots">
 <h3>Specialty Plots<a class="headerlink" href="#specialty-plots" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>There are some plot types that are unique to atmospheric science such as Taylor Diagrams and Skew-T plots. Here we will use <a class="reference external" href="https://unidata.github.io/MetPy/latest/index.html"><code class="docutils literal notranslate"><span class="pre">metpy</span></code></a> and <a class="reference external" href="https://geocat-viz.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">geocat-viz</span></code></a> to demonstrate these specialty plots.</p>
-</section>
-<section id="visualization-of-structured-grids">
-<h3>Visualization of Structured Grids<a class="headerlink" href="#visualization-of-structured-grids" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>In this section we will demonstrate how to visualize data that is on a structured grid. Namely, we will look at Spaghetti Hurricane plots. Here we will have workflows that utilize packages such as <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/"><code class="docutils literal notranslate"><span class="pre">cartopy</span></code></a> and <a class="reference external" href="https://geocat-viz.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">geocat-viz</span></code></a>.</p>
+<p>There are some plot types that are unique to atmospheric science such as Taylor Diagrams and Skew-T plots. Here we use <a class="reference external" href="https://unidata.github.io/MetPy/latest/index.html"><code class="docutils literal notranslate"><span class="pre">metpy</span></code></a> and <a class="reference external" href="https://geocat-viz.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">geocat-viz</span></code></a> to demonstrate these specialty plots.</p>
+<p>We also demonstrate the use of spaghetti plots for hurricane applications using packages such as <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/"><code class="docutils literal notranslate"><span class="pre">cartopy</span></code></a> and <a class="reference external" href="https://geocat-viz.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">geocat-viz</span></code></a>.</p>
 </section>
 <section id="animation">
 <h3>Animation<a class="headerlink" href="#animation" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Animated plots are great tools for science communication and outreach. We will demonstrate how to make your plots come to life. In this book, we use “animated plots” to refer to stable animations, such as the creation of gifs or videos.</p>
-</section>
-<section id="interactivity">
-<h3>Interactivity<a class="headerlink" href="#interactivity" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Dynamically rendering, animating, panning &amp; zooming over a plot can be great to increase data fidelity. We will showcase how to use Holoviz technologies with Bokeh backend to create interactive plots, utilizing an unstructured grid data in the Model for Prediction Across Scales (MPAS) format.</p>
-<p>Due to environment configuration limitations, interactive plotting will be temporarily be moved to a separate Cookbook.</p>
+<p>Animated plots are great tools for science communication and outreach. We will demonstrate how to make your plots come to life. In this book, we use “animated plots” to refer to stable animations, such as the creation of GIFs or videos.</p>
 </section>
 </section>
 <section id="running-the-notebooks">
@@ -519,10 +508,6 @@ jupyter<span class="w"> </span>lab
 </ol>
 </section>
 </section>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -595,11 +580,9 @@ jupyter<span class="w"> </span>lab
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure">Structure</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-of-geoscience-visualization">Basics of Geoscience Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-visualization-foundations">Review of Visualization Foundations</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specialty-plots">Specialty Plots</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-structured-grids">Visualization of Structured Grids</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animation">Animation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactivity">Interactivity</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-notebooks">Running the Notebooks</a><ul class="nav section-nav flex-column">
@@ -810,7 +793,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 11 January 2025.
+  Last updated on 12 January 2025.
   <br/>
 </p>
   </div>
@@ -864,7 +847,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 11 January 2025.
+          Last updated on 12 January 2025.
         </p>
       </div>
     </div>
