@@ -8,6 +8,8 @@ dependencies:
   - jupyterlab-myst
   - pandas
   - matplotlib
+  - mystmd
+  - nodejs
   - cartopy
   - metpy
   - geocat-viz>=2023.10.0

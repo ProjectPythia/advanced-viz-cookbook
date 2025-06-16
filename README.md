@@ -1,6 +1,6 @@
 <img src="thumbnail.png" alt="thumbnail" width="300"/>
 
-# Advanced Visualization Cookbook
+# Advanced Visualization Cookbook - MyST Demo
 
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook.git/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/671205314.svg)](https://zenodo.org/badge/latestdoi/671205314)
@@ -76,7 +76,7 @@ If you are interested in running this material locally on your com
    ```bash
    cd advanced-viz-cookbook
    ```
-1. Create and activate your conda environment from the `environment.yml` file
+1. Create and activate your [](xref:foundations#term-conda) environment from the `environment.yml` file
    ```bash
    conda env create -f environment.yml
    conda activate advanced-viz-cookbook

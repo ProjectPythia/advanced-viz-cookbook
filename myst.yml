@@ -1,0 +1,35 @@
+version: 1
+extends:
+  - https://raw.githubusercontent.com/projectpythia/pythia-config/main/pythia.yml
+project:
+  title: Advanced Visualization Cookbook
+  github: https://github.com/projectpythia/advanced-viz-cookbook
+  authors:
+    - name: The Project Pythia Community
+  copyright: '2024'
+  toc:
+    - file: README.md
+    - title: Preamble
+      children:
+        - file: notebooks/how-to-cite.md
+    - title: Basics of Geoscience Visualization
+      children:
+        - file: notebooks/1-comparison.ipynb
+        - file: notebooks/2-good-viz.ipynb
+        - file: notebooks/3-plot-elements.ipynb
+    - title: Specialty Plots
+      children:
+        - file: notebooks/4-taylor-diagrams.ipynb
+        - file: notebooks/5-skewt.ipynb
+    - title: Visualization of Structured Grids
+      children:
+        - file: notebooks/6-spaghetti.ipynb
+    - title: Animation
+      children:
+        - file: notebooks/7-animation.ipynb
+    - title: Interactivity
+      children:
+        - file: notebooks/8-interactive-holoviz-mpas.ipynb
+  jupyter:
+      binder:
+        repo: projectpythia/advanced-viz-cookbook
