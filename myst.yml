@@ -3,7 +3,7 @@ extends:
   - https://raw.githubusercontent.com/projectpythia/pythia-config/main/pythia.yml
 project:
   title: Advanced Visualization Cookbook
-  github: https://github.com/projectpythia-mystmd/advanced-viz-cookbook
+  github: https://github.com/projectpythia/advanced-viz-cookbook
   authors:
     - name: The Project Pythia Community
   copyright: '2024'
