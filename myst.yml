@@ -1,6 +1,6 @@
 version: 1
 extends:
-  - https://raw.githubusercontent.com/projectpythia-mystmd/pythia-config/main/pythia.yml
+  - https://raw.githubusercontent.com/projectpythia/pythia-config/main/pythia.yml
 project:
   title: Advanced Visualization Cookbook
   github: https://github.com/projectpythia-mystmd/advanced-viz-cookbook
