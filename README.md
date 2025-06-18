@@ -1,6 +1,6 @@
-<img src="thumbnail.png" alt="thumbnail" width="300"/>
-
 # Advanced Visualization Cookbook
+
+<img src="thumbnail.png" alt="thumbnail" width="300"/>
 
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/advanced-viz-cookbook.git/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/671205314.svg)](https://zenodo.org/badge/latestdoi/671205314)
