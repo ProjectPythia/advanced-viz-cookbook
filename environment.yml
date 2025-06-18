@@ -2,8 +2,6 @@ name: advanced-viz-cookbook
 channels:
   - conda-forge
 dependencies:
-  - sphinx-pythia-theme
-  - jupyter-book
   - jupyterlab
   - jupyterlab-myst
   - pandas
