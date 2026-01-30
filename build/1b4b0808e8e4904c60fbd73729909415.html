@@ -93,6 +93,7 @@ body.vscode-dark {
   min-width: 300px;
   max-width: 700px;
   line-height: 1.6;
+  padding-bottom: 4px;
 }
 
 .xr-text-repr-fallback {
@@ -103,8 +104,11 @@ body.vscode-dark {
 .xr-header {
   padding-top: 6px;
   padding-bottom: 6px;
-  margin-bottom: 4px;
+}
+
+.xr-header {
   border-bottom: solid 1px var(--xr-border-color);
+  margin-bottom: 4px;
 }
 
 .xr-header > div,
@@ -115,20 +119,15 @@ body.vscode-dark {
 }
 
 .xr-obj-type,
-.xr-obj-name,
-.xr-group-name {
+.xr-obj-name {
   margin-left: 2px;
   margin-right: 10px;
 }
 
-.xr-group-name::before {
-  content: "📁";
-  padding-right: 0.3em;
-}
-
-.xr-group-name,
-.xr-obj-type {
+.xr-obj-type,
+.xr-group-box-contents > label {
   color: var(--xr-font-color2);
+  display: block;
 }
 
 .xr-sections {
@@ -143,28 +142,39 @@ body.vscode-dark {
   display: contents;
 }
 
-.xr-section-item input {
-  display: inline-block;
+.xr-section-item > input,
+.xr-group-box-contents > input,
+.xr-array-wrap > input {
+  display: block;
   opacity: 0;
   height: 0;
   margin: 0;
 }
 
-.xr-section-item input + label {
+.xr-section-item > input + label,
+.xr-var-item > input + label {
   color: var(--xr-disabled-color);
-  border: 2px solid transparent !important;
 }
 
-.xr-section-item input:enabled + label {
+.xr-section-item > input:enabled + label,
+.xr-var-item > input:enabled + label,
+.xr-array-wrap > input:enabled + label,
+.xr-group-box-contents > input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
 }
 
-.xr-section-item input:focus + label {
-  border: 2px solid var(--xr-font-color0) !important;
+.xr-section-item > input:focus-visible + label,
+.xr-var-item > input:focus-visible + label,
+.xr-array-wrap > input:focus-visible + label,
+.xr-group-box-contents > input:focus-visible + label {
+  outline: auto;
 }
 
-.xr-section-item input:enabled + label:hover {
+.xr-section-item > input:enabled + label:hover,
+.xr-var-item > input:enabled + label:hover,
+.xr-array-wrap > input:enabled + label:hover,
+.xr-group-box-contents > input:enabled + label:hover {
   color: var(--xr-font-color0);
 }
 
@@ -172,11 +182,25 @@ body.vscode-dark {
   grid-column: 1;
   color: var(--xr-font-color2);
   font-weight: 500;
+  white-space: nowrap;
+}
+
+.xr-section-summary > em {
+  font-weight: normal;
+}
+
+.xr-span-grid {
+  grid-column-end: -1;
 }
 
 .xr-section-summary > span {
   display: inline-block;
-  padding-left: 0.5em;
+  padding-left: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label > span {
+  display: inline-block;
+  padding-left: 0.6em;
 }
 
 .xr-section-summary-in:disabled + label {
@@ -204,7 +228,8 @@ body.vscode-dark {
 }
 
 .xr-section-summary,
-.xr-section-inline-details {
+.xr-section-inline-details,
+.xr-group-box-contents > label {
   padding-top: 4px;
 }
 
@@ -213,20 +238,29 @@ body.vscode-dark {
 }
 
 .xr-section-details {
-  display: none;
   grid-column: 1 / -1;
   margin-top: 4px;
   margin-bottom: 5px;
+}
+
+.xr-section-summary-in ~ .xr-section-details {
+  display: none;
 }
 
 .xr-section-summary-in:checked ~ .xr-section-details {
   display: contents;
 }
 
+.xr-children {
+  display: inline-grid;
+  grid-template-columns: 100%;
+  grid-column: 1 / -1;
+  padding-top: 4px;
+}
+
 .xr-group-box {
   display: inline-grid;
-  grid-template-columns: 0px 20px auto;
-  width: 100%;
+  grid-template-columns: 0px 30px auto;
 }
 
 .xr-group-box-vline {
@@ -240,13 +274,43 @@ body.vscode-dark {
   grid-column-start: 2;
   grid-row-start: 1;
   height: 1em;
-  width: 20px;
+  width: 26px;
   border-bottom: 0.2em solid;
   border-color: var(--xr-border-color);
 }
 
 .xr-group-box-contents {
   grid-column-start: 3;
+  padding-bottom: 4px;
+}
+
+.xr-group-box-contents > label::before {
+  content: "📂";
+  padding-right: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label::before {
+  content: "📁";
+}
+
+.xr-group-box-contents > input:checked + label {
+  padding-bottom: 0px;
+}
+
+.xr-group-box-contents > input:checked ~ .xr-sections {
+  display: none;
+}
+
+.xr-group-box-contents > input + label > span {
+  display: none;
+}
+
+.xr-group-box-ellipsis {
+  font-size: 1.4em;
+  font-weight: 900;
+  color: var(--xr-font-color2);
+  letter-spacing: 0.15em;
+  cursor: default;
 }
 
 .xr-array-wrap {
@@ -498,7 +562,7 @@ Attributes:
     basin:           north_atlantic
     source_info:     NHC Hurricane Database
     source:          hurdat
-    ace:             13.6675</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-e120730a-c12c-400f-ab07-e651d3ebb249' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-e120730a-c12c-400f-ab07-e651d3ebb249' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 45</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-a348203a-0afa-495f-a7d7-1d2aea884e71' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a348203a-0afa-495f-a7d7-1d2aea884e71' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[us]</div><div class='xr-var-preview xr-preview'>2012-10-21T18:00:00 ... 2012-10-...</div><input id='attrs-1c264b59-1e6f-472e-a69a-9cc426c3d389' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-1c264b59-1e6f-472e-a69a-9cc426c3d389' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-19ed8d1e-0a74-4cc4-9d62-948e75d1d7e5' class='xr-var-data-in' type='checkbox'><label for='data-19ed8d1e-0a74-4cc4-9d62-948e75d1d7e5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2012-10-21T18:00:00.000000&#x27;, &#x27;2012-10-22T00:00:00.000000&#x27;,
+    ace:             13.6675</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-b26356ef-4019-4f98-b089-68b4bb8e9ed1' class='xr-section-summary-in' type='checkbox' disabled /><label for='section-b26356ef-4019-4f98-b089-68b4bb8e9ed1' class='xr-section-summary'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 45</li></ul></div></li><li class='xr-section-item'><input id='section-90f91237-c5e1-4e17-ba81-180bff51a1d2' class='xr-section-summary-in' type='checkbox' checked /><label for='section-90f91237-c5e1-4e17-ba81-180bff51a1d2' class='xr-section-summary' title='Expand/collapse section'>Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[us]</div><div class='xr-var-preview xr-preview'>2012-10-21T18:00:00 ... 2012-10-...</div><input id='attrs-04d2a3e9-78a7-435f-9474-897ff59fe3bf' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-04d2a3e9-78a7-435f-9474-897ff59fe3bf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5884899f-7f55-44d7-b7f5-8146df5302ab' class='xr-var-data-in' type='checkbox'><label for='data-5884899f-7f55-44d7-b7f5-8146df5302ab' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2012-10-21T18:00:00.000000&#x27;, &#x27;2012-10-22T00:00:00.000000&#x27;,
        &#x27;2012-10-22T06:00:00.000000&#x27;, &#x27;2012-10-22T12:00:00.000000&#x27;,
        &#x27;2012-10-22T18:00:00.000000&#x27;, &#x27;2012-10-23T00:00:00.000000&#x27;,
        &#x27;2012-10-23T06:00:00.000000&#x27;, &#x27;2012-10-23T12:00:00.000000&#x27;,
@@ -520,30 +584,30 @@ Attributes:
        &#x27;2012-10-30T00:00:00.000000&#x27;, &#x27;2012-10-30T06:00:00.000000&#x27;,
        &#x27;2012-10-30T12:00:00.000000&#x27;, &#x27;2012-10-30T18:00:00.000000&#x27;,
        &#x27;2012-10-31T00:00:00.000000&#x27;, &#x27;2012-10-31T06:00:00.000000&#x27;,
-       &#x27;2012-10-31T12:00:00.000000&#x27;], dtype=&#x27;datetime64[us]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-09649527-ceb1-4510-9076-ee03d4a9595e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-09649527-ceb1-4510-9076-ee03d4a9595e' class='xr-section-summary' >Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>extra_obs</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 0 0 0 0 0 0 0 ... 1 0 0 0 0 0 0 0</div><input id='attrs-fddcecbb-fd2d-4486-96bf-fe110c54a282' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-fddcecbb-fd2d-4486-96bf-fe110c54a282' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f5e57290-ca84-499d-8ddd-8fbe92f16442' class='xr-var-data-in' type='checkbox'><label for='data-f5e57290-ca84-499d-8ddd-8fbe92f16442' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0,
+       &#x27;2012-10-31T12:00:00.000000&#x27;], dtype=&#x27;datetime64[us]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-8604f85e-dd05-4d6f-8835-a0335c9d1646' class='xr-section-summary-in' type='checkbox' checked /><label for='section-8604f85e-dd05-4d6f-8835-a0335c9d1646' class='xr-section-summary' title='Expand/collapse section'>Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>extra_obs</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 0 0 0 0 0 0 0 ... 1 0 0 0 0 0 0 0</div><input id='attrs-bd1dd040-ac85-4059-9ed6-09e7abfb91a3' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-bd1dd040-ac85-4059-9ed6-09e7abfb91a3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-960598ce-1838-48ba-9612-1092730f1f46' class='xr-var-data-in' type='checkbox'><label for='data-960598ce-1838-48ba-9612-1092730f1f46' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0,
        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0,
-       0])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>special</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U1</div><div class='xr-var-preview xr-preview'>&#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; ... &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27;</div><input id='attrs-533a3186-0bca-419e-aaf4-c77ec729c071' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-533a3186-0bca-419e-aaf4-c77ec729c071' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fce116e6-73b5-44c3-818f-3a2ddedcebe7' class='xr-var-data-in' type='checkbox'><label for='data-fce116e6-73b5-44c3-818f-3a2ddedcebe7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;L&#x27;, &#x27;&#x27;, &#x27;L&#x27;,
+       0])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>special</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U1</div><div class='xr-var-preview xr-preview'>&#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; ... &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27; &#x27;&#x27;</div><input id='attrs-0147e95a-0426-4523-a5bb-b58ed13bd989' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-0147e95a-0426-4523-a5bb-b58ed13bd989' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4c6fb256-021f-4961-8775-fe217b39e060' class='xr-var-data-in' type='checkbox'><label for='data-4c6fb256-021f-4961-8775-fe217b39e060' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;L&#x27;, &#x27;&#x27;, &#x27;L&#x27;,
        &#x27;&#x27;, &#x27;T&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;,
-       &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;S&#x27;, &#x27;L&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;], dtype=&#x27;&lt;U1&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>type</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U2</div><div class='xr-var-preview xr-preview'>&#x27;LO&#x27; &#x27;LO&#x27; &#x27;LO&#x27; ... &#x27;EX&#x27; &#x27;EX&#x27; &#x27;EX&#x27;</div><input id='attrs-b28875e4-b740-4aca-845e-376b6b4245f1' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b28875e4-b740-4aca-845e-376b6b4245f1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8a5b27d1-08ea-4e93-81a9-c7c3413b4312' class='xr-var-data-in' type='checkbox'><label for='data-8a5b27d1-08ea-4e93-81a9-c7c3413b4312' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;LO&#x27;, &#x27;LO&#x27;, &#x27;LO&#x27;, &#x27;TD&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;,
+       &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;S&#x27;, &#x27;L&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;], dtype=&#x27;&lt;U1&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>type</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U2</div><div class='xr-var-preview xr-preview'>&#x27;LO&#x27; &#x27;LO&#x27; &#x27;LO&#x27; ... &#x27;EX&#x27; &#x27;EX&#x27; &#x27;EX&#x27;</div><input id='attrs-444342a6-de74-4f3e-b732-76045a524d6c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-444342a6-de74-4f3e-b732-76045a524d6c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5b562d39-c578-4c14-a192-b078f3d9f5f9' class='xr-var-data-in' type='checkbox'><label for='data-5b562d39-c578-4c14-a192-b078f3d9f5f9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;LO&#x27;, &#x27;LO&#x27;, &#x27;LO&#x27;, &#x27;TD&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;,
        &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;,
        &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;TS&#x27;, &#x27;TS&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;,
        &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;HU&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;, &#x27;EX&#x27;,
-       &#x27;EX&#x27;], dtype=&#x27;&lt;U2&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>14.3 13.9 13.5 ... 40.7 41.1 41.5</div><input id='attrs-c0ac2342-613f-4363-b317-741698bdf547' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c0ac2342-613f-4363-b317-741698bdf547' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4d485357-aa6d-4e8d-80ff-2d2a517c4230' class='xr-var-data-in' type='checkbox'><label for='data-4d485357-aa6d-4e8d-80ff-2d2a517c4230' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([14.3, 13.9, 13.5, 13.1, 12.7, 12.6, 12.9, 13.4, 14. , 14.7, 15.6,
+       &#x27;EX&#x27;], dtype=&#x27;&lt;U2&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>14.3 13.9 13.5 ... 40.7 41.1 41.5</div><input id='attrs-ea94a325-8629-4e39-a352-a6595f71525c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-ea94a325-8629-4e39-a352-a6595f71525c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4f2e3212-9b67-4397-abde-93a9ebe3051d' class='xr-var-data-in' type='checkbox'><label for='data-4f2e3212-9b67-4397-abde-93a9ebe3051d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([14.3, 13.9, 13.5, 13.1, 12.7, 12.6, 12.9, 13.4, 14. , 14.7, 15.6,
        16.6, 17.7, 17.9, 18.9, 20. , 20.1, 20.9, 21.7, 23.3, 24.8, 25.7,
        26.4, 27. , 27.5, 28.1, 28.8, 29.7, 30.5, 31.3, 32. , 32.8, 33.9,
        35.3, 36.9, 38.3, 38.8, 39.4, 39.5, 39.9, 40.1, 40.4, 40.7, 41.1,
-       41.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-77.4 -77.8 -78.2 ... -80.3 -80.7</div><input id='attrs-8188ffb6-e2b8-4963-903f-673c7f3ba78c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-8188ffb6-e2b8-4963-903f-673c7f3ba78c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-efd43e6d-cd01-4af6-86cc-ccc51fa295a5' class='xr-var-data-in' type='checkbox'><label for='data-efd43e6d-cd01-4af6-86cc-ccc51fa295a5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-77.4, -77.8, -78.2, -78.6, -78.7, -78.4, -78.1, -77.9, -77.6,
+       41.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-77.4 -77.8 -78.2 ... -80.3 -80.7</div><input id='attrs-e3df5f92-d4a6-4791-b2cd-a21a804b84d0' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e3df5f92-d4a6-4791-b2cd-a21a804b84d0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c25e0004-c7e9-4fda-ba3d-4d4d893cc5c9' class='xr-var-data-in' type='checkbox'><label for='data-c25e0004-c7e9-4fda-ba3d-4d4d893cc5c9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-77.4, -77.8, -78.2, -78.6, -78.7, -78.4, -78.1, -77.9, -77.6,
        -77.3, -77.1, -76.9, -76.7, -76.6, -76.4, -76. , -76. , -75.7,
        -75.5, -75.3, -75.9, -76.4, -76.9, -77.2, -77.1, -76.9, -76.5,
        -75.6, -74.7, -73.9, -73. , -72. , -71. , -70.5, -71. , -73.2,
-       -74. , -74.4, -74.5, -76.2, -77.8, -78.9, -79.8, -80.3, -80.7])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vmax</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>25 25 25 30 35 ... 50 40 35 35 30</div><input id='attrs-c8d4c984-0ab7-428f-b783-6c5779140377' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c8d4c984-0ab7-428f-b783-6c5779140377' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0597b397-6a50-4184-8cf2-e8c71d39a94d' class='xr-var-data-in' type='checkbox'><label for='data-0597b397-6a50-4184-8cf2-e8c71d39a94d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 25,  25,  25,  30,  35,  40,  40,  40,  45,  55,  60,  65,  75,
+       -74. , -74.4, -74.5, -76.2, -77.8, -78.9, -79.8, -80.3, -80.7])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vmax</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>25 25 25 30 35 ... 50 40 35 35 30</div><input id='attrs-4d293cd3-0608-43e4-8f26-30ece1d05e52' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4d293cd3-0608-43e4-8f26-30ece1d05e52' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bb3f47c5-6663-49e1-9418-ba34ea18bc8c' class='xr-var-data-in' type='checkbox'><label for='data-bb3f47c5-6663-49e1-9418-ba34ea18bc8c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 25,  25,  25,  30,  35,  40,  40,  40,  45,  55,  60,  65,  75,
         75,  85, 100, 100,  95,  95,  90,  75,  70,  65,  65,  60,  60,
         70,  70,  65,  65,  65,  65,  70,  80,  85,  80,  75,  70,  70,
-        55,  50,  40,  35,  35,  30])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mslp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1006 1005 1003 1002 ... 992 993 995</div><input id='attrs-456c5c56-eed2-499f-82e2-af172ec95bca' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-456c5c56-eed2-499f-82e2-af172ec95bca' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-90681f39-fecb-4e19-9fa9-7430ec5c8d0c' class='xr-var-data-in' type='checkbox'><label for='data-90681f39-fecb-4e19-9fa9-7430ec5c8d0c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1006, 1005, 1003, 1002, 1000,  998,  998,  995,  993,  990,  987,
+        55,  50,  40,  35,  35,  30])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mslp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1006 1005 1003 1002 ... 992 993 995</div><input id='attrs-f87b7b0f-68d1-4228-b0b7-7fa09c342996' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f87b7b0f-68d1-4228-b0b7-7fa09c342996' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a7c2b5ff-a2a3-4f68-a396-65f3020e7491' class='xr-var-data-in' type='checkbox'><label for='data-a7c2b5ff-a2a3-4f68-a396-65f3020e7491' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1006, 1005, 1003, 1002, 1000,  998,  998,  995,  993,  990,  987,
         981,  972,  971,  964,  954,  954,  960,  966,  963,  965,  968,
         970,  971,  969,  968,  956,  960,  960,  959,  954,  952,  950,
         947,  945,  940,  943,  945,  946,  960,  978,  986,  992,  993,
-        995])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wmo_basin</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;north_atlantic&#x27; ... &#x27;north_atla...</div><input id='attrs-6e6763d8-8f62-4aa8-89b3-af8070e70d67' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-6e6763d8-8f62-4aa8-89b3-af8070e70d67' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5f8e0e95-ae8f-4ffd-8a89-11a8ea4b965b' class='xr-var-data-in' type='checkbox'><label for='data-5f8e0e95-ae8f-4ffd-8a89-11a8ea4b965b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
+        995])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wmo_basin</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;north_atlantic&#x27; ... &#x27;north_atla...</div><input id='attrs-6df5c999-a40c-45d0-9135-f72e404c79f4' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-6df5c999-a40c-45d0-9135-f72e404c79f4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-db951d06-b182-4cb7-9cb4-d937c0bdcb5b' class='xr-var-data-in' type='checkbox'><label for='data-db951d06-b182-4cb7-9cb4-d937c0bdcb5b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
        &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
        &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
        &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
@@ -557,4 +621,4 @@ Attributes:
        &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
        &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
        &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;,
-       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;], dtype=&#x27;&lt;U14&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-37f006db-386e-4814-b6c7-627be7cf35e7' class='xr-section-summary-in' type='checkbox'  checked><label for='section-37f006db-386e-4814-b6c7-627be7cf35e7' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>id :</span></dt><dd>AL182012</dd><dt><span>operational_id :</span></dt><dd>AL182012</dd><dt><span>name :</span></dt><dd>SANDY</dd><dt><span>year :</span></dt><dd>2012</dd><dt><span>season :</span></dt><dd>2012</dd><dt><span>basin :</span></dt><dd>north_atlantic</dd><dt><span>source_info :</span></dt><dd>NHC Hurricane Database</dd><dt><span>source :</span></dt><dd>hurdat</dd><dt><span>ace :</span></dt><dd>13.6675</dd></dl></div></li></ul></div></div>
+       &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;, &#x27;north_atlantic&#x27;], dtype=&#x27;&lt;U14&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-60ec77c6-6049-489f-949f-f6857dea8cab' class='xr-section-summary-in' type='checkbox' checked /><label for='section-60ec77c6-6049-489f-949f-f6857dea8cab' class='xr-section-summary' title='Expand/collapse section'>Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>id :</span></dt><dd>AL182012</dd><dt><span>operational_id :</span></dt><dd>AL182012</dd><dt><span>name :</span></dt><dd>SANDY</dd><dt><span>year :</span></dt><dd>2012</dd><dt><span>season :</span></dt><dd>2012</dd><dt><span>basin :</span></dt><dd>north_atlantic</dd><dt><span>source_info :</span></dt><dd>NHC Hurricane Database</dd><dt><span>source :</span></dt><dd>hurdat</dd><dt><span>ace :</span></dt><dd>13.6675</dd></dl></div></li></ul></div></div>
