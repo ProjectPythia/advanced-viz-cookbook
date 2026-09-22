@@ -1,0 +1,1 @@
+import{a as e,b as r}from"/advanced-viz-cookbook/build/_shared/chunk-7FGDXJSL.js";import"/advanced-viz-cookbook/build/_shared/chunk-GEZIJWLJ.js";import"/advanced-viz-cookbook/build/_shared/chunk-RAQ24GF6.js";export{e as ArchitectureModule,r as createArchitectureServices};
